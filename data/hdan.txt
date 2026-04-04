@@ -1,0 +1,1 @@
+netconvert -n ngatu.nod.xml -e ngatu.edg.xml -o ngatu.net.xml

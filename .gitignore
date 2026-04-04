@@ -1,0 +1,16 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C environments
+venv/
+venv_rl/
+.env
+
+# Lịch sử và file tạm của dự án
+rl/logs/
+rl/models/ppo_traffic/*.zip
+data/dulieu_matdo.xml
+benchmark/results/
+!rl/models/ppo_traffic/final_model.zip

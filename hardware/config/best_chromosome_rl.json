@@ -1,0 +1,11 @@
+{
+  "chromosome": [
+    10,
+    4,
+    10,
+    4
+  ],
+  "fitness": -82.97610520833338,
+  "method": "PPO",
+  "description": "[GreenNS, YellowNS, GreenEW, YellowEW] in seconds"
+}

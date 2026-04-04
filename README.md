@@ -1,0 +1,65 @@
+# 🚦 Tối ưu đèn giao thông bằng Thuật toán Di truyền (GA) & Deep Reinforcement Learning (PPO)
+
+Dự án này là giải pháp toàn diện dùng trí tuệ nhân tạo để tối ưu hóa thời gian phát sáng của các pha đèn giao thông tại một ngã tư, dựa trên dữ liệu mô phỏng từ SUMO. Mọi thành phần đều được thiết kế theo dạng Module độc lập, tạo nền tảng vững chắc cho việc nhúng thẳng lên thiết bị IoT ngoài đời thực (Raspberry Pi 5 + Arduino).
+
+## 📁 Cấu trúc dự án
+
+Dự án được chia thành các phân khu chuyên biệt:
+- `simulation/`: Module chứa thư viện kết nối SUMO, bộ tối ưu Thuật toán Di truyền (GA) và Trình tạo phòng tập (Gym Env) cho Reinforcement Learning.
+- `rl/`: Module chứa bộ não AI sử dụng thuật toán Deep RL PPO tiên tiến.
+- `benchmark/`: Kịch bản so sánh đối chiếu thời gian và hiệu năng giữa đèn Cố định, GA và PPO.
+- `hardware/`: Mã nguồn đã được chuẩn bị sẵn cho phần cứng nhúng. (Raspberry Pi và Arduino Firmware).
+- `data/`: Dữ liệu mạng lưới giao thông tĩnh cho phần mềm SUMO.
+
+## 🧮 Hàm Đánh giá Tối ưu (Fitness Function)
+
+Điểm Fitness (Điểm chất lượng) được hệ thống chấm tự động, thu nhận 4 thông số cảm biến từ SUMO (tính ra số càng lớn càng tốt, tiệm cận tới 0):
+
+$$Fitness = -(0.5 \cdot TL + 0.3 \cdot WT + 0.15 \cdot D - 0.05 \cdot S)$$
+
+* **TL (timeLoss):** Tổng thời gian làm lãng phí của các phương tiện (Độ ưu tiên: 50%)
+* **WT (waitingTime):** Tổng thời gian tài xế phải đạp phanh chờ đèn tại vạch (Độ ưu tiên: 30%)
+* **D (density):** Mật độ nhồi nhét phương tiện trên đường (Độ ưu tiên: 15%)
+* **S (speed):** Tốc độ giải toả tắc đường (Độ ưu tiên: 5% - Điểm cộng duy nhất)
+
+---
+
+## 🚀 Hướng dẫn Cài đặt & Chạy dự án
+
+**1. Khởi tạo môi trường ảo an toàn (trên nền Windows)**
+Mở Terminal / Powershell trong thư mục này và gõ:
+```powershell
+py -m venv venv_rl
+.\venv_rl\Scripts\activate
+```
+
+**2. Cài đặt toàn bộ thư viện & Gói đồ hoạ**
+```powershell
+pip install -r requirements.txt
+pip install tensorboard tqdm rich
+```
+
+### 🏁 Cách 1: Huấn luyện bằng Thuật toán tiến hoá (GA)
+Thuật toán cũ, tìm kiếm trên diện rộng và đảm bảo tìm được thời lượng cố định tối ưu.
+```powershell
+python simulation/main_ga.py
+```
+
+### 🧠 Cách 2: Huấn luyện bằng AI Học Tăng Cường (PPO Deep RL)
+Thuật toán AI sử dụng mạng Neural Network tiên tiến để giải bài toán trong không gian Gym.
+* Mở **Terminal 1** để kích hoạt đồ thị theo dõi:
+  ```powershell
+  .\venv_rl\Scripts\activate
+  tensorboard --logdir rl/logs
+  ```
+  Truy cập vào trình duyệt web tại địa chỉ: `http://localhost:6006`
+
+* Mở **Terminal 2** để khởi động AI tập luyện:
+  ```powershell
+  .\venv_rl\Scripts\activate
+  python rl/train_ppo.py
+  ```
+
+---
+
+*Lưu ý: Mọi kết quả tinh tuý nhất sau khi luyện bằng RL sẽ được tự động xuất ra file cấu hình `hardware/config/best_chromosome_rl.json`. Đây chính là file để Cắm vào Mạch phần cứng Raspberry Pi ở Phase 4.*
