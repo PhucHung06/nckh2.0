@@ -426,11 +426,11 @@ python rl/train_ppo.py
 | `explained_variance` | Tiến gần 1.0 | Tăng `n_steps` nếu thấp |
 
 **Checklist Phase 2A:**
-- [ ] `SumoGymEnv` import và chạy không lỗi
-- [ ] PPO train được ít nhất 100 timesteps
-- [ ] `rl/models/ppo_traffic/final_model.zip` tồn tại
-- [ ] `hardware/config/best_chromosome_rl.json` được tạo ra tự động
-- [ ] TensorBoard hiển thị `ep_rew_mean` tăng theo timesteps
+- [x] `SumoGymEnv` import và chạy không lỗi
+- [x] PPO train được ít nhất 100 timesteps
+- [x] `rl/models/ppo_traffic/final_model.zip` tồn tại
+- [x] `hardware/config/best_chromosome_rl.json` được tạo ra tự động
+- [x] TensorBoard hiển thị `ep_rew_mean` tăng theo timesteps
 
 ---
 
@@ -660,10 +660,10 @@ python benchmark/visualize_results.py
 ```
 
 **Checklist Phase 2B:**
-- [ ] `benchmark/results/comparison_results.csv` có đủ 3 method
-- [ ] Biểu đồ boxplot render được, lưu vào `comparison_plots/`
-- [ ] GA và PPO đều tốt hơn Fixed (fitness cao hơn)
-- [ ] Có mean ± std để điền vào bảng bài báo
+- [x] `benchmark/results/comparison_results.csv` có đủ 3 method
+- [x] Biểu đồ boxplot render được, lưu vào `comparison_plots/`
+- [x] GA và PPO đều tốt hơn Fixed (fitness cao hơn)
+- [x] Có mean ± std để điền vào bảng bài báo
 
 ---
 

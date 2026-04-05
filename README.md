@@ -29,8 +29,8 @@ $$Fitness = -(0.5 \cdot TL + 0.3 \cdot WT + 0.15 \cdot D - 0.05 \cdot S)$$
 **1. Khởi tạo môi trường ảo an toàn (trên nền Windows)**
 Mở Terminal / Powershell trong thư mục này và gõ:
 ```powershell
-py -m venv venv_rl
-.\venv_rl\Scripts\activate
+py -m venv venv
+.\venv\Scripts\activate
 ```
 
 **2. Cài đặt toàn bộ thư viện & Gói đồ hoạ**
@@ -49,14 +49,14 @@ python simulation/main_ga.py
 Thuật toán AI sử dụng mạng Neural Network tiên tiến để giải bài toán trong không gian Gym.
 * Mở **Terminal 1** để kích hoạt đồ thị theo dõi:
   ```powershell
-  .\venv_rl\Scripts\activate
+  .\venv\Scripts\activate
   tensorboard --logdir rl/logs
   ```
   Truy cập vào trình duyệt web tại địa chỉ: `http://localhost:6006`
 
 * Mở **Terminal 2** để khởi động AI tập luyện:
   ```powershell
-  .\venv_rl\Scripts\activate
+  .\venv\Scripts\activate
   python rl/train_ppo.py
   ```
 

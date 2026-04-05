@@ -5,7 +5,6 @@ __pycache__/
 
 # C environments
 venv/
-venv_rl/
 .env
 
 # Lịch sử và file tạm của dự án

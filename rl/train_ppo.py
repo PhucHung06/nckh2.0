@@ -60,7 +60,7 @@ def main():
     print("Bat dau huan luyen PPO...")
     print("Theo doi: tensorboard --logdir rl/logs")
     model.learn(
-        total_timesteps = 500,   # Tang len 2000+ de model hoi tu tot hon
+        total_timesteps = 100,   # Tang len 2000+ de model hoi tu tot hon
         callback        = checkpoint_cb,
         progress_bar    = True,
     )
