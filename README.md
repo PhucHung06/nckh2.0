@@ -60,6 +60,21 @@ Thuật toán AI sử dụng mạng Neural Network tiên tiến để giải bà
   python rl/train_ppo.py
   ```
 
+### 📊 Cách 3: Chạy Benchmark So Sánh Đối Chiếu (Phase 2B)
+Module Benchmark sẽ cho chạy thi đấu công bằng và độc lập giữa Đèn Cố định, Thuật toán di truyền (GA) và Trí tuệ AI (PPO) để đưa ra chỉ số tối ưu.
+
+* **Chạy kịch bản thi đấu (Benchmark):** 
+  *(Tham số `--trials` ấn định số vòng chạy lặp lại để lấy trung bình cộng)*
+  ```powershell
+  python benchmark/run_comparison.py --trials 5
+  ```
+* **Xuất Biểu đồ Boxplot trực quan & Thống kê thông số:**
+  Bấm chạy script sau để sinh biểu đồ báo cáo khoa học.
+  ```powershell
+  python benchmark/visualize_results.py
+  ```
+  *(Biểu đồ so sánh sẽ được tự động kết xuất ra `.png` nằm trong thư mục `benchmark/results/comparison_plots/`)*
+
 ---
 
 *Lưu ý: Mọi kết quả tinh tuý nhất sau khi luyện bằng RL sẽ được tự động xuất ra file cấu hình `hardware/config/best_chromosome_rl.json`. Đây chính là file để Cắm vào Mạch phần cứng Raspberry Pi ở Phase 4.*
