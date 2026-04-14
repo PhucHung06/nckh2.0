@@ -74,6 +74,16 @@ Module Benchmark sẽ cho chạy thi đấu công bằng và độc lập giữa
   python benchmark/visualize_results.py
   ```
   *(Biểu đồ so sánh sẽ được tự động kết xuất ra `.png` nằm trong thư mục `benchmark/results/comparison_plots/`)*
+  
+* **Sinh Biểu đồ nội bộ: Quá trình hội tụ (Learning Curves):**
+  Xuất biểu đồ đường tiến hóa của Thuật toán di truyền (GA):
+  ```powershell
+  python benchmark/plot_ga_curve.py
+  ```
+  Trích xuất từ TensorBoard quá trình học của Deep RL PPO:
+  ```powershell
+  python benchmark/plot_ppo_curve.py
+  ```
 
 ---
 

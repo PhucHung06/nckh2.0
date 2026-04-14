@@ -651,12 +651,19 @@ print("\n=== Thong ke ===")
 print(df.groupby('method')[['fitness', 'time_s']].agg(['mean', 'std']).round(4))
 ```
 
-**Chạy benchmark:**
+**Chạy benchmark và sinh số liệu báo cáo:**
 
 ```bash
+# 1. Chay benchmark so sanh 3 phuong phap
 python benchmark/run_comparison.py --trials 5             # Nhanh để kiểm thử
 python benchmark/run_comparison.py --trials 10 --ga-gens 15  # Đầy đủ cho bài báo
 python benchmark/visualize_results.py
+
+# 2. Ve bieu do hoi tu cua Thuật toán di truyền (GA)
+python benchmark/plot_ga_curve.py
+
+# 3. Ve bieu do hoc cua Deep RL PPO (Learning curve tu TensorBoard)
+python benchmark/plot_ppo_curve.py
 ```
 
 **Checklist Phase 2B:**

@@ -1,0 +1,52 @@
+# Hướng dẫn hoàn thiện Số liệu Thực nghiệm Báo cáo
+
+Dưới đây là phương pháp và số liệu sơ bộ để bạn điền vào các mục trong chương thực nghiệm (dựa trên 5 lần chạy đã có trong hệ thống và các script mới được tạo để giúp bạn trích xuất biểu đồ).
+
+## 3.2. So sánh tổng thể GA vs PPO vs Fixed-time Baseline
+
+Đây là bảng số liệu dự kiến (được rút trích từ 5 lần chạy thử trong file `comparison_results.csv` của bạn). Bạn có thể dùng tạm số liệu này hoặc chạy mười lần để có bảng chuẩn nhất.
+
+| Thuật toán | Fitness Trung bình | Độ lệch chuẩn (std dev) | Thời gian tính toán |
+|------------|--------------------|-------------------------|---------------------|
+| Cố định (Fixed) | -224.89 | 0.00 | ~5.17s |
+| MGA | -195.30 | 37.22 | ~308.85s |
+| RL (PPO) | -82.98 | 0.00 | ~87.56s |
+
+> [!TIP]
+> **Cách tạo số liệu cho 10 lần chạy (để lấy số liệu chính thức)**:
+> Mở terminal ở thư mục dự án và chạy:
+> ```bash
+> venv\Scripts\python.exe benchmark\run_comparison.py --trials 10
+> ```
+> File `comparison_results.csv` sẽ được cập nhật.
+
+---
+
+## 3.3. Quá trình hội tụ
+
+Tôi đã viết sẵn hai script tự động chạy mô phỏng và vẽ biểu đồ theo đúng yêu cầu.
+
+### Biểu đồ GA — Fitness curve theo thế hệ
+Chạy lệnh sau để vẽ biểu đồ GA:
+```bash
+venv\Scripts\python.exe benchmark\plot_ga_curve.py
+```
+*Kết quả xuất ra file ảnh: `benchmark/results/comparison_plots/ga_fitness_curve.png`*
+
+### Biểu đồ PPO — Learning curve theo timesteps
+Chạy lệnh sau để trích xuất dữ liệu TensorBoard và vẽ đường học (có mờ dải độ lệch chuẩn):
+```bash
+venv\Scripts\python.exe benchmark\plot_ppo_curve.py
+```
+> [!WARNING]
+> Lưu lý: Dữ liệu TensorBoard hiện tại của tính năng PPO có vẻ chưa chạy tới 200k steps. Bạn cần chạy lệnh `venv\Scripts\python.exe rl\train_ppo.py` với `total_timesteps = 200000` (ở dòng 63 file `train_ppo.py`) trước để có dữ liệu dài hạn rồi chạy tệp vẽ biểu đồ ở trên.
+
+---
+
+## 7.4. Phân tích độ ổn định (ĐÍNH CHÍNH LÝ THUYẾT QUAN TRỌNG)
+
+Bạn đã viết trong bản nháp: *"GA thường cho thấy độ ổn định cao hơn PPO do kết quả của GA là chromosome cố định... tính stochastic của policy"*. **Tuy nhiên, thực tế dữ liệu của bạn chỉ ra điều ngược lại:**
+1. Trong file `run_comparison.py`, khi inference đánh giá PPO, model dự đoán với tham số `deterministic=True`, tạo ra sự ổn định tuyệt đối (**std = 0.00**) giữa các lần chạy.
+2. Ngược lại, vì GA là thuật toán ngẫu nhiên (chạy từ zero trên mỗi Trial), mô phỏng 5 lần sẽ hội tụ vào các vùng tối ưu khác nhau (lúc thì fitness -176, lúc thì -237). Do đó **GA có độ lệch chuẩn khá lớn (std = 37.22)**.
+
+👉 **Góp ý điều chỉnh báo cáo:** Bạn nên cân nhắc sửa kết luận 7.4 thành: *"PPO cho thấy độ ổn định cao hơn khi đánh giá (Inference) do hàm Policy trả về hành động tất định (deterministic evaluation). Trong khi đó, tính ngẫu nhiên của các toán tử tiến hóa (đột biến, lai ghép) làm cho kết quả đầu ra của GA qua mỗi lần tối ưu lại có sự dao động mạnh (độ lệch chuẩn cao)."*
