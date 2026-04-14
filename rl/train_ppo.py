@@ -38,18 +38,28 @@ def make_env():
 def main():
     env = make_env()
 
-    model = PPO(
-        policy          = 'MlpPolicy',
-        env             = env,
-        learning_rate   = 3e-4,
-        n_steps         = 64,    # Nhỏ vì mỗi step tốn ~10s
-        batch_size      = 16,
-        n_epochs        = 5,
-        gamma           = 0.99,
-        ent_coef        = 0.01,  # Khuyến khích khám phá
-        verbose         = 1,
-        tensorboard_log = LOG_DIR,
-    )
+    final_path = os.path.join(MODEL_DIR, 'final_model.zip')
+    
+    if os.path.exists(final_path):
+        print(f"Phat hien checkpoint cu tai {final_path}.")
+        print("Tiep tuc Huan luyen (Resume Training)...")
+        model = PPO.load(final_path, env=env, tensorboard_log=LOG_DIR)
+        reset_timesteps = False
+    else:
+        print("Bat dau huan luyen PPO tu dau (Training from scratch)...")
+        model = PPO(
+            policy          = 'MlpPolicy',
+            env             = env,
+            learning_rate   = 3e-4,
+            n_steps         = 64,
+            batch_size      = 16,
+            n_epochs        = 5,
+            gamma           = 0.99,
+            ent_coef        = 0.01,
+            verbose         = 1,
+            tensorboard_log = LOG_DIR,
+        )
+        reset_timesteps = True
 
     checkpoint_cb = CheckpointCallback(
         save_freq   = 50,
@@ -57,12 +67,12 @@ def main():
         name_prefix = 'ppo_traffic',
     )
 
-    print("Bat dau huan luyen PPO...")
     print("Theo doi: tensorboard --logdir rl/logs")
     model.learn(
-        total_timesteps = 100,   # Tang len 2000+ de model hoi tu tot hon
+        total_timesteps = 500,
         callback        = checkpoint_cb,
         progress_bar    = True,
+        reset_num_timesteps = reset_timesteps
     )
 
     final_path = os.path.join(MODEL_DIR, 'final_model')

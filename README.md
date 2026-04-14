@@ -39,6 +39,13 @@ pip install -r requirements.txt
 pip install tensorboard tqdm rich
 ```
 
+### 🖥️ Cách 0: Dùng Giao diện Trực quan (Khuyên dùng)
+Dự án được trang bị sẵn một bảng điều khiển trung tâm bằng GUI để bạn không cần gõ lệnh. Nó có chứa toàn bộ chức năng (Training, Benchmark, Xuất ảnh biểu đồ). 
+Chỉ cần chạy lệnh sau (hoặc click đúp vào file):
+```powershell
+python gui_launcher.py
+```
+
 ### 🏁 Cách 1: Huấn luyện bằng Thuật toán tiến hoá (GA)
 Thuật toán cũ, tìm kiếm trên diện rộng và đảm bảo tìm được thời lượng cố định tối ưu.
 ```powershell
