@@ -1,23 +1,14 @@
-'''
-project/
-│
-├── main.py
-├── config.py
-├── roi_config.py
-├── sumo_config/
-│   └── your_simulation.sumocfg
-├── video.mp4   (hoặc dùng camera)
-'''
+import os
 
-MODEL_PATH = r"C:\Users\hatun\Downloads\yolov26n_ver2.pt"   #  COPY PATH rồi PASTE lại vào trong r"   "
-VIDEO_INPUT = r"C:\Users\hatun\Downloads\download.mp4"   # hoặc 0 nếu dùng webcam
-SUMO_CFG =  r"C:\Users\hatun\Downloads\Test_NCKH_2\test2\sumo_config\run1.sumocfg"
+MODEL_PATH = r"C:\Users\hatun\Downloads\yolov26n_ver2.pt"
+VIDEO_INPUT = r"C:\Users\hatun\Downloads\download.mp4"
+SUMO_CFG = os.path.join(os.path.dirname(__file__), "run1.sumocfg")
 
 CONF = 0.15
 
-CLASS_NAMES = ['car']
+CLASS_NAMES = ["car"]
 
-# mapping ROI → edge vào trong SUMO
+# Map ROI to incoming SUMO edges.
 ROI_TO_EDGE = {
     "Zone_AL": "S2C",
     "Zone_AR": "S2C",
@@ -33,8 +24,7 @@ ROI_TO_EDGE = {
     "Zone_DM": "N2C",
 }
 
-# Mỗi cạnh vào có 3 hướng rẽ:
-# L = left, M = straight, R = right
+# Each incoming edge has 3 turn directions.
 INCOMING_TO_OUTGOING = {
     "S2C": {
         "L": "C2W",
@@ -58,8 +48,7 @@ INCOMING_TO_OUTGOING = {
     },
 }
 
-# Theo network SUMO hiện tại:
-# lane 0 = làn rẽ phải, lane 1 = làn đi thẳng, lane 2 = làn rẽ trái
+# lane 0 = right, lane 1 = straight, lane 2 = left
 TURN_TO_LANE = {
     "R": "0",
     "M": "1",
