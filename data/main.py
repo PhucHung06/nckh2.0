@@ -71,6 +71,11 @@ def export_route_file(records, route_specs):
         file_obj.write("\n".join(lines) + "\n")
 
 
+def ensure_route_file_exists(route_specs):
+    if not os.path.exists(ROUTES_XML):
+        export_route_file([], route_specs)
+
+
 def update_sumo_config(max_depart):
     tree = ET.parse(SUMO_CFG)
     root = tree.getroot()
@@ -114,6 +119,7 @@ def main():
     fps = fps if fps and fps > 0 else 30.0
 
     route_specs = build_route_specs()
+    ensure_route_file_exists(route_specs)
 
     traci.start(["sumo-gui", "-c", SUMO_CFG])
     for spec in route_specs.values():

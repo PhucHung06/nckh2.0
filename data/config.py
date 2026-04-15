@@ -1,7 +1,7 @@
 import os
 
-MODEL_PATH = r"C:\Users\hatun\Downloads\yolov26n_ver2.pt"
-VIDEO_INPUT = r"C:\Users\hatun\Downloads\download.mp4"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "yolov26n_ver2.pt")
+VIDEO_INPUT = os.path.join(os.path.dirname(__file__), "download.mp4")
 SUMO_CFG = os.path.join(os.path.dirname(__file__), "run1.sumocfg")
 
 CONF = 0.15
