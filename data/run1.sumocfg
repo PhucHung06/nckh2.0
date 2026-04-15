@@ -6,7 +6,6 @@
 
     <input>
         <net-file value="ngatu.net.xml"/>
-        <route-files value="ngatu.net.rou.xml"/>
         <additional-files value="thongke.xml"/>
     </input>
 
