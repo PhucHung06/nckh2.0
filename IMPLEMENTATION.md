@@ -110,6 +110,11 @@ pip install -r requirements.txt
 
 **`requirements.txt`:**
 ```
+#Yolo
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+supervision>=0.18.0
+
 # SUMO Python API
 traci>=1.18.0
 sumolib>=1.18.0

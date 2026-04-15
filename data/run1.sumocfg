@@ -4,7 +4,8 @@
     <input>
         <net-file value="ngatu.net.xml" />
         <additional-files value="thongke.xml" />
-    <route-files value="yolo_routes.rou.xml" /></input>
+        <route-files value="yolo_routes.rou.xml" />
+    </input>
 
     <time>
         <begin value="0" />
