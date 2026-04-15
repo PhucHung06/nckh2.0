@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- SUMO config used by the GA runner -->
-
+<?xml version='1.0' encoding='UTF-8'?>
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="ngatu.net.xml"/>
-        <additional-files value="thongke.xml"/>
-    </input>
+        <net-file value="ngatu.net.xml" />
+        <additional-files value="thongke.xml" />
+    <route-files value="yolo_routes.rou.xml" /></input>
 
     <time>
-        <begin value="0"/>
-        <end value="3600"/>
+        <begin value="0" />
+        <end value="3600" />
     </time>
 
 </sumoConfiguration>
