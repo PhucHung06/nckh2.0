@@ -49,7 +49,7 @@ def export_route_file(records, route_specs):
         '<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
         'xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">',
         '    <vType id="yolo_car" accel="2.6" decel="4.5" sigma="0.5" '
-        'length="5.0" minGap="2.5" maxSpeed="13.9"/>',
+        'length="5.0" minGap="2.5" maxSpeed="13"/>',
     ]
 
     for spec in route_specs.values():
@@ -117,7 +117,7 @@ def main():
 
     fps = cap.get(cv2.CAP_PROP_FPS)
     fps = fps if fps and fps > 0 else 30.0
-
+    step_length = 1.0 / fps
     route_specs = build_route_specs()
     ensure_route_file_exists(route_specs)
 
@@ -140,7 +140,8 @@ def main():
                 break
 
             traci.simulationStep()
-
+            sim_time = (frame_index + 1) * step_length
+            traci.simulationStep(sim_time)
             results = model(frame, conf=CONF, verbose=False)[0]
             detections = sv.Detections.from_ultralytics(results)
             detections = tracker.update_with_detections(detections)
@@ -172,7 +173,7 @@ def main():
                         typeID="DEFAULT_VEHTYPE",
                         departLane=spec["depart_lane"],
                     )
-
+                    traci.vehicle.setMaxSpeed(veh_id, 13)
                     tracked_records.append(
                         {
                             "vehicle_id": veh_id,
