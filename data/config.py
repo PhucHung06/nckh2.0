@@ -1,7 +1,7 @@
 import os
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "yolov26n_ver2.pt")
-VIDEO_INPUT = os.path.join(os.path.dirname(__file__), "download.mp4")
+VIDEO_INPUT = os.path.join(os.path.dirname(__file__), "ten_video.mp4") #Thêm video vào thư mục data rồi thay tên video vào đây
 SUMO_CFG = os.path.join(os.path.dirname(__file__), "run1.sumocfg")
 
 CONF = 0.15
