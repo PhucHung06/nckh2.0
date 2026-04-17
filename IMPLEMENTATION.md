@@ -12,16 +12,28 @@ traffic-light-optimization/
 │
 ├── README.md
 ├── IMPLEMENTATION.md                    # File này
+├── aivision.md                          # Tài liệu module AI Vision (YOLO + SUMO)
+├── gui_launcher.py                      # GUI launcher Tkinter — khởi chạy tất cả bằng nút bấm
+├── extract_json.py                      # Trích xuất dữ liệu JSON từ tracked_vehicles.json
 ├── requirements.txt                     # PC/laptop (đang dùng)
 ├── requirements_rpi.txt                 # Raspberry Pi 5 (dùng sau)
 │
-├── data/                                # Dữ liệu SUMO — giữ nguyên từ dự án cũ
-│   ├── run1.sumocfg
-│   ├── ngatu_net.xml
-│   ├── ngatu_net_rou.xml
-│   ├── time_light.xml
-│   ├── dulieu_matdo.xml
-│   └── thongke.xml
+├── data/                                # Dữ liệu SUMO & tài nguyên — KHÔNG chứa Python
+│   ├── run1.sumocfg                     # Cấu hình chính SUMO
+│   ├── ngatu.net.xml                    # File mạng lưới giao thông (sinh bởi netconvert)
+│   ├── time_light.xml                   # Cấu hình pha đèn giao thông
+│   ├── dulieu_matdo.xml                 # Output mật độ từ SUMO
+│   ├── thongke.xml                      # Thống kê SUMO
+│   ├── hdan.txt                         # Hướng dẫn vận hành
+│   ├── download.mp4                     # Video input cho module AI Vision
+│   ├── yolov26n_ver2.pt                 # Model YOLO trained weights
+│   ├── tracked_vehicles.json            # [OUTPUT] Xe được nhận diện bởi vision/main.py
+│   └── yolo_routes.rou.xml              # [OUTPUT] Route SUMO sinh bởi vision/main.py
+│
+├── vision/                              # ★ Module AI Vision — YOLO + SUMO TraCI
+│   ├── main.py                          # Entry point: nhận diện xe → tạo route SUMO
+│   ├── config.py                        # Cấu hình đường dẫn, ROI→Edge mapping
+│   └── roi_config.py                    # Định nghĩa các vùng ROI (polygon) trong video
 │
 ├── simulation/                          # Lõi mô phỏng SUMO — dùng chung cả 2 hướng
 │   ├── __init__.py

@@ -12,7 +12,7 @@ from config import CONF, MODEL_PATH, ROI_TO_EDGE, SUMO_CFG, TURN_TO_LANE, VIDEO_
 from config import INCOMING_TO_OUTGOING
 from roi_config import ROIS
 
-DATA_DIR = os.path.dirname(__file__)
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 TRACKED_JSON = os.path.join(DATA_DIR, "tracked_vehicles.json")
 ROUTES_XML = os.path.join(DATA_DIR, "yolo_routes.rou.xml")
 

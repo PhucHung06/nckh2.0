@@ -60,11 +60,15 @@ def launch_plot_ppo():
     cmd = f'"{VENV_PYTHON}" benchmark/plot_ppo_curve.py'
     run_command_in_new_terminal(cmd, "Ve Bieu Do PPO tu TensorBoard")
 
+def launch_vision():
+    cmd = f'"{VENV_PYTHON}" vision/main.py'
+    run_command_in_new_terminal(cmd, "AI Vision - Vehicle Tracking & SUMO Route Generation")
+
 
 # --- Xây dựng giao diện ---
 root = tk.Tk()
 root.title("Traffic Light AI - Control Panel")
-root.geometry("520x480")
+root.geometry("520x720")
 root.configure(padx=20, pady=20)
 try:
     # Set phong cách UI cho đẹp mượt hơn
@@ -83,6 +87,14 @@ sub_header.pack(pady=(0, 20))
 # Khung chứa các tính năng nhóm theo từng phần
 frame_main = ttk.Frame(root)
 frame_main.pack(fill=tk.BOTH, expand=True)
+
+
+# 0. Nhóm AI Vision
+frame_vision = ttk.LabelFrame(frame_main, text="0. Nhận diện xe AI Vision (YOLO + Tracking)")
+frame_vision.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
+
+btn_vision = ttk.Button(frame_vision, text="🔍 Chạy AI Vision & Sinh Route SUMO", command=launch_vision)
+btn_vision.pack(fill=tk.X, pady=3, padx=10)
 
 # 1. Nhóm Huấn luyện
 frame_train = ttk.LabelFrame(frame_main, text="1. Giai đoạn Huấn luyện (Training)")
@@ -118,6 +130,9 @@ btn_curve_ga.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(10, 5))
 
 btn_curve_ppo = ttk.Button(frame_curves, text="Trích xuất Learning Curve (PPO)", command=launch_plot_ppo)
 btn_curve_ppo.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(5, 10))
+
+
+
 
 # Footer
 footer = tk.Label(root, text="Developed for Traffic Light Optimization System", font=("Arial", 8), fg="gray")
