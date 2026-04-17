@@ -1,6 +1,6 @@
 {
-  "source_video": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\download.mp4",
-  "sumo_cfg": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\run1.sumocfg",
+  "source_video": "c:\\Users\\hatun\\Downloads\\nckh2.0\\vision\\..\\data\\video\\download.mp4",
+  "sumo_cfg": "c:\\Users\\hatun\\Downloads\\nckh2.0\\vision\\..\\data\\run1.sumocfg",
   "vehicle_count": 297,
   "vehicles": [
     {

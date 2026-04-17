@@ -13,8 +13,8 @@ from config.config import INCOMING_TO_OUTGOING
 from config.roi_config import ROIS
 
 DATA_DIR = os.path.dirname(__file__)
-TRACKED_JSON = os.path.join(DATA_DIR, "tracked_vehicles.json")
-ROUTES_XML = os.path.join(DATA_DIR, "xml", "yolo_routes.rou.xml")
+TRACKED_JSON = os.path.join(DATA_DIR,"..", "data", "tracked_vehicles.json")
+ROUTES_XML = os.path.join(DATA_DIR, "..", "data", "xml", "yolo_routes.rou.xml")
 
 
 def build_route_specs():

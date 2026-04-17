@@ -6,8 +6,9 @@ import numpy as np
 
 
 DATA_DIR = os.path.dirname(__file__)
-VIDEO_PATH = os.path.join(DATA_DIR, "video", "download.mp4")    #Thay đường dẫn video khác nếu cần
-ROI_CONFIG_PATH = os.path.join(DATA_DIR, "roi_config.py")
+VIDEO_PATH = os.path.join(DATA_DIR, "..", "data", "video", "download.mp4")    #Thay đường dẫn video khác nếu cần
+VIDEO_PATH = os.path.abspath(VIDEO_PATH)
+ROI_CONFIG_PATH = os.path.join(DATA_DIR, "config", "roi_config.py")
 WINDOW_NAME = "Draw ROI"
 
 LANE_SEQUENCE = [
