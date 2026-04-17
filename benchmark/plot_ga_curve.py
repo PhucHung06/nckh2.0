@@ -13,8 +13,8 @@ from simulation.ga import GeneticAlgorithm
 # Cau hinh
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 SUMO_CFG = os.path.join(DATA_DIR, 'run1.sumocfg')
-TIME_LIGHT_XML = os.path.join(DATA_DIR, 'time_light.xml')
-OUTPUT_XML = os.path.join(DATA_DIR, 'dulieu_matdo.xml')
+TIME_LIGHT_XML = os.path.join(DATA_DIR, 'xml/time_light.xml')
+OUTPUT_XML = os.path.join(DATA_DIR, 'xml/dulieu_matdo.xml')
 
 RESULT_DIR = os.path.join(os.path.dirname(__file__), 'results')
 PLOT_DIR = os.path.join(RESULT_DIR, 'comparison_plots')

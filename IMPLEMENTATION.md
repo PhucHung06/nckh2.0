@@ -191,8 +191,8 @@ from simulation.ga import GeneticAlgorithm
 
 DATA_DIR       = os.path.join(os.path.dirname(__file__), '..', 'data')
 SUMO_CFG       = os.path.join(DATA_DIR, 'run1.sumocfg')
-TIME_LIGHT_XML = os.path.join(DATA_DIR, 'time_light.xml')
-OUTPUT_XML     = os.path.join(DATA_DIR, 'dulieu_matdo.xml')
+TIME_LIGHT_XML = os.path.join(DATA_DIR, "xml/time_light.xml")
+OUTPUT_XML     = os.path.join(DATA_DIR, "xml/dulieu_matdo.xml")
 
 # Phần còn lại KHÔNG thay đổi
 ```
@@ -353,8 +353,8 @@ os.makedirs(LOG_DIR, exist_ok=True)
 def make_env():
     return Monitor(SumoGymEnv(
         sumocfg        = os.path.join(DATA_DIR, 'run1.sumocfg'),
-        time_light_xml = os.path.join(DATA_DIR, 'time_light.xml'),
-        output_xml     = os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        time_light_xml = os.path.join(DATA_DIR, "xml/time_light.xml"),
+        output_xml     = os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     ))
 
 
@@ -607,13 +607,13 @@ def main():
 
     env = SumoEnvironment(
         os.path.join(DATA_DIR, 'run1.sumocfg'),
-        os.path.join(DATA_DIR, 'time_light.xml'),
-        os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        os.path.join(DATA_DIR, "xml/time_light.xml"),
+        os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     )
     gym_env = SumoGymEnv(
         os.path.join(DATA_DIR, 'run1.sumocfg'),
-        os.path.join(DATA_DIR, 'time_light.xml'),
-        os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        os.path.join(DATA_DIR, "xml/time_light.xml"),
+        os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     )
     model = PPO.load(MODEL_PATH)
 

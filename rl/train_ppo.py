@@ -30,8 +30,8 @@ os.makedirs(LOG_DIR, exist_ok=True)
 def make_env():
     return Monitor(SumoGymEnv(
         sumocfg        = os.path.join(DATA_DIR, 'run1.sumocfg'),
-        time_light_xml = os.path.join(DATA_DIR, 'time_light.xml'),
-        output_xml     = os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        time_light_xml = os.path.join(DATA_DIR, "xml/time_light.xml"),
+        output_xml     = os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     ))
 
 

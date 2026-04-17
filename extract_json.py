@@ -17,8 +17,8 @@ model = PPO.load(final_path)
 DATA_DIR = os.path.join("d:\\khongtrongluc", "data")
 env = SumoGymEnv(
     sumocfg=os.path.join(DATA_DIR, 'run1.sumocfg'),
-    time_light_xml=os.path.join(DATA_DIR, 'time_light.xml'),
-    output_xml=os.path.join(DATA_DIR, 'dulieu_matdo.xml')
+    time_light_xml=os.path.join(DATA_DIR, "xml/time_light.xml"),
+    output_xml=os.path.join(DATA_DIR, "xml/dulieu_matdo.xml")
 )
 
 obs, _ = env.reset()

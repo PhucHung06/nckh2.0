@@ -83,13 +83,13 @@ def main():
 
     env = SumoEnvironment(
         os.path.join(DATA_DIR, 'run1.sumocfg'),
-        os.path.join(DATA_DIR, 'time_light.xml'),
-        os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        os.path.join(DATA_DIR, "xml/time_light.xml"),
+        os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     )
     gym_env = SumoGymEnv(
         os.path.join(DATA_DIR, 'run1.sumocfg'),
-        os.path.join(DATA_DIR, 'time_light.xml'),
-        os.path.join(DATA_DIR, 'dulieu_matdo.xml'),
+        os.path.join(DATA_DIR, "xml/time_light.xml"),
+        os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     )
     model = PPO.load(MODEL_PATH)
 
