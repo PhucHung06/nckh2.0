@@ -8,13 +8,13 @@ import supervision as sv
 import traci
 from ultralytics import YOLO
 
-from config import CONF, MODEL_PATH, ROI_TO_EDGE, SUMO_CFG, TURN_TO_LANE, VIDEO_INPUT
-from config import INCOMING_TO_OUTGOING
-from roi_config import ROIS
+from config.config import CONF, MODEL_PATH, ROI_TO_EDGE, SUMO_CFG, TURN_TO_LANE, VIDEO_INPUT
+from config.config import INCOMING_TO_OUTGOING
+from config.roi_config import ROIS
 
 DATA_DIR = os.path.dirname(__file__)
 TRACKED_JSON = os.path.join(DATA_DIR, "tracked_vehicles.json")
-ROUTES_XML = os.path.join(DATA_DIR, "yolo_routes.rou.xml")
+ROUTES_XML = os.path.join(DATA_DIR, "xml", "yolo_routes.rou.xml")
 
 
 def build_route_specs():

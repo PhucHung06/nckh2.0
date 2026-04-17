@@ -1,8 +1,9 @@
 import os
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "yolov26n_ver2.pt")
-VIDEO_INPUT = os.path.join(os.path.dirname(__file__), "download.mp4") #Thêm video vào thư mục data rồi thay tên video vào đây
-SUMO_CFG = os.path.join(os.path.dirname(__file__), "run1.sumocfg")
+DATA_DIR = os.path.dirname(os.path.dirname(__file__))
+MODEL_PATH = os.path.join(DATA_DIR, "model", "yolov26n_ver2.pt")
+VIDEO_INPUT = os.path.join(DATA_DIR, "video", "download.mp4")
+SUMO_CFG = os.path.join(DATA_DIR, "run1.sumocfg")
 
 CONF = 0.15
 

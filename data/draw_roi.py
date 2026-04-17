@@ -6,7 +6,7 @@ import numpy as np
 
 
 DATA_DIR = os.path.dirname(__file__)
-VIDEO_PATH = os.path.join(DATA_DIR, "download.mp4") #Thêm video vào thư mục data rồi thay tên video vào đây
+VIDEO_PATH = os.path.join(DATA_DIR, "video", "download.mp4")
 ROI_CONFIG_PATH = os.path.join(DATA_DIR, "roi_config.py")
 WINDOW_NAME = "Draw ROI"
 
