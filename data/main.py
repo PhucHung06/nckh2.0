@@ -71,9 +71,10 @@ def export_route_file(records, route_specs):
         file_obj.write("\n".join(lines) + "\n")
 
 
-def ensure_route_file_exists(route_specs):
-    if not os.path.exists(ROUTES_XML):
-        export_route_file([], route_specs)
+def ensure_route_file(route_specs):
+    # Always overwrite the route file at the start of a new run.
+    # This removes leftover vehicle entries from previous failed runs.
+    export_route_file([], route_specs)
 
 
 def update_sumo_config(max_depart):
@@ -87,7 +88,8 @@ def update_sumo_config(max_depart):
     route_node = input_node.find("./route-files")
     if route_node is None:
         route_node = ET.SubElement(input_node, "route-files")
-    route_node.set("value", os.path.basename(ROUTES_XML))
+    route_rel_path = os.path.relpath(ROUTES_XML, start=os.path.dirname(SUMO_CFG))
+    route_node.set("value", route_rel_path.replace(os.path.sep, "/"))
 
     time_node = root.find("./time")
     if time_node is None:
@@ -119,7 +121,7 @@ def main():
     fps = fps if fps and fps > 0 else 30.0
     step_length = 1.0 / fps
     route_specs = build_route_specs()
-    ensure_route_file_exists(route_specs)
+    ensure_route_file(route_specs)
 
     traci.start(["sumo-gui", "-c", SUMO_CFG])
     for spec in route_specs.values():

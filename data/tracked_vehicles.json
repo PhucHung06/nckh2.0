@@ -1,7 +1,7 @@
 {
   "source_video": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\download.mp4",
   "sumo_cfg": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\run1.sumocfg",
-  "vehicle_count": 264,
+  "vehicle_count": 297,
   "vehicles": [
     {
       "vehicle_id": "veh_0",
@@ -148,7 +148,7 @@
     },
     {
       "vehicle_id": "veh_13",
-      "track_id": 38,
+      "track_id": 40,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -159,7 +159,7 @@
     },
     {
       "vehicle_id": "veh_14",
-      "track_id": 47,
+      "track_id": 49,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -170,7 +170,7 @@
     },
     {
       "vehicle_id": "veh_15",
-      "track_id": 52,
+      "track_id": 54,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -181,7 +181,7 @@
     },
     {
       "vehicle_id": "veh_16",
-      "track_id": 63,
+      "track_id": 65,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -192,7 +192,7 @@
     },
     {
       "vehicle_id": "veh_17",
-      "track_id": 69,
+      "track_id": 72,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -203,7 +203,7 @@
     },
     {
       "vehicle_id": "veh_18",
-      "track_id": 70,
+      "track_id": 73,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -214,7 +214,7 @@
     },
     {
       "vehicle_id": "veh_19",
-      "track_id": 97,
+      "track_id": 100,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -225,7 +225,7 @@
     },
     {
       "vehicle_id": "veh_20",
-      "track_id": 96,
+      "track_id": 99,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -236,7 +236,18 @@
     },
     {
       "vehicle_id": "veh_21",
-      "track_id": 69,
+      "track_id": 107,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 3.17
+    },
+    {
+      "vehicle_id": "veh_22",
+      "track_id": 72,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -246,8 +257,8 @@
       "depart": 3.2
     },
     {
-      "vehicle_id": "veh_22",
-      "track_id": 108,
+      "vehicle_id": "veh_23",
+      "track_id": 114,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -257,8 +268,19 @@
       "depart": 3.43
     },
     {
-      "vehicle_id": "veh_23",
-      "track_id": 110,
+      "vehicle_id": "veh_24",
+      "track_id": 115,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 3.5
+    },
+    {
+      "vehicle_id": "veh_25",
+      "track_id": 117,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -268,8 +290,8 @@
       "depart": 3.57
     },
     {
-      "vehicle_id": "veh_24",
-      "track_id": 111,
+      "vehicle_id": "veh_26",
+      "track_id": 118,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -279,8 +301,19 @@
       "depart": 3.6
     },
     {
-      "vehicle_id": "veh_25",
-      "track_id": 114,
+      "vehicle_id": "veh_27",
+      "track_id": 121,
+      "roi_name": "Zone_DR",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2W",
+      "turn": "R",
+      "route_id": "route_Zone_DR",
+      "depart_lane": "0",
+      "depart": 3.7
+    },
+    {
+      "vehicle_id": "veh_28",
+      "track_id": 122,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -290,8 +323,8 @@
       "depart": 3.73
     },
     {
-      "vehicle_id": "veh_26",
-      "track_id": 117,
+      "vehicle_id": "veh_29",
+      "track_id": 125,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -301,8 +334,19 @@
       "depart": 3.83
     },
     {
-      "vehicle_id": "veh_27",
-      "track_id": 125,
+      "vehicle_id": "veh_30",
+      "track_id": 128,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 4.17
+    },
+    {
+      "vehicle_id": "veh_31",
+      "track_id": 135,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -312,8 +356,8 @@
       "depart": 4.5
     },
     {
-      "vehicle_id": "veh_28",
-      "track_id": 127,
+      "vehicle_id": "veh_32",
+      "track_id": 137,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -323,8 +367,8 @@
       "depart": 4.57
     },
     {
-      "vehicle_id": "veh_29",
-      "track_id": 131,
+      "vehicle_id": "veh_33",
+      "track_id": 142,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -332,50 +376,6 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 4.9
-    },
-    {
-      "vehicle_id": "veh_30",
-      "track_id": 132,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 4.93
-    },
-    {
-      "vehicle_id": "veh_31",
-      "track_id": 133,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 5.0
-    },
-    {
-      "vehicle_id": "veh_32",
-      "track_id": 138,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 5.23
-    },
-    {
-      "vehicle_id": "veh_33",
-      "track_id": 139,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 5.27
     },
     {
       "vehicle_id": "veh_34",
@@ -386,7 +386,7 @@
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
-      "depart": 5.4
+      "depart": 4.93
     },
     {
       "vehicle_id": "veh_35",
@@ -397,11 +397,55 @@
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
-      "depart": 5.43
+      "depart": 5.0
     },
     {
       "vehicle_id": "veh_36",
-      "track_id": 144,
+      "track_id": 149,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 5.1
+    },
+    {
+      "vehicle_id": "veh_37",
+      "track_id": 150,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 5.23
+    },
+    {
+      "vehicle_id": "veh_38",
+      "track_id": 152,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 5.27
+    },
+    {
+      "vehicle_id": "veh_39",
+      "track_id": 155,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 5.4
+    },
+    {
+      "vehicle_id": "veh_40",
+      "track_id": 157,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -411,8 +455,19 @@
       "depart": 5.43
     },
     {
-      "vehicle_id": "veh_37",
-      "track_id": 146,
+      "vehicle_id": "veh_41",
+      "track_id": 156,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 5.43
+    },
+    {
+      "vehicle_id": "veh_42",
+      "track_id": 158,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -422,8 +477,8 @@
       "depart": 5.53
     },
     {
-      "vehicle_id": "veh_38",
-      "track_id": 149,
+      "vehicle_id": "veh_43",
+      "track_id": 161,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -433,8 +488,19 @@
       "depart": 5.73
     },
     {
-      "vehicle_id": "veh_39",
-      "track_id": 150,
+      "vehicle_id": "veh_44",
+      "track_id": 162,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 5.77
+    },
+    {
+      "vehicle_id": "veh_45",
+      "track_id": 163,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -444,19 +510,8 @@
       "depart": 5.83
     },
     {
-      "vehicle_id": "veh_40",
-      "track_id": 151,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 5.87
-    },
-    {
-      "vehicle_id": "veh_41",
-      "track_id": 152,
+      "vehicle_id": "veh_46",
+      "track_id": 164,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -466,8 +521,19 @@
       "depart": 5.9
     },
     {
-      "vehicle_id": "veh_42",
-      "track_id": 154,
+      "vehicle_id": "veh_47",
+      "track_id": 165,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 6.0
+    },
+    {
+      "vehicle_id": "veh_48",
+      "track_id": 168,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -477,8 +543,8 @@
       "depart": 6.07
     },
     {
-      "vehicle_id": "veh_43",
-      "track_id": 155,
+      "vehicle_id": "veh_49",
+      "track_id": 169,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -488,7 +554,7 @@
       "depart": 6.07
     },
     {
-      "vehicle_id": "veh_44",
+      "vehicle_id": "veh_50",
       "track_id": 19,
       "roi_name": "Zone_AL",
       "incoming_edge": "S2C",
@@ -499,19 +565,19 @@
       "depart": 6.17
     },
     {
-      "vehicle_id": "veh_45",
-      "track_id": 156,
-      "roi_name": "Zone_BM",
+      "vehicle_id": "veh_51",
+      "track_id": 171,
+      "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 6.17
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 6.2
     },
     {
-      "vehicle_id": "veh_46",
-      "track_id": 159,
+      "vehicle_id": "veh_52",
+      "track_id": 176,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -521,8 +587,8 @@
       "depart": 6.4
     },
     {
-      "vehicle_id": "veh_47",
-      "track_id": 160,
+      "vehicle_id": "veh_53",
+      "track_id": 178,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -532,19 +598,19 @@
       "depart": 6.43
     },
     {
-      "vehicle_id": "veh_48",
-      "track_id": 177,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
+      "vehicle_id": "veh_54",
+      "track_id": 191,
+      "roi_name": "Zone_AR",
+      "incoming_edge": "S2C",
       "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 7.83
+      "turn": "R",
+      "route_id": "route_Zone_AR",
+      "depart_lane": "0",
+      "depart": 7.07
     },
     {
-      "vehicle_id": "veh_49",
-      "track_id": 181,
+      "vehicle_id": "veh_55",
+      "track_id": 198,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -554,30 +620,30 @@
       "depart": 8.0
     },
     {
-      "vehicle_id": "veh_50",
-      "track_id": 150,
+      "vehicle_id": "veh_56",
+      "track_id": 163,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
-      "depart": 8.13
+      "depart": 8.17
     },
     {
-      "vehicle_id": "veh_51",
-      "track_id": 177,
+      "vehicle_id": "veh_57",
+      "track_id": 201,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
-      "depart": 8.2
+      "depart": 8.23
     },
     {
-      "vehicle_id": "veh_52",
-      "track_id": 187,
+      "vehicle_id": "veh_58",
+      "track_id": 205,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -587,8 +653,8 @@
       "depart": 8.5
     },
     {
-      "vehicle_id": "veh_53",
-      "track_id": 191,
+      "vehicle_id": "veh_59",
+      "track_id": 209,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -598,8 +664,8 @@
       "depart": 8.77
     },
     {
-      "vehicle_id": "veh_54",
-      "track_id": 198,
+      "vehicle_id": "veh_60",
+      "track_id": 217,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -609,8 +675,8 @@
       "depart": 9.17
     },
     {
-      "vehicle_id": "veh_55",
-      "track_id": 197,
+      "vehicle_id": "veh_61",
+      "track_id": 216,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -620,8 +686,8 @@
       "depart": 9.17
     },
     {
-      "vehicle_id": "veh_56",
-      "track_id": 199,
+      "vehicle_id": "veh_62",
+      "track_id": 218,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -631,8 +697,8 @@
       "depart": 9.2
     },
     {
-      "vehicle_id": "veh_57",
-      "track_id": 201,
+      "vehicle_id": "veh_63",
+      "track_id": 220,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -642,8 +708,8 @@
       "depart": 9.37
     },
     {
-      "vehicle_id": "veh_58",
-      "track_id": 200,
+      "vehicle_id": "veh_64",
+      "track_id": 219,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -653,8 +719,8 @@
       "depart": 9.37
     },
     {
-      "vehicle_id": "veh_59",
-      "track_id": 202,
+      "vehicle_id": "veh_65",
+      "track_id": 221,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -664,8 +730,8 @@
       "depart": 9.4
     },
     {
-      "vehicle_id": "veh_60",
-      "track_id": 206,
+      "vehicle_id": "veh_66",
+      "track_id": 226,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -675,8 +741,8 @@
       "depart": 9.63
     },
     {
-      "vehicle_id": "veh_61",
-      "track_id": 208,
+      "vehicle_id": "veh_67",
+      "track_id": 228,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -686,8 +752,8 @@
       "depart": 9.67
     },
     {
-      "vehicle_id": "veh_62",
-      "track_id": 209,
+      "vehicle_id": "veh_68",
+      "track_id": 229,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -697,8 +763,8 @@
       "depart": 9.67
     },
     {
-      "vehicle_id": "veh_63",
-      "track_id": 212,
+      "vehicle_id": "veh_69",
+      "track_id": 232,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -708,8 +774,8 @@
       "depart": 9.73
     },
     {
-      "vehicle_id": "veh_64",
-      "track_id": 217,
+      "vehicle_id": "veh_70",
+      "track_id": 236,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -719,8 +785,8 @@
       "depart": 9.83
     },
     {
-      "vehicle_id": "veh_65",
-      "track_id": 209,
+      "vehicle_id": "veh_71",
+      "track_id": 229,
       "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2N",
@@ -730,19 +796,8 @@
       "depart": 10.27
     },
     {
-      "vehicle_id": "veh_66",
-      "track_id": 220,
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 10.33
-    },
-    {
-      "vehicle_id": "veh_67",
-      "track_id": 227,
+      "vehicle_id": "veh_72",
+      "track_id": 246,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -752,8 +807,19 @@
       "depart": 10.37
     },
     {
-      "vehicle_id": "veh_68",
-      "track_id": 232,
+      "vehicle_id": "veh_73",
+      "track_id": 240,
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 10.5
+    },
+    {
+      "vehicle_id": "veh_74",
+      "track_id": 253,
       "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2N",
@@ -763,8 +829,8 @@
       "depart": 10.57
     },
     {
-      "vehicle_id": "veh_69",
-      "track_id": 237,
+      "vehicle_id": "veh_75",
+      "track_id": 257,
       "roi_name": "Zone_AR",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2E",
@@ -774,8 +840,8 @@
       "depart": 10.77
     },
     {
-      "vehicle_id": "veh_70",
-      "track_id": 242,
+      "vehicle_id": "veh_76",
+      "track_id": 262,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -785,8 +851,30 @@
       "depart": 10.87
     },
     {
-      "vehicle_id": "veh_71",
-      "track_id": 256,
+      "vehicle_id": "veh_77",
+      "track_id": 263,
+      "roi_name": "Zone_AR",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2E",
+      "turn": "R",
+      "route_id": "route_Zone_AR",
+      "depart_lane": "0",
+      "depart": 10.9
+    },
+    {
+      "vehicle_id": "veh_78",
+      "track_id": 269,
+      "roi_name": "Zone_AR",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2E",
+      "turn": "R",
+      "route_id": "route_Zone_AR",
+      "depart_lane": "0",
+      "depart": 11.23
+    },
+    {
+      "vehicle_id": "veh_79",
+      "track_id": 275,
       "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2N",
@@ -796,8 +884,8 @@
       "depart": 11.5
     },
     {
-      "vehicle_id": "veh_72",
-      "track_id": 258,
+      "vehicle_id": "veh_80",
+      "track_id": 277,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -807,8 +895,8 @@
       "depart": 11.57
     },
     {
-      "vehicle_id": "veh_73",
-      "track_id": 261,
+      "vehicle_id": "veh_81",
+      "track_id": 280,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -818,8 +906,8 @@
       "depart": 11.73
     },
     {
-      "vehicle_id": "veh_74",
-      "track_id": 262,
+      "vehicle_id": "veh_82",
+      "track_id": 281,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -829,8 +917,8 @@
       "depart": 11.8
     },
     {
-      "vehicle_id": "veh_75",
-      "track_id": 264,
+      "vehicle_id": "veh_83",
+      "track_id": 284,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -840,8 +928,8 @@
       "depart": 11.9
     },
     {
-      "vehicle_id": "veh_76",
-      "track_id": 267,
+      "vehicle_id": "veh_84",
+      "track_id": 287,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -851,8 +939,8 @@
       "depart": 12.23
     },
     {
-      "vehicle_id": "veh_77",
-      "track_id": 270,
+      "vehicle_id": "veh_85",
+      "track_id": 290,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -862,8 +950,8 @@
       "depart": 12.4
     },
     {
-      "vehicle_id": "veh_78",
-      "track_id": 273,
+      "vehicle_id": "veh_86",
+      "track_id": 293,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -873,8 +961,8 @@
       "depart": 12.57
     },
     {
-      "vehicle_id": "veh_79",
-      "track_id": 277,
+      "vehicle_id": "veh_87",
+      "track_id": 298,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -884,8 +972,8 @@
       "depart": 12.9
     },
     {
-      "vehicle_id": "veh_80",
-      "track_id": 227,
+      "vehicle_id": "veh_88",
+      "track_id": 246,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -895,8 +983,8 @@
       "depart": 12.9
     },
     {
-      "vehicle_id": "veh_81",
-      "track_id": 279,
+      "vehicle_id": "veh_89",
+      "track_id": 300,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -906,8 +994,8 @@
       "depart": 13.0
     },
     {
-      "vehicle_id": "veh_82",
-      "track_id": 280,
+      "vehicle_id": "veh_90",
+      "track_id": 302,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -917,8 +1005,8 @@
       "depart": 13.03
     },
     {
-      "vehicle_id": "veh_83",
-      "track_id": 284,
+      "vehicle_id": "veh_91",
+      "track_id": 306,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -928,19 +1016,8 @@
       "depart": 13.2
     },
     {
-      "vehicle_id": "veh_84",
-      "track_id": 200,
-      "roi_name": "Zone_BL",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2N",
-      "turn": "L",
-      "route_id": "route_Zone_BL",
-      "depart_lane": "2",
-      "depart": 13.27
-    },
-    {
-      "vehicle_id": "veh_85",
-      "track_id": 292,
+      "vehicle_id": "veh_92",
+      "track_id": 314,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -950,8 +1027,8 @@
       "depart": 13.47
     },
     {
-      "vehicle_id": "veh_86",
-      "track_id": 293,
+      "vehicle_id": "veh_93",
+      "track_id": 315,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -961,8 +1038,8 @@
       "depart": 13.5
     },
     {
-      "vehicle_id": "veh_87",
-      "track_id": 296,
+      "vehicle_id": "veh_94",
+      "track_id": 319,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -972,8 +1049,8 @@
       "depart": 13.57
     },
     {
-      "vehicle_id": "veh_88",
-      "track_id": 298,
+      "vehicle_id": "veh_95",
+      "track_id": 321,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -983,8 +1060,8 @@
       "depart": 13.67
     },
     {
-      "vehicle_id": "veh_89",
-      "track_id": 301,
+      "vehicle_id": "veh_96",
+      "track_id": 325,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -994,8 +1071,8 @@
       "depart": 13.9
     },
     {
-      "vehicle_id": "veh_90",
-      "track_id": 300,
+      "vehicle_id": "veh_97",
+      "track_id": 324,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1005,8 +1082,8 @@
       "depart": 13.9
     },
     {
-      "vehicle_id": "veh_91",
-      "track_id": 302,
+      "vehicle_id": "veh_98",
+      "track_id": 328,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1016,7 +1093,7 @@
       "depart": 13.9
     },
     {
-      "vehicle_id": "veh_92",
+      "vehicle_id": "veh_99",
       "track_id": 9,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
@@ -1027,8 +1104,19 @@
       "depart": 14.03
     },
     {
-      "vehicle_id": "veh_93",
-      "track_id": 305,
+      "vehicle_id": "veh_100",
+      "track_id": 334,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 14.2
+    },
+    {
+      "vehicle_id": "veh_101",
+      "track_id": 332,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1038,8 +1126,8 @@
       "depart": 14.2
     },
     {
-      "vehicle_id": "veh_94",
-      "track_id": 313,
+      "vehicle_id": "veh_102",
+      "track_id": 344,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1049,8 +1137,8 @@
       "depart": 14.63
     },
     {
-      "vehicle_id": "veh_95",
-      "track_id": 316,
+      "vehicle_id": "veh_103",
+      "track_id": 348,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1060,8 +1148,8 @@
       "depart": 14.7
     },
     {
-      "vehicle_id": "veh_96",
-      "track_id": 319,
+      "vehicle_id": "veh_104",
+      "track_id": 350,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1071,8 +1159,8 @@
       "depart": 14.73
     },
     {
-      "vehicle_id": "veh_97",
-      "track_id": 328,
+      "vehicle_id": "veh_105",
+      "track_id": 359,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1082,19 +1170,8 @@
       "depart": 15.03
     },
     {
-      "vehicle_id": "veh_98",
-      "track_id": 335,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 15.23
-    },
-    {
-      "vehicle_id": "veh_99",
-      "track_id": 341,
+      "vehicle_id": "veh_106",
+      "track_id": 372,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1104,8 +1181,8 @@
       "depart": 15.47
     },
     {
-      "vehicle_id": "veh_100",
-      "track_id": 345,
+      "vehicle_id": "veh_107",
+      "track_id": 376,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1115,8 +1192,8 @@
       "depart": 15.53
     },
     {
-      "vehicle_id": "veh_101",
-      "track_id": 346,
+      "vehicle_id": "veh_108",
+      "track_id": 377,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1126,8 +1203,8 @@
       "depart": 15.53
     },
     {
-      "vehicle_id": "veh_102",
-      "track_id": 349,
+      "vehicle_id": "veh_109",
+      "track_id": 381,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1137,8 +1214,8 @@
       "depart": 15.8
     },
     {
-      "vehicle_id": "veh_103",
-      "track_id": 364,
+      "vehicle_id": "veh_110",
+      "track_id": 394,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1148,8 +1225,8 @@
       "depart": 16.67
     },
     {
-      "vehicle_id": "veh_104",
-      "track_id": 371,
+      "vehicle_id": "veh_111",
+      "track_id": 400,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1159,8 +1236,8 @@
       "depart": 16.93
     },
     {
-      "vehicle_id": "veh_105",
-      "track_id": 374,
+      "vehicle_id": "veh_112",
+      "track_id": 403,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1170,8 +1247,8 @@
       "depart": 16.97
     },
     {
-      "vehicle_id": "veh_106",
-      "track_id": 380,
+      "vehicle_id": "veh_113",
+      "track_id": 407,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1181,8 +1258,8 @@
       "depart": 17.2
     },
     {
-      "vehicle_id": "veh_107",
-      "track_id": 382,
+      "vehicle_id": "veh_114",
+      "track_id": 410,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1192,8 +1269,8 @@
       "depart": 17.27
     },
     {
-      "vehicle_id": "veh_108",
-      "track_id": 384,
+      "vehicle_id": "veh_115",
+      "track_id": 412,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1203,8 +1280,8 @@
       "depart": 17.3
     },
     {
-      "vehicle_id": "veh_109",
-      "track_id": 394,
+      "vehicle_id": "veh_116",
+      "track_id": 424,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1214,8 +1291,8 @@
       "depart": 17.87
     },
     {
-      "vehicle_id": "veh_110",
-      "track_id": 395,
+      "vehicle_id": "veh_117",
+      "track_id": 425,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -1225,8 +1302,8 @@
       "depart": 17.87
     },
     {
-      "vehicle_id": "veh_111",
-      "track_id": 402,
+      "vehicle_id": "veh_118",
+      "track_id": 434,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1236,8 +1313,8 @@
       "depart": 18.37
     },
     {
-      "vehicle_id": "veh_112",
-      "track_id": 404,
+      "vehicle_id": "veh_119",
+      "track_id": 436,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -1247,8 +1324,8 @@
       "depart": 18.5
     },
     {
-      "vehicle_id": "veh_113",
-      "track_id": 405,
+      "vehicle_id": "veh_120",
+      "track_id": 437,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1258,8 +1335,8 @@
       "depart": 18.53
     },
     {
-      "vehicle_id": "veh_114",
-      "track_id": 408,
+      "vehicle_id": "veh_121",
+      "track_id": 441,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1269,19 +1346,8 @@
       "depart": 19.27
     },
     {
-      "vehicle_id": "veh_115",
-      "track_id": 412,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 19.53
-    },
-    {
-      "vehicle_id": "veh_116",
-      "track_id": 416,
+      "vehicle_id": "veh_122",
+      "track_id": 448,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1291,8 +1357,19 @@
       "depart": 19.7
     },
     {
-      "vehicle_id": "veh_117",
-      "track_id": 420,
+      "vehicle_id": "veh_123",
+      "track_id": 450,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 19.8
+    },
+    {
+      "vehicle_id": "veh_124",
+      "track_id": 453,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1302,8 +1379,8 @@
       "depart": 20.0
     },
     {
-      "vehicle_id": "veh_118",
-      "track_id": 421,
+      "vehicle_id": "veh_125",
+      "track_id": 455,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1313,8 +1390,19 @@
       "depart": 20.03
     },
     {
-      "vehicle_id": "veh_119",
-      "track_id": 423,
+      "vehicle_id": "veh_126",
+      "track_id": 457,
+      "roi_name": "Zone_DM",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2S",
+      "turn": "M",
+      "route_id": "route_Zone_DM",
+      "depart_lane": "1",
+      "depart": 20.07
+    },
+    {
+      "vehicle_id": "veh_127",
+      "track_id": 458,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1324,19 +1412,19 @@
       "depart": 20.1
     },
     {
-      "vehicle_id": "veh_120",
-      "track_id": 426,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
+      "vehicle_id": "veh_128",
+      "track_id": 461,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
       "depart": 20.43
     },
     {
-      "vehicle_id": "veh_121",
-      "track_id": 430,
+      "vehicle_id": "veh_129",
+      "track_id": 465,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1346,8 +1434,8 @@
       "depart": 20.53
     },
     {
-      "vehicle_id": "veh_122",
-      "track_id": 432,
+      "vehicle_id": "veh_130",
+      "track_id": 468,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1357,8 +1445,8 @@
       "depart": 20.7
     },
     {
-      "vehicle_id": "veh_123",
-      "track_id": 434,
+      "vehicle_id": "veh_131",
+      "track_id": 470,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1368,8 +1456,8 @@
       "depart": 20.77
     },
     {
-      "vehicle_id": "veh_124",
-      "track_id": 436,
+      "vehicle_id": "veh_132",
+      "track_id": 472,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1379,8 +1467,8 @@
       "depart": 20.93
     },
     {
-      "vehicle_id": "veh_125",
-      "track_id": 440,
+      "vehicle_id": "veh_133",
+      "track_id": 476,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1390,8 +1478,8 @@
       "depart": 21.33
     },
     {
-      "vehicle_id": "veh_126",
-      "track_id": 441,
+      "vehicle_id": "veh_134",
+      "track_id": 477,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1401,8 +1489,8 @@
       "depart": 21.47
     },
     {
-      "vehicle_id": "veh_127",
-      "track_id": 447,
+      "vehicle_id": "veh_135",
+      "track_id": 483,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1412,8 +1500,8 @@
       "depart": 22.03
     },
     {
-      "vehicle_id": "veh_128",
-      "track_id": 448,
+      "vehicle_id": "veh_136",
+      "track_id": 484,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1423,8 +1511,8 @@
       "depart": 22.03
     },
     {
-      "vehicle_id": "veh_129",
-      "track_id": 449,
+      "vehicle_id": "veh_137",
+      "track_id": 487,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1434,8 +1522,41 @@
       "depart": 22.33
     },
     {
-      "vehicle_id": "veh_130",
-      "track_id": 453,
+      "vehicle_id": "veh_138",
+      "track_id": 488,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 22.47
+    },
+    {
+      "vehicle_id": "veh_139",
+      "track_id": 489,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 22.47
+    },
+    {
+      "vehicle_id": "veh_140",
+      "track_id": 493,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 22.77
+    },
+    {
+      "vehicle_id": "veh_141",
+      "track_id": 494,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1445,8 +1566,19 @@
       "depart": 22.8
     },
     {
-      "vehicle_id": "veh_131",
-      "track_id": 457,
+      "vehicle_id": "veh_142",
+      "track_id": 495,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 22.8
+    },
+    {
+      "vehicle_id": "veh_143",
+      "track_id": 502,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1456,8 +1588,19 @@
       "depart": 23.2
     },
     {
-      "vehicle_id": "veh_132",
-      "track_id": 458,
+      "vehicle_id": "veh_144",
+      "track_id": 500,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 23.2
+    },
+    {
+      "vehicle_id": "veh_145",
+      "track_id": 501,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1467,8 +1610,8 @@
       "depart": 23.2
     },
     {
-      "vehicle_id": "veh_133",
-      "track_id": 462,
+      "vehicle_id": "veh_146",
+      "track_id": 506,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1478,8 +1621,8 @@
       "depart": 23.4
     },
     {
-      "vehicle_id": "veh_134",
-      "track_id": 464,
+      "vehicle_id": "veh_147",
+      "track_id": 514,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -1489,8 +1632,8 @@
       "depart": 23.77
     },
     {
-      "vehicle_id": "veh_135",
-      "track_id": 465,
+      "vehicle_id": "veh_148",
+      "track_id": 515,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1500,8 +1643,8 @@
       "depart": 23.77
     },
     {
-      "vehicle_id": "veh_136",
-      "track_id": 467,
+      "vehicle_id": "veh_149",
+      "track_id": 517,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -1509,149 +1652,6 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 24.0
-    },
-    {
-      "vehicle_id": "veh_137",
-      "track_id": 468,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 24.1
-    },
-    {
-      "vehicle_id": "veh_138",
-      "track_id": 472,
-      "roi_name": "Zone_DL",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2E",
-      "turn": "L",
-      "route_id": "route_Zone_DL",
-      "depart_lane": "2",
-      "depart": 24.47
-    },
-    {
-      "vehicle_id": "veh_139",
-      "track_id": 478,
-      "roi_name": "Zone_DR",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2W",
-      "turn": "R",
-      "route_id": "route_Zone_DR",
-      "depart_lane": "0",
-      "depart": 24.83
-    },
-    {
-      "vehicle_id": "veh_140",
-      "track_id": 480,
-      "roi_name": "Zone_DL",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2E",
-      "turn": "L",
-      "route_id": "route_Zone_DL",
-      "depart_lane": "2",
-      "depart": 25.13
-    },
-    {
-      "vehicle_id": "veh_141",
-      "track_id": 482,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 25.17
-    },
-    {
-      "vehicle_id": "veh_142",
-      "track_id": 484,
-      "roi_name": "Zone_BR",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2S",
-      "turn": "R",
-      "route_id": "route_Zone_BR",
-      "depart_lane": "0",
-      "depart": 25.6
-    },
-    {
-      "vehicle_id": "veh_143",
-      "track_id": 492,
-      "roi_name": "Zone_DM",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2S",
-      "turn": "M",
-      "route_id": "route_Zone_DM",
-      "depart_lane": "1",
-      "depart": 26.27
-    },
-    {
-      "vehicle_id": "veh_144",
-      "track_id": 497,
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 27.0
-    },
-    {
-      "vehicle_id": "veh_145",
-      "track_id": 498,
-      "roi_name": "Zone_DL",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2E",
-      "turn": "L",
-      "route_id": "route_Zone_DL",
-      "depart_lane": "2",
-      "depart": 27.13
-    },
-    {
-      "vehicle_id": "veh_146",
-      "track_id": 505,
-      "roi_name": "Zone_CL",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2S",
-      "turn": "L",
-      "route_id": "route_Zone_CL",
-      "depart_lane": "2",
-      "depart": 27.7
-    },
-    {
-      "vehicle_id": "veh_147",
-      "track_id": 515,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 28.17
-    },
-    {
-      "vehicle_id": "veh_148",
-      "track_id": 516,
-      "roi_name": "Zone_DR",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2W",
-      "turn": "R",
-      "route_id": "route_Zone_DR",
-      "depart_lane": "0",
-      "depart": 28.23
-    },
-    {
-      "vehicle_id": "veh_149",
-      "track_id": 518,
-      "roi_name": "Zone_DM",
-      "incoming_edge": "N2C",
-      "outgoing_edge": "C2S",
-      "turn": "M",
-      "route_id": "route_Zone_DM",
-      "depart_lane": "1",
-      "depart": 28.3
     },
     {
       "vehicle_id": "veh_150",
@@ -1662,11 +1662,209 @@
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
-      "depart": 28.43
+      "depart": 24.1
     },
     {
       "vehicle_id": "veh_151",
-      "track_id": 521,
+      "track_id": 524,
+      "roi_name": "Zone_DL",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2E",
+      "turn": "L",
+      "route_id": "route_Zone_DL",
+      "depart_lane": "2",
+      "depart": 24.47
+    },
+    {
+      "vehicle_id": "veh_152",
+      "track_id": 525,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 24.5
+    },
+    {
+      "vehicle_id": "veh_153",
+      "track_id": 527,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 24.63
+    },
+    {
+      "vehicle_id": "veh_154",
+      "track_id": 530,
+      "roi_name": "Zone_DR",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2W",
+      "turn": "R",
+      "route_id": "route_Zone_DR",
+      "depart_lane": "0",
+      "depart": 24.83
+    },
+    {
+      "vehicle_id": "veh_155",
+      "track_id": 534,
+      "roi_name": "Zone_DL",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2E",
+      "turn": "L",
+      "route_id": "route_Zone_DL",
+      "depart_lane": "2",
+      "depart": 25.13
+    },
+    {
+      "vehicle_id": "veh_156",
+      "track_id": 536,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 25.17
+    },
+    {
+      "vehicle_id": "veh_157",
+      "track_id": 537,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 25.6
+    },
+    {
+      "vehicle_id": "veh_158",
+      "track_id": 547,
+      "roi_name": "Zone_DM",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2S",
+      "turn": "M",
+      "route_id": "route_Zone_DM",
+      "depart_lane": "1",
+      "depart": 26.27
+    },
+    {
+      "vehicle_id": "veh_159",
+      "track_id": 552,
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 27.0
+    },
+    {
+      "vehicle_id": "veh_160",
+      "track_id": 553,
+      "roi_name": "Zone_DL",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2E",
+      "turn": "L",
+      "route_id": "route_Zone_DL",
+      "depart_lane": "2",
+      "depart": 27.13
+    },
+    {
+      "vehicle_id": "veh_161",
+      "track_id": 555,
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 27.2
+    },
+    {
+      "vehicle_id": "veh_162",
+      "track_id": 560,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 27.63
+    },
+    {
+      "vehicle_id": "veh_163",
+      "track_id": 563,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 27.7
+    },
+    {
+      "vehicle_id": "veh_164",
+      "track_id": 564,
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 27.77
+    },
+    {
+      "vehicle_id": "veh_165",
+      "track_id": 571,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 28.17
+    },
+    {
+      "vehicle_id": "veh_166",
+      "track_id": 572,
+      "roi_name": "Zone_DR",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2W",
+      "turn": "R",
+      "route_id": "route_Zone_DR",
+      "depart_lane": "0",
+      "depart": 28.23
+    },
+    {
+      "vehicle_id": "veh_167",
+      "track_id": 574,
+      "roi_name": "Zone_DM",
+      "incoming_edge": "N2C",
+      "outgoing_edge": "C2S",
+      "turn": "M",
+      "route_id": "route_Zone_DM",
+      "depart_lane": "1",
+      "depart": 28.3
+    },
+    {
+      "vehicle_id": "veh_168",
+      "track_id": 575,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 28.43
+    },
+    {
+      "vehicle_id": "veh_169",
+      "track_id": 578,
       "roi_name": "Zone_AR",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2E",
@@ -1676,8 +1874,8 @@
       "depart": 28.47
     },
     {
-      "vehicle_id": "veh_152",
-      "track_id": 516,
+      "vehicle_id": "veh_170",
+      "track_id": 572,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1687,8 +1885,8 @@
       "depart": 28.6
     },
     {
-      "vehicle_id": "veh_153",
-      "track_id": 525,
+      "vehicle_id": "veh_171",
+      "track_id": 582,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1698,8 +1896,8 @@
       "depart": 28.8
     },
     {
-      "vehicle_id": "veh_154",
-      "track_id": 536,
+      "vehicle_id": "veh_172",
+      "track_id": 593,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1709,8 +1907,8 @@
       "depart": 29.33
     },
     {
-      "vehicle_id": "veh_155",
-      "track_id": 542,
+      "vehicle_id": "veh_173",
+      "track_id": 600,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1720,8 +1918,8 @@
       "depart": 29.5
     },
     {
-      "vehicle_id": "veh_156",
-      "track_id": 545,
+      "vehicle_id": "veh_174",
+      "track_id": 602,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1731,8 +1929,8 @@
       "depart": 29.77
     },
     {
-      "vehicle_id": "veh_157",
-      "track_id": 546,
+      "vehicle_id": "veh_175",
+      "track_id": 603,
       "roi_name": "Zone_DL",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2E",
@@ -1742,8 +1940,19 @@
       "depart": 29.8
     },
     {
-      "vehicle_id": "veh_158",
-      "track_id": 553,
+      "vehicle_id": "veh_176",
+      "track_id": 609,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 29.97
+    },
+    {
+      "vehicle_id": "veh_177",
+      "track_id": 612,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1753,8 +1962,8 @@
       "depart": 30.0
     },
     {
-      "vehicle_id": "veh_159",
-      "track_id": 556,
+      "vehicle_id": "veh_178",
+      "track_id": 615,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1764,8 +1973,8 @@
       "depart": 30.13
     },
     {
-      "vehicle_id": "veh_160",
-      "track_id": 559,
+      "vehicle_id": "veh_179",
+      "track_id": 618,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -1775,8 +1984,8 @@
       "depart": 30.17
     },
     {
-      "vehicle_id": "veh_161",
-      "track_id": 565,
+      "vehicle_id": "veh_180",
+      "track_id": 624,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1786,8 +1995,19 @@
       "depart": 30.43
     },
     {
-      "vehicle_id": "veh_162",
-      "track_id": 571,
+      "vehicle_id": "veh_181",
+      "track_id": 629,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 30.5
+    },
+    {
+      "vehicle_id": "veh_182",
+      "track_id": 630,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1797,8 +2017,8 @@
       "depart": 30.5
     },
     {
-      "vehicle_id": "veh_163",
-      "track_id": 573,
+      "vehicle_id": "veh_183",
+      "track_id": 632,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1808,8 +2028,8 @@
       "depart": 30.6
     },
     {
-      "vehicle_id": "veh_164",
-      "track_id": 581,
+      "vehicle_id": "veh_184",
+      "track_id": 639,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1819,8 +2039,8 @@
       "depart": 30.77
     },
     {
-      "vehicle_id": "veh_165",
-      "track_id": 583,
+      "vehicle_id": "veh_185",
+      "track_id": 641,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1830,8 +2050,30 @@
       "depart": 30.83
     },
     {
-      "vehicle_id": "veh_166",
-      "track_id": 594,
+      "vehicle_id": "veh_186",
+      "track_id": 646,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 31.0
+    },
+    {
+      "vehicle_id": "veh_187",
+      "track_id": 649,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 31.1
+    },
+    {
+      "vehicle_id": "veh_188",
+      "track_id": 657,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1841,8 +2083,8 @@
       "depart": 31.47
     },
     {
-      "vehicle_id": "veh_167",
-      "track_id": 601,
+      "vehicle_id": "veh_189",
+      "track_id": 665,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1852,8 +2094,8 @@
       "depart": 31.67
     },
     {
-      "vehicle_id": "veh_168",
-      "track_id": 600,
+      "vehicle_id": "veh_190",
+      "track_id": 664,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1863,8 +2105,8 @@
       "depart": 31.67
     },
     {
-      "vehicle_id": "veh_169",
-      "track_id": 602,
+      "vehicle_id": "veh_191",
+      "track_id": 666,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -1874,8 +2116,8 @@
       "depart": 31.73
     },
     {
-      "vehicle_id": "veh_170",
-      "track_id": 393,
+      "vehicle_id": "veh_192",
+      "track_id": 423,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -1885,8 +2127,8 @@
       "depart": 32.17
     },
     {
-      "vehicle_id": "veh_171",
-      "track_id": 302,
+      "vehicle_id": "veh_193",
+      "track_id": 328,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -1896,8 +2138,19 @@
       "depart": 32.23
     },
     {
-      "vehicle_id": "veh_172",
-      "track_id": 620,
+      "vehicle_id": "veh_194",
+      "track_id": 680,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 32.57
+    },
+    {
+      "vehicle_id": "veh_195",
+      "track_id": 689,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1907,8 +2160,8 @@
       "depart": 32.93
     },
     {
-      "vehicle_id": "veh_173",
-      "track_id": 630,
+      "vehicle_id": "veh_196",
+      "track_id": 699,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1918,8 +2171,8 @@
       "depart": 33.37
     },
     {
-      "vehicle_id": "veh_174",
-      "track_id": 629,
+      "vehicle_id": "veh_197",
+      "track_id": 698,
       "roi_name": "Zone_DL",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2E",
@@ -1929,8 +2182,8 @@
       "depart": 33.37
     },
     {
-      "vehicle_id": "veh_175",
-      "track_id": 633,
+      "vehicle_id": "veh_198",
+      "track_id": 702,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -1940,8 +2193,8 @@
       "depart": 33.43
     },
     {
-      "vehicle_id": "veh_176",
-      "track_id": 624,
+      "vehicle_id": "veh_199",
+      "track_id": 693,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -1951,8 +2204,8 @@
       "depart": 33.43
     },
     {
-      "vehicle_id": "veh_177",
-      "track_id": 636,
+      "vehicle_id": "veh_200",
+      "track_id": 705,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -1962,8 +2215,19 @@
       "depart": 33.53
     },
     {
-      "vehicle_id": "veh_178",
-      "track_id": 640,
+      "vehicle_id": "veh_201",
+      "track_id": 707,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 33.63
+    },
+    {
+      "vehicle_id": "veh_202",
+      "track_id": 710,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1973,8 +2237,8 @@
       "depart": 33.7
     },
     {
-      "vehicle_id": "veh_179",
-      "track_id": 643,
+      "vehicle_id": "veh_203",
+      "track_id": 713,
       "roi_name": "Zone_DL",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2E",
@@ -1984,8 +2248,8 @@
       "depart": 33.73
     },
     {
-      "vehicle_id": "veh_180",
-      "track_id": 648,
+      "vehicle_id": "veh_204",
+      "track_id": 718,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -1995,19 +2259,8 @@
       "depart": 33.93
     },
     {
-      "vehicle_id": "veh_181",
-      "track_id": 556,
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 34.07
-    },
-    {
-      "vehicle_id": "veh_182",
-      "track_id": 652,
+      "vehicle_id": "veh_205",
+      "track_id": 722,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2017,8 +2270,8 @@
       "depart": 34.1
     },
     {
-      "vehicle_id": "veh_183",
-      "track_id": 653,
+      "vehicle_id": "veh_206",
+      "track_id": 723,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2028,8 +2281,8 @@
       "depart": 34.13
     },
     {
-      "vehicle_id": "veh_184",
-      "track_id": 655,
+      "vehicle_id": "veh_207",
+      "track_id": 725,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2039,8 +2292,8 @@
       "depart": 34.23
     },
     {
-      "vehicle_id": "veh_185",
-      "track_id": 654,
+      "vehicle_id": "veh_208",
+      "track_id": 724,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2050,8 +2303,19 @@
       "depart": 34.23
     },
     {
-      "vehicle_id": "veh_186",
-      "track_id": 669,
+      "vehicle_id": "veh_209",
+      "track_id": 730,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 34.47
+    },
+    {
+      "vehicle_id": "veh_210",
+      "track_id": 740,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2061,8 +2325,8 @@
       "depart": 34.77
     },
     {
-      "vehicle_id": "veh_187",
-      "track_id": 668,
+      "vehicle_id": "veh_211",
+      "track_id": 739,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2072,30 +2336,30 @@
       "depart": 34.77
     },
     {
-      "vehicle_id": "veh_188",
-      "track_id": 677,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 34.97
+      "vehicle_id": "veh_212",
+      "track_id": 742,
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 34.83
     },
     {
-      "vehicle_id": "veh_189",
-      "track_id": 639,
+      "vehicle_id": "veh_213",
+      "track_id": 709,
       "roi_name": "Zone_BL",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2N",
       "turn": "L",
       "route_id": "route_Zone_BL",
       "depart_lane": "2",
-      "depart": 35.0
+      "depart": 35.2
     },
     {
-      "vehicle_id": "veh_190",
-      "track_id": 316,
+      "vehicle_id": "veh_214",
+      "track_id": 348,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2105,8 +2369,8 @@
       "depart": 35.2
     },
     {
-      "vehicle_id": "veh_191",
-      "track_id": 684,
+      "vehicle_id": "veh_215",
+      "track_id": 756,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2116,8 +2380,8 @@
       "depart": 35.3
     },
     {
-      "vehicle_id": "veh_192",
-      "track_id": 688,
+      "vehicle_id": "veh_216",
+      "track_id": 763,
       "roi_name": "Zone_DL",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2E",
@@ -2127,19 +2391,8 @@
       "depart": 35.53
     },
     {
-      "vehicle_id": "veh_193",
-      "track_id": 692,
-      "roi_name": "Zone_BM",
-      "incoming_edge": "W2C",
-      "outgoing_edge": "C2E",
-      "turn": "M",
-      "route_id": "route_Zone_BM",
-      "depart_lane": "1",
-      "depart": 35.6
-    },
-    {
-      "vehicle_id": "veh_194",
-      "track_id": 691,
+      "vehicle_id": "veh_217",
+      "track_id": 766,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2149,8 +2402,8 @@
       "depart": 35.6
     },
     {
-      "vehicle_id": "veh_195",
-      "track_id": 693,
+      "vehicle_id": "veh_218",
+      "track_id": 768,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -2160,8 +2413,8 @@
       "depart": 35.63
     },
     {
-      "vehicle_id": "veh_196",
-      "track_id": 696,
+      "vehicle_id": "veh_219",
+      "track_id": 771,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2171,8 +2424,8 @@
       "depart": 35.7
     },
     {
-      "vehicle_id": "veh_197",
-      "track_id": 699,
+      "vehicle_id": "veh_220",
+      "track_id": 775,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2182,8 +2435,8 @@
       "depart": 35.8
     },
     {
-      "vehicle_id": "veh_198",
-      "track_id": 702,
+      "vehicle_id": "veh_221",
+      "track_id": 779,
       "roi_name": "Zone_AR",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2E",
@@ -2193,8 +2446,8 @@
       "depart": 35.9
     },
     {
-      "vehicle_id": "veh_199",
-      "track_id": 706,
+      "vehicle_id": "veh_222",
+      "track_id": 784,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2204,8 +2457,8 @@
       "depart": 36.03
     },
     {
-      "vehicle_id": "veh_200",
-      "track_id": 708,
+      "vehicle_id": "veh_223",
+      "track_id": 786,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2215,8 +2468,8 @@
       "depart": 36.13
     },
     {
-      "vehicle_id": "veh_201",
-      "track_id": 710,
+      "vehicle_id": "veh_224",
+      "track_id": 787,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2226,8 +2479,8 @@
       "depart": 36.23
     },
     {
-      "vehicle_id": "veh_202",
-      "track_id": 711,
+      "vehicle_id": "veh_225",
+      "track_id": 788,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2237,8 +2490,8 @@
       "depart": 36.27
     },
     {
-      "vehicle_id": "veh_203",
-      "track_id": 720,
+      "vehicle_id": "veh_226",
+      "track_id": 799,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2248,8 +2501,8 @@
       "depart": 36.6
     },
     {
-      "vehicle_id": "veh_204",
-      "track_id": 723,
+      "vehicle_id": "veh_227",
+      "track_id": 802,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2259,8 +2512,8 @@
       "depart": 36.73
     },
     {
-      "vehicle_id": "veh_205",
-      "track_id": 726,
+      "vehicle_id": "veh_228",
+      "track_id": 806,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2270,8 +2523,30 @@
       "depart": 36.8
     },
     {
-      "vehicle_id": "veh_206",
-      "track_id": 739,
+      "vehicle_id": "veh_229",
+      "track_id": 810,
+      "roi_name": "Zone_AR",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2E",
+      "turn": "R",
+      "route_id": "route_Zone_AR",
+      "depart_lane": "0",
+      "depart": 36.87
+    },
+    {
+      "vehicle_id": "veh_230",
+      "track_id": 818,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 37.13
+    },
+    {
+      "vehicle_id": "veh_231",
+      "track_id": 824,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2281,8 +2556,8 @@
       "depart": 37.37
     },
     {
-      "vehicle_id": "veh_207",
-      "track_id": 740,
+      "vehicle_id": "veh_232",
+      "track_id": 825,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2292,8 +2567,8 @@
       "depart": 37.5
     },
     {
-      "vehicle_id": "veh_208",
-      "track_id": 744,
+      "vehicle_id": "veh_233",
+      "track_id": 829,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2303,8 +2578,8 @@
       "depart": 37.67
     },
     {
-      "vehicle_id": "veh_209",
-      "track_id": 747,
+      "vehicle_id": "veh_234",
+      "track_id": 832,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2314,8 +2589,8 @@
       "depart": 37.77
     },
     {
-      "vehicle_id": "veh_210",
-      "track_id": 750,
+      "vehicle_id": "veh_235",
+      "track_id": 835,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2325,8 +2600,8 @@
       "depart": 37.8
     },
     {
-      "vehicle_id": "veh_211",
-      "track_id": 752,
+      "vehicle_id": "veh_236",
+      "track_id": 838,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2336,8 +2611,8 @@
       "depart": 37.93
     },
     {
-      "vehicle_id": "veh_212",
-      "track_id": 757,
+      "vehicle_id": "veh_237",
+      "track_id": 844,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2347,8 +2622,8 @@
       "depart": 38.1
     },
     {
-      "vehicle_id": "veh_213",
-      "track_id": 759,
+      "vehicle_id": "veh_238",
+      "track_id": 847,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2358,8 +2633,8 @@
       "depart": 38.13
     },
     {
-      "vehicle_id": "veh_214",
-      "track_id": 769,
+      "vehicle_id": "veh_239",
+      "track_id": 858,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2369,8 +2644,8 @@
       "depart": 38.47
     },
     {
-      "vehicle_id": "veh_215",
-      "track_id": 770,
+      "vehicle_id": "veh_240",
+      "track_id": 859,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2380,8 +2655,8 @@
       "depart": 38.53
     },
     {
-      "vehicle_id": "veh_216",
-      "track_id": 742,
+      "vehicle_id": "veh_241",
+      "track_id": 826,
       "roi_name": "Zone_CL",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2S",
@@ -2391,8 +2666,8 @@
       "depart": 38.67
     },
     {
-      "vehicle_id": "veh_217",
-      "track_id": 778,
+      "vehicle_id": "veh_242",
+      "track_id": 866,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2402,8 +2677,8 @@
       "depart": 38.67
     },
     {
-      "vehicle_id": "veh_218",
-      "track_id": 792,
+      "vehicle_id": "veh_243",
+      "track_id": 882,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2413,8 +2688,8 @@
       "depart": 39.3
     },
     {
-      "vehicle_id": "veh_219",
-      "track_id": 798,
+      "vehicle_id": "veh_244",
+      "track_id": 888,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2424,8 +2699,19 @@
       "depart": 39.4
     },
     {
-      "vehicle_id": "veh_220",
-      "track_id": 804,
+      "vehicle_id": "veh_245",
+      "track_id": 890,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 39.43
+    },
+    {
+      "vehicle_id": "veh_246",
+      "track_id": 893,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2435,8 +2721,8 @@
       "depart": 39.47
     },
     {
-      "vehicle_id": "veh_221",
-      "track_id": 814,
+      "vehicle_id": "veh_247",
+      "track_id": 904,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2446,8 +2732,8 @@
       "depart": 40.03
     },
     {
-      "vehicle_id": "veh_222",
-      "track_id": 832,
+      "vehicle_id": "veh_248",
+      "track_id": 923,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2457,8 +2743,8 @@
       "depart": 40.73
     },
     {
-      "vehicle_id": "veh_223",
-      "track_id": 844,
+      "vehicle_id": "veh_249",
+      "track_id": 935,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2468,8 +2754,8 @@
       "depart": 41.2
     },
     {
-      "vehicle_id": "veh_224",
-      "track_id": 848,
+      "vehicle_id": "veh_250",
+      "track_id": 939,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2479,8 +2765,19 @@
       "depart": 41.3
     },
     {
-      "vehicle_id": "veh_225",
-      "track_id": 853,
+      "vehicle_id": "veh_251",
+      "track_id": 946,
+      "roi_name": "Zone_AM",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2N",
+      "turn": "M",
+      "route_id": "route_Zone_AM",
+      "depart_lane": "1",
+      "depart": 41.47
+    },
+    {
+      "vehicle_id": "veh_252",
+      "track_id": 945,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2490,8 +2787,8 @@
       "depart": 41.47
     },
     {
-      "vehicle_id": "veh_226",
-      "track_id": 859,
+      "vehicle_id": "veh_253",
+      "track_id": 953,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2501,8 +2798,8 @@
       "depart": 41.7
     },
     {
-      "vehicle_id": "veh_227",
-      "track_id": 867,
+      "vehicle_id": "veh_254",
+      "track_id": 961,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2512,8 +2809,8 @@
       "depart": 41.93
     },
     {
-      "vehicle_id": "veh_228",
-      "track_id": 866,
+      "vehicle_id": "veh_255",
+      "track_id": 960,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2523,8 +2820,8 @@
       "depart": 41.93
     },
     {
-      "vehicle_id": "veh_229",
-      "track_id": 880,
+      "vehicle_id": "veh_256",
+      "track_id": 976,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2534,8 +2831,8 @@
       "depart": 42.5
     },
     {
-      "vehicle_id": "veh_230",
-      "track_id": 886,
+      "vehicle_id": "veh_257",
+      "track_id": 982,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2545,8 +2842,19 @@
       "depart": 42.83
     },
     {
-      "vehicle_id": "veh_231",
-      "track_id": 904,
+      "vehicle_id": "veh_258",
+      "track_id": 998,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 43.87
+    },
+    {
+      "vehicle_id": "veh_259",
+      "track_id": 1002,
       "roi_name": "Zone_DM",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2S",
@@ -2556,8 +2864,8 @@
       "depart": 44.0
     },
     {
-      "vehicle_id": "veh_232",
-      "track_id": 908,
+      "vehicle_id": "veh_260",
+      "track_id": 1005,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2567,8 +2875,8 @@
       "depart": 44.07
     },
     {
-      "vehicle_id": "veh_233",
-      "track_id": 923,
+      "vehicle_id": "veh_261",
+      "track_id": 1022,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2578,8 +2886,19 @@
       "depart": 44.77
     },
     {
-      "vehicle_id": "veh_234",
-      "track_id": 935,
+      "vehicle_id": "veh_262",
+      "track_id": 1023,
+      "roi_name": "Zone_BM",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2E",
+      "turn": "M",
+      "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 44.87
+    },
+    {
+      "vehicle_id": "veh_263",
+      "track_id": 1037,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2589,8 +2908,8 @@
       "depart": 45.27
     },
     {
-      "vehicle_id": "veh_235",
-      "track_id": 934,
+      "vehicle_id": "veh_264",
+      "track_id": 1036,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2600,8 +2919,8 @@
       "depart": 45.3
     },
     {
-      "vehicle_id": "veh_236",
-      "track_id": 934,
+      "vehicle_id": "veh_265",
+      "track_id": 1036,
       "roi_name": "Zone_BL",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2N",
@@ -2611,8 +2930,8 @@
       "depart": 45.47
     },
     {
-      "vehicle_id": "veh_237",
-      "track_id": 950,
+      "vehicle_id": "veh_266",
+      "track_id": 1053,
       "roi_name": "Zone_BL",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2N",
@@ -2622,8 +2941,8 @@
       "depart": 45.77
     },
     {
-      "vehicle_id": "veh_238",
-      "track_id": 962,
+      "vehicle_id": "veh_267",
+      "track_id": 1066,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2633,8 +2952,8 @@
       "depart": 46.4
     },
     {
-      "vehicle_id": "veh_239",
-      "track_id": 963,
+      "vehicle_id": "veh_268",
+      "track_id": 1067,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2644,8 +2963,8 @@
       "depart": 46.43
     },
     {
-      "vehicle_id": "veh_240",
-      "track_id": 971,
+      "vehicle_id": "veh_269",
+      "track_id": 1075,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2655,8 +2974,8 @@
       "depart": 46.83
     },
     {
-      "vehicle_id": "veh_241",
-      "track_id": 969,
+      "vehicle_id": "veh_270",
+      "track_id": 1074,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2666,8 +2985,8 @@
       "depart": 46.83
     },
     {
-      "vehicle_id": "veh_242",
-      "track_id": 974,
+      "vehicle_id": "veh_271",
+      "track_id": 1077,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2677,8 +2996,8 @@
       "depart": 46.9
     },
     {
-      "vehicle_id": "veh_243",
-      "track_id": 979,
+      "vehicle_id": "veh_272",
+      "track_id": 1082,
       "roi_name": "Zone_BL",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2N",
@@ -2688,8 +3007,8 @@
       "depart": 47.27
     },
     {
-      "vehicle_id": "veh_244",
-      "track_id": 986,
+      "vehicle_id": "veh_273",
+      "track_id": 1088,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2699,8 +3018,8 @@
       "depart": 47.63
     },
     {
-      "vehicle_id": "veh_245",
-      "track_id": 987,
+      "vehicle_id": "veh_274",
+      "track_id": 1089,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2710,8 +3029,8 @@
       "depart": 47.7
     },
     {
-      "vehicle_id": "veh_246",
-      "track_id": 992,
+      "vehicle_id": "veh_275",
+      "track_id": 1091,
       "roi_name": "Zone_BR",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2S",
@@ -2721,8 +3040,8 @@
       "depart": 47.77
     },
     {
-      "vehicle_id": "veh_247",
-      "track_id": 990,
+      "vehicle_id": "veh_276",
+      "track_id": 1092,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2732,8 +3051,8 @@
       "depart": 47.77
     },
     {
-      "vehicle_id": "veh_248",
-      "track_id": 991,
+      "vehicle_id": "veh_277",
+      "track_id": 1093,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2743,18 +3062,40 @@
       "depart": 47.77
     },
     {
-      "vehicle_id": "veh_249",
-      "track_id": 1001,
+      "vehicle_id": "veh_278",
+      "track_id": 1098,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
       "turn": "M",
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
+      "depart": 48.07
+    },
+    {
+      "vehicle_id": "veh_279",
+      "track_id": 1103,
+      "roi_name": "Zone_AM",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2N",
+      "turn": "M",
+      "route_id": "route_Zone_AM",
+      "depart_lane": "1",
+      "depart": 48.2
+    },
+    {
+      "vehicle_id": "veh_280",
+      "track_id": 1105,
+      "roi_name": "Zone_BL",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2N",
+      "turn": "L",
+      "route_id": "route_Zone_BL",
+      "depart_lane": "2",
       "depart": 48.4
     },
     {
-      "vehicle_id": "veh_250",
+      "vehicle_id": "veh_281",
       "track_id": 1,
       "roi_name": "Zone_AL",
       "incoming_edge": "S2C",
@@ -2765,8 +3106,8 @@
       "depart": 48.53
     },
     {
-      "vehicle_id": "veh_251",
-      "track_id": 1004,
+      "vehicle_id": "veh_282",
+      "track_id": 1108,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",
@@ -2776,8 +3117,8 @@
       "depart": 48.57
     },
     {
-      "vehicle_id": "veh_252",
-      "track_id": 1006,
+      "vehicle_id": "veh_283",
+      "track_id": 1110,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2787,8 +3128,8 @@
       "depart": 48.7
     },
     {
-      "vehicle_id": "veh_253",
-      "track_id": 1009,
+      "vehicle_id": "veh_284",
+      "track_id": 1113,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2798,8 +3139,8 @@
       "depart": 48.77
     },
     {
-      "vehicle_id": "veh_254",
-      "track_id": 1010,
+      "vehicle_id": "veh_285",
+      "track_id": 1114,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2809,8 +3150,8 @@
       "depart": 48.83
     },
     {
-      "vehicle_id": "veh_255",
-      "track_id": 1021,
+      "vehicle_id": "veh_286",
+      "track_id": 1125,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2820,8 +3161,8 @@
       "depart": 49.23
     },
     {
-      "vehicle_id": "veh_256",
-      "track_id": 1025,
+      "vehicle_id": "veh_287",
+      "track_id": 1130,
       "roi_name": "Zone_BL",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2N",
@@ -2831,8 +3172,8 @@
       "depart": 49.57
     },
     {
-      "vehicle_id": "veh_257",
-      "track_id": 1024,
+      "vehicle_id": "veh_288",
+      "track_id": 1129,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2842,8 +3183,8 @@
       "depart": 49.57
     },
     {
-      "vehicle_id": "veh_258",
-      "track_id": 1027,
+      "vehicle_id": "veh_289",
+      "track_id": 1132,
       "roi_name": "Zone_DR",
       "incoming_edge": "N2C",
       "outgoing_edge": "C2W",
@@ -2853,8 +3194,8 @@
       "depart": 49.67
     },
     {
-      "vehicle_id": "veh_259",
-      "track_id": 1030,
+      "vehicle_id": "veh_290",
+      "track_id": 1135,
       "roi_name": "Zone_AM",
       "incoming_edge": "S2C",
       "outgoing_edge": "C2N",
@@ -2864,8 +3205,19 @@
       "depart": 49.77
     },
     {
-      "vehicle_id": "veh_260",
-      "track_id": 1032,
+      "vehicle_id": "veh_291",
+      "track_id": 1136,
+      "roi_name": "Zone_BR",
+      "incoming_edge": "W2C",
+      "outgoing_edge": "C2S",
+      "turn": "R",
+      "route_id": "route_Zone_BR",
+      "depart_lane": "0",
+      "depart": 49.93
+    },
+    {
+      "vehicle_id": "veh_292",
+      "track_id": 1137,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2875,8 +3227,8 @@
       "depart": 49.97
     },
     {
-      "vehicle_id": "veh_261",
-      "track_id": 1036,
+      "vehicle_id": "veh_293",
+      "track_id": 1141,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2886,8 +3238,8 @@
       "depart": 50.07
     },
     {
-      "vehicle_id": "veh_262",
-      "track_id": 1035,
+      "vehicle_id": "veh_294",
+      "track_id": 1140,
       "roi_name": "Zone_BM",
       "incoming_edge": "W2C",
       "outgoing_edge": "C2E",
@@ -2897,8 +3249,19 @@
       "depart": 50.07
     },
     {
-      "vehicle_id": "veh_263",
-      "track_id": 1037,
+      "vehicle_id": "veh_295",
+      "track_id": 1142,
+      "roi_name": "Zone_AM",
+      "incoming_edge": "S2C",
+      "outgoing_edge": "C2N",
+      "turn": "M",
+      "route_id": "route_Zone_AM",
+      "depart_lane": "1",
+      "depart": 50.13
+    },
+    {
+      "vehicle_id": "veh_296",
+      "track_id": 1143,
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
       "outgoing_edge": "C2W",

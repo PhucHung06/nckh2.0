@@ -1,11 +1,11 @@
 import os
 
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
-MODEL_PATH = os.path.join(DATA_DIR, "model", "yolov26n_ver2.pt")
-VIDEO_INPUT = os.path.join(DATA_DIR, "video", "download.mp4")
+MODEL_PATH = os.path.join(DATA_DIR, "model", "yolov26n_ver2.pt") #Thay model khác nếu cần
+VIDEO_INPUT = os.path.join(DATA_DIR, "video", "download.mp4")   # Thay đường dẫn video khác nếu cần
 SUMO_CFG = os.path.join(DATA_DIR, "run1.sumocfg")
 
-CONF = 0.15
+CONF = 0.3
 
 CLASS_NAMES = ["car"]
 

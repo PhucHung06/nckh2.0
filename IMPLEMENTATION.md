@@ -15,13 +15,21 @@ traffic-light-optimization/
 ├── requirements.txt                     # PC/laptop (đang dùng)
 ├── requirements_rpi.txt                 # Raspberry Pi 5 (dùng sau)
 │
-├── data/                                # Dữ liệu SUMO — giữ nguyên từ dự án cũ
+├── data/                                # Dữ liệu SUMO và video processing
+│   ├── draw_roi.py
+│   ├── main.py
 │   ├── run1.sumocfg
-│   ├── ngatu_net.xml
-│   ├── ngatu_net_rou.xml
-│   ├── time_light.xml
-│   ├── dulieu_matdo.xml
-│   └── thongke.xml
+│   ├── tracked_vehicles.json
+│   ├── config/
+│   │   ├── config.py
+│   │   └── roi_config.py
+│   ├── video/
+│   └── xml/
+│       ├── dulieu_matdo.xml
+│       ├── ngatu.net.xml
+│       ├── thongke.xml
+│       ├── time_light.xml
+│       └── yolo_routes.rou.xml
 │
 ├── simulation/                          # Lõi mô phỏng SUMO — dùng chung cả 2 hướng
 │   ├── __init__.py
@@ -188,7 +196,20 @@ OUTPUT_XML     = os.path.join(DATA_DIR, 'dulieu_matdo.xml')
 
 # Phần còn lại KHÔNG thay đổi
 ```
-
+### Bước 1.25 - Chạy mô phỏng SUMO từ video input
+```bash 
+python data/draw_roi.py 
+# Sau khi vẽ xong sẽ lưu roiconfig vào data/roi_config.py
+# CHÚ Ý: Tên video trong config.py và draw_roi.py phải giống nhau
+```
+Tạo ra vùng nhận diện xe theo frame đầu của video 
+```bash
+python data/main.py 
+# Chạy xong sẽ tạo ra data/yolo_routes.rou.xml và tracked_vehicles.json
+#yolo_routes.rou.xml định nghĩa flow xe 
+#tracked_vehicles.json lưu kết quả theo dõi xe
+```
+Track xe từ video theo thời gian thực và mô phỏng SUMO
 ### Bước 1.3 — Chạy GA và lưu baseline
 
 ```bash
