@@ -92,12 +92,14 @@ class SumoEnvironment:
         if result.returncode != 0:
             print(f"\nSUMO error: {result.stderr}")
 
-    def parse_output_and_calculate_fitness(self):
+    def get_metrics(self):
         """
-        Read dulieu_matdo.xml (edgeData) and compute the fitness score.
+        Read dulieu_matdo.xml (edgeData) and compute all raw metrics + fitness.
         """
+        default_metrics = {"fitness": -999999, "timeLoss": 0.0, "waitingTime": 0.0, "density": 0.0, "speed": 0.0}
+        
         if not os.path.exists(self.output_data_path):
-            return -999999
+            return default_metrics
 
         tree = ET.parse(self.output_data_path)
         root = tree.getroot()
@@ -117,7 +119,7 @@ class SumoEnvironment:
                 count += 1
 
         if count == 0:
-            return -999999
+            return default_metrics
 
         avg_tl = total_timeLoss / count
         avg_wt = total_waitingTime / count
@@ -131,16 +133,34 @@ class SumoEnvironment:
             - self.w_density * avg_den
         )
 
-        return fitness
+        return {
+            "fitness": fitness,
+            "timeLoss": avg_tl,
+            "waitingTime": avg_wt,
+            "density": avg_den,
+            "speed": avg_spd
+        }
+
+    def parse_output_and_calculate_fitness(self):
+        """
+        Backward compatibility for GA logic
+        """
+        return self.get_metrics()["fitness"]
+
+    def evaluate_metrics(self, chromosome):
+        """
+        Full evaluation pipeline returning all metrics.
+        """
+        try:
+            self.write_time_light_xml(chromosome)
+            self.run_simulation()
+            return self.get_metrics()
+        except Exception as exc:
+            print(f"\nEvaluation error for {chromosome}: {exc}")
+            return {"fitness": -999999, "timeLoss": 0.0, "waitingTime": 0.0, "density": 0.0, "speed": 0.0}
 
     def evaluate(self, chromosome):
         """
         Full evaluation pipeline: update traffic light -> run SUMO -> parse output.
         """
-        try:
-            self.write_time_light_xml(chromosome)
-            self.run_simulation()
-            return self.parse_output_and_calculate_fitness()
-        except Exception as exc:
-            print(f"\nEvaluation error for {chromosome}: {exc}")
-            return -999999
+        return self.evaluate_metrics(chromosome)["fitness"]

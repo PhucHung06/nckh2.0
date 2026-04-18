@@ -46,17 +46,17 @@ def main():
             # 1. AI quan sát trạng thái ngã tư ảo
             action, _ = model.predict(obs, deterministic=True)
             
-            # 2. Lấy dữ liệu hàng chờ hiện tại để in ra (lấy từ obs đã chuẩn hóa)
-            # Obs: [Q_N, Q_S, Q_E, Q_W, W_N, W_S, W_E, W_W]
-            queues = obs[:4].astype(int)
+            # Lấy dữ liệu hàng chờ hiện tại để in ra (lấy từ obs đã chuẩn hóa)
+            # Theo danh sách Edge thực tế từ SUMO: [Bắc (0), Đông (1), Nam (2), Tây (3)]
+            q_n, q_e, q_s, q_w = obs[0:4].astype(int)
             
             # 3. Ra quyết định và in Dashboard
             decision_text = "🔄 CHUYỂN PHA (Switch)" if action == 1 else "🟢 GIỮ NGUYÊN (Stay)"
             
             print(f"\n{'='*50}")
             print(f"🚀 [Digital Twin Step {step_count}]")
-            print(f"📍 Hướng Bắc: {queues[0]} xe | Hướng Nam: {queues[1]} xe")
-            print(f"📍 Hướng Đông: {queues[2]} xe | Hướng Tây: {queues[3]} xe")
+            print(f"📍 Hướng Bắc: {q_n:2d} xe | Hướng Nam: {q_s:2d} xe")
+            print(f"📍 Hướng Đông: {q_e:2d} xe | Hướng Tây: {q_w:2d} xe")
             print(f"🤖 AI PPO Quyết định: {decision_text}")
             
             # 4. Thực thi trong SUMO

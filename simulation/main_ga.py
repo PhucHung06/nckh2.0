@@ -11,12 +11,12 @@ TIME_LIGHT_XML = os.path.join(DATA_DIR, 'xml/time_light.xml')
 OUTPUT_XML     = os.path.join(DATA_DIR, 'xml/dulieu_matdo.xml')
 
 # Tham số cấu hình GA
-GENERATIONS = 5    # Để demo nên đặt 5-10 thế hệ cho nhanh. Chạy thật đặt 50-100.
-POP_SIZE = 6        # Số lượng cá thể trong quần thể
+GENERATIONS = 10    # Để demo nên đặt 5-10 thế hệ cho nhanh. Chạy thật đặt 50-100.
+POP_SIZE = 6       # Số lượng cá thể trong quần thể
 MUTATION_RATE = 0.1 # Tỷ lệ đột biến 10%
 
 def main():
-    print("🚦 Bắt đầu Tối ưu hóa đèn giao thông bằng GA & SUMO...")
+    print("Starting Traffic Light Optimization using GA & SUMO...")
     
     # 1. Khởi tạo môi trường SUMO và Thuật toán GA
     env = SumoEnvironment(SUMO_CFG, TIME_LIGHT_XML, OUTPUT_XML)
@@ -47,40 +47,16 @@ def main():
 
         # Sắp xếp quần thể giảm dần theo fitness
         pop_with_fitness.sort(key=lambda x: x[1], reverse=True)
-        print(f"🔥 Best gen {gen + 1}: {pop_with_fitness[0][0]} (Fitness: {pop_with_fitness[0][1]:.4f})")
+        print(f"Best gen {gen + 1}: {pop_with_fitness[0][0]} (Fitness: {pop_with_fitness[0][1]:.4f})")
 
-        # 4. Sinh thế hệ mới
-        new_population = [chrom for chrom, _ in pop_with_fitness[:ga.elitism_count]]
-
-        # Thêm một cá thể ngẫu nhiên để duy trì đa dạng quần thể
-        if len(new_population) < POP_SIZE:
-            new_population.append(ga.create_individual())
-
-        # Lai ghép và đột biến để lấp đầy phần còn lại
-        while len(new_population) < POP_SIZE:
-            # Chọn bố mẹ
-            parent1 = ga.selection(pop_with_fitness)
-            parent2 = ga.selection(pop_with_fitness)
-            
-            # Lai chéo
-            child1, child2 = ga.crossover(parent1, parent2)
-            
-            # Đột biến
-            child1 = ga.mutate(child1)
-            child2 = ga.mutate(child2)
-            
-            new_population.append(child1)
-            if len(new_population) < POP_SIZE:
-                new_population.append(child2)
-
-        # Cập nhật quần thể cho thế hệ tiếp theo
-        ga.population = new_population
+        # 4. Sinh thế hệ mới bằng logic tiến hóa tập trung
+        ga.evolve(pop_with_fitness)
 
     # 5. Kết luận
     print("\n=======================================================")
-    print("✅ HOÀN THÀNH HUẤN LUYỆN!")
-    print(f"🏆 Bộ gen (Thời lượng đèn) tối ưu nhất: {best_overall_chromosome}")
-    print(f"📈 Điểm Fitness tốt nhất: {best_overall_fitness:.4f}")
+    print("COMPLETED TRAINING!")
+    print(f"Optimal chromosome (Light durations): {best_overall_chromosome}")
+    print(f"Best Fitness score: {best_overall_fitness:.4f}")
     
     # Ghi lại bộ tốt nhất vào file lần cuối để lưu giữ
     print("Dang luu cau hinh tot nhat vao time_light.xml va cap nhat ngatu.net.xml...")

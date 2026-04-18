@@ -11,16 +11,28 @@ Dự án được chia thành các phân khu chuyên biệt:
 - `hardware/`: Mã nguồn đã được chuẩn bị sẵn cho phần cứng nhúng. (Raspberry Pi và Arduino Firmware).
 - `data/`: Dữ liệu mạng lưới giao thông tĩnh cho phần mềm SUMO.
 
-## 🧮 Hàm Đánh giá Tối ưu (Fitness Function)
+## 🧮 Hàm Đánh giá Tối ưu & Thưởng (Fitness & Reward)
 
-Điểm Fitness (Điểm chất lượng) được hệ thống chấm tự động, thu nhận 4 thông số cảm biến từ SUMO (tính ra số càng lớn càng tốt, tiệm cận tới 0):
+Hệ thống sử dụng hai cơ chế đánh giá khác nhau cho hai thuật toán:
 
-$$Fitness = -(0.5 \cdot TL + 0.3 \cdot WT + 0.15 \cdot D - 0.05 \cdot S)$$
+### 1. Thuật toán Di truyền (GA - Fitness)
+Điểm Fitness được tính dựa trên dữ liệu thống kê sau mỗi lượt mô phỏng (càng lớn càng tốt, tiệm cận tới 0):
 
-* **TL (timeLoss):** Tổng thời gian làm lãng phí của các phương tiện (Độ ưu tiên: 50%)
-* **WT (waitingTime):** Tổng thời gian tài xế phải đạp phanh chờ đèn tại vạch (Độ ưu tiên: 30%)
-* **D (density):** Mật độ nhồi nhét phương tiện trên đường (Độ ưu tiên: 15%)
-* **S (speed):** Tốc độ giải toả tắc đường (Độ ưu tiên: 5% - Điểm cộng duy nhất)
+$$Fitness = -(0.35 \cdot TL + 0.35 \cdot WT + 0.15 \cdot D - 0.15 \cdot S)$$
+
+* **TL (timeLoss):** Tổng thời gian trễ của phương tiện so với vận tốc lý tưởng (Trọng số: 35%)
+* **WT (waitingTime):** Tổng thời gian phương tiện phải dừng chờ (Trọng số: 35%)
+* **D (density):** Mật độ phương tiện trên các lane (Trọng số: 15%)
+* **S (speed):** Tốc độ trung bình giải tỏa (Trọng số: 15% - Điểm cộng)
+
+### 2. Deep Reinforcement Learning (PPO - Reward)
+Phần thưởng được tính toán **thời gian thực** sau mỗi bước nhảy 5 giây:
+
+$$Reward = -(Queue + 0.5 \cdot |\frac{Wait}{100}|)$$
+
+* **Queue:** Tổng số lượng xe đang bị ùn tắc (Halt number) tại 4 nhánh vào.
+* **Wait:** Tổng thời gian chờ tích lũy của các xe tại ngã tư (đã chuẩn hóa).
+* *Mục tiêu: AI sẽ tối ưu để giảm thiểu đồng thời cả số xe dừng và thời gian chờ.*
 
 ---
 

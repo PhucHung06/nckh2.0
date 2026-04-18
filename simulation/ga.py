@@ -34,7 +34,35 @@ class GeneticAlgorithm:
 
     def mutate(self, chromosome):
         """Đột biến gen: Random lại một giá trị trong giới hạn nếu trúng tỷ lệ đột biến"""
-        for i in range(len(chromosome)):
+        new_chromosome = list(chromosome)
+        for i in range(len(new_chromosome)):
             if random.random() < self.mutation_rate:
-                chromosome[i] = random.randint(self.bounds[i][0], self.bounds[i][1])
-        return chromosome
+                new_chromosome[i] = random.randint(self.bounds[i][0], self.bounds[i][1])
+        return new_chromosome
+
+    def evolve(self, population_with_fitness):
+        """Tiến hóa một thế hệ mới từ quần thể hiện tại"""
+        new_population = []
+        
+        # 1. Elitism: Giữ lại những cá thể tốt nhất (Bản sao để tránh in-place)
+        population_with_fitness.sort(key=lambda item: item[1], reverse=True)
+        for i in range(self.elitism_count):
+            new_population.append(list(population_with_fitness[i][0]))
+            
+        # 2. Diversity injection: Thêm một cá thể tạo mới hoàn toàn
+        if len(new_population) < self.pop_size:
+            new_population.append(self.create_individual())
+
+        # 3. Lai ghép và đột biến để lấp đầy phần còn lại
+        while len(new_population) < self.pop_size:
+            parent1 = self.selection(population_with_fitness)
+            parent2 = self.selection(population_with_fitness)
+            
+            child1, child2 = self.crossover(parent1, parent2)
+            
+            new_population.append(self.mutate(child1))
+            if len(new_population) < self.pop_size:
+                new_population.append(self.mutate(child2))
+                
+        self.population = new_population
+        return new_population

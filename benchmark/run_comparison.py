@@ -19,17 +19,21 @@ from benchmark.metrics import TrialResult, save_results, print_summary
 DATA_DIR   = os.path.join(os.path.dirname(__file__), '..', 'data')
 RESULT_DIR = os.path.join(os.path.dirname(__file__), 'results')
 MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'rl',
-                          'models', 'ppo_traffic', 'final_model')
+                          'models', 'ppo_dynamic', 'ppo_traffic_dynamic')
 
 
 def run_fixed_trial(env: SumoEnvironment, trial_id: int) -> TrialResult:
     """Baseline cố định: 30s NS / 4s Yellow / 30s EW / 4s Yellow."""
     chromosome = [30, 4, 30, 4]
     start = time.time()
-    fitness = env.evaluate(chromosome)
+    metrics = env.evaluate_metrics(chromosome)
     return TrialResult(trial_id=trial_id, method='Fixed',
-                       fitness=fitness, chromosome=chromosome,
-                       time_s=time.time() - start)
+                       fitness=metrics['fitness'], chromosome=chromosome,
+                       time_s=time.time() - start,
+                       avg_timeLoss=metrics['timeLoss'],
+                       avg_waitingTime=metrics['waitingTime'],
+                       avg_density=metrics['density'],
+                       avg_speed=metrics['speed'])
 
 
 def run_ga_trial(env: SumoEnvironment, trial_id: int,
@@ -44,35 +48,47 @@ def run_ga_trial(env: SumoEnvironment, trial_id: int,
         pop_fit.sort(key=lambda x: x[1], reverse=True)
         if pop_fit[0][1] > best_fitness:
             best_fitness, best_chromosome = pop_fit[0][1], pop_fit[0][0]
-        new_pop = [pop_fit[0][0]]
-        while len(new_pop) < 6:
-            p1 = ga.selection(pop_fit)
-            p2 = ga.selection(pop_fit)
-            c1, c2 = ga.crossover(p1, p2)
-            new_pop.extend([ga.mutate(c1), ga.mutate(c2)])
-        ga.population = new_pop[:6]
+        
+        ga.evolve(pop_fit)
+
+    metrics = env.evaluate_metrics(best_chromosome)
 
     return TrialResult(trial_id=trial_id, method='GA',
-                       fitness=best_fitness, chromosome=best_chromosome,
-                       time_s=time.time() - start)
+                       fitness=metrics['fitness'], chromosome=best_chromosome,
+                       time_s=time.time() - start,
+                       avg_timeLoss=metrics['timeLoss'],
+                       avg_waitingTime=metrics['waitingTime'],
+                       avg_density=metrics['density'],
+                       avg_speed=metrics['speed'])
 
 
 def run_rl_trial(model: PPO, gym_env: SumoGymEnv,
+                 evaluator_env: SumoEnvironment,
                  trial_id: int) -> TrialResult:
     start = time.time()
     obs, _ = gym_env.reset()
-    best_fitness, best_chromosome = -float('inf'), None
-
-    for _ in range(20):    # 20 inference steps
+    
+    terminated = False
+    truncated = False
+    
+    # Chạy cho đến khi kết thúc mô phỏng (hết 360 steps)
+    while not terminated and not truncated:
         action, _ = model.predict(obs, deterministic=True)
-        obs, reward, _, _, info = gym_env.step(int(action))
-        if reward > best_fitness:
-            best_fitness = reward
-            best_chromosome = info['chromosome']
+        obs, reward, terminated, truncated, info = gym_env.step(int(action))
+
+    # QUAN TRỌNG: Đóng TraCI để SUMO lưu và nhả file dulieu_matdo.xml ra
+    gym_env.close()
+
+    # Dùng hàm chấm điểm XML chung của GA để so sánh công bằng tuyệt đối
+    metrics = evaluator_env.get_metrics()
 
     return TrialResult(trial_id=trial_id, method='PPO',
-                       fitness=best_fitness, chromosome=best_chromosome,
-                       time_s=time.time() - start)
+                       fitness=metrics['fitness'], chromosome=[0,0,0,0],
+                       time_s=time.time() - start,
+                       avg_timeLoss=metrics['timeLoss'],
+                       avg_waitingTime=metrics['waitingTime'],
+                       avg_density=metrics['density'],
+                       avg_speed=metrics['speed'])
 
 
 def main():
@@ -87,9 +103,8 @@ def main():
         os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
     )
     gym_env = SumoGymEnv(
-        os.path.join(DATA_DIR, 'run1.sumocfg'),
-        os.path.join(DATA_DIR, "xml/time_light.xml"),
-        os.path.join(DATA_DIR, "xml/dulieu_matdo.xml"),
+        sumocfg = os.path.join(DATA_DIR, 'run1.sumocfg'),
+        label = "benchmark"
     )
     model = PPO.load(MODEL_PATH)
 
@@ -98,7 +113,7 @@ def main():
         print(f"\n[Trial {i}/{args.trials}]")
         results.append(run_fixed_trial(env, i))
         results.append(run_ga_trial(env, i, n_gens=args.ga_gens))
-        results.append(run_rl_trial(model, gym_env, i))
+        results.append(run_rl_trial(model, gym_env, env, i))
 
     save_results(results, RESULT_DIR)
     print_summary(results)
