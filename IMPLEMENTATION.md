@@ -5,6 +5,66 @@
 
 ---
 
+## 🔧 Updates & Fixes (Latest)
+
+### GA Improvements (v2.0)
+**Ngày:** 2026-04-17  
+**Vấn đề:** GA bị kẹt sớm vào 1 giải pháp duy nhất (convergence quá sớm)  
+**Giải pháp:**
+
+| Thay đổi | Chi tiết |
+|----------|---------|
+| **Crossover** | Thay đổi từ fixed split-point (index 2) → random split-point |
+| **Elitism** | Từ 1 cá thể tốt nhất → 2 cá thể (elitism_count=2) |
+| **Diversity** | Thêm 1 cá thể hoàn toàn ngẫu nhiên mỗi thế hệ |
+| **Tournament** | Kích thước tournament có thể cấu hình (mặc định 3 → linh hoạt hơn) |
+| **Fitness weights** | Cân bằng lại: `speed: 0.15`, `timeLoss: 0.35`, `waitingTime: 0.35`, `density: 0.15` |
+| **Fitness function** | Đổi từ "tất cả negative" → `+speed - timeLoss - waitingTime - density` (trực quan hơn) |
+
+**File thay đổi:** `simulation/ga.py`, `simulation/main_ga.py`, `simulation/sumo_env.py`
+
+### PPO Dynamic Control (v3.0) - RESTRUCTURED
+**Ngày:** 2026-04-18  
+**Trạng thái:** [Đang thực hiện]  
+**Mục tiêu:** Chuyển đổi từ "Tối ưu hóa cấu hình tĩnh" sang "Điều khiển thời gian thực". AI quan sát hàng chờ mỗi 5 giây và quyết định giữ pha hay chuyển pha.
+**Thay đổi chính:**
+- Sử dụng trực tiếp `traci` trong môi trường Gymnasium.
+- **Action Space:** `Discrete(2)` (0: Giữ đèn, 1: Chuyển pha).
+- **Observation Space:** `Box(8,)` (4 lànQueue Length, 4 làn Waiting Time).
+- **Reward:** Tối ưu hóa dựa trên sự thay đổi hàng chờ (delta delay).
+- **Export:** Lưu file `.zip` (Policy) thay vì `.json` (Config) để triển khai inference thực tế.
+
+
+### PPO Training Fix (v2.0)
+**Ngày:** 2026-04-17  
+**Vấn đề:** `RuntimeError: Tried to step environment that needs reset`  
+**Nguyên nhân:** `SumoGymEnv.step()` trả về `terminated=True` sau mỗi bước, nhưng code không reset  
+**Giải pháp:** Thêm reset logic trong `_export_best_chromosome()`:
+```python
+if terminated or truncated:
+    obs, _ = env.reset()
+```
+**File thay đổi:** `rl/train_ppo.py`
+
+### PPO Hyperparameters Tuning (v2.1)
+**Ngày:** 2026-04-17  
+**Vấn đề:** Hyperparameters mặc định không tối ưu cho traffic light optimization  
+**Giải pháp:**
+
+| Hyperparameter | Cũ | Mới | Lý do |
+|---------------|----|-----|-------|
+| **total_timesteps** | 200 | 500 | Cần nhiều hơn để hội tụ (~1.4h thay vì 33 phút) |
+| **n_steps** | 64 | 128 | Nhiều data hơn per policy update |
+| **learning_rate** | 3e-4 | 1e-4 | Stable hơn, tránh overshooting |
+| **ent_coef** | 0.01 | 0.05 | Khuyến khích exploration trong giai đoạn đầu |
+| **n_epochs** | 5 | 3 | Training nhanh hơn, tránh overfitting |
+| **save_freq** | 50 | 100 | Ít checkpoint hơn, tiết kiệm disk |
+| **EvalCallback** | ❌ | ✅ | Monitor performance mỗi 100 steps, save best model |
+
+**File thay đổi:** `rl/train_ppo.py`
+
+---
+
 ## Cấu trúc cây thư mục
 
 ```
@@ -120,7 +180,7 @@ pip install -r requirements.txt
 
 **`requirements.txt`:**
 ```
-#Yolo
+# Yolo
 opencv-python>=4.8.0
 ultralytics>=8.0.0
 supervision>=0.18.0
@@ -129,10 +189,18 @@ supervision>=0.18.0
 traci>=1.18.0
 sumolib>=1.18.0
 
-# Deep RL
+# Deep RL (Real-time PPO with TraCI)
 stable-baselines3>=2.3.0
+shimmy[gymnasium]>=0.2.1
+tqdm
+rich
 gymnasium>=0.29.0
 torch>=2.2.0
+tensorboard>=2.14.0
+
+# Xuất mô hình (Raspberry Pi/Hardware export)
+onnx>=1.15.0
+onnxruntime>=1.17.0
 
 # Phân tích & Benchmark
 numpy>=1.26.0
@@ -141,15 +209,16 @@ matplotlib>=3.8.0
 seaborn>=0.13.0
 scipy>=1.12.0
 
-# Jupyter
+# Jupyter & Debugging
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
-# Hardware (cài sẵn, dùng sau — không ảnh hưởng phần đang làm)
+# Hardware (cài sẵn, dùng sau)
 paho-mqtt>=2.0.0
 pyserial>=3.5
 pyyaml>=6.0
 ```
+
 
 **`requirements_rpi.txt`** *(dùng khi có Pi5)*:
 ```
@@ -220,21 +289,199 @@ python simulation/main_ga.py
 
 Ghi lại fitness tốt nhất và bộ gen kết quả — đây là **baseline** cho bài báo.
 
+**Cải thiện GA (v2):**
+Sau đó, GA được cập nhật để **giảm khả năng kẹt sớm** vào 1 giải pháp duy nhất:
+
+- **Crossover ngẫu nhiên:** Thay vì cắt cố định ở giữa, sử dụng điểm cắt ngẫu nhiên → tăng đa dạng con cái
+- **Elitism mạnh hơn:** Giữ lại 2 cá thể tốt nhất mỗi thế hệ (thay vì chỉ 1)
+- **Diversity injection:** Thêm 1 cá thể ngẫu nhiên vào mỗi thế hệ → ngăn quần thể đồng nhất quá sớm
+- **Tournament configurable:** Kích thước tournament có thể điều chỉnh (mặc định 3) → tăng tính linh hoạt
+- **Fitness weights rebalanced:** 
+  - `timeLoss: 0.35` (tăng từ 0.50)
+  - `waitingTime: 0.35` (tăng từ 0.30)
+  - `density: 0.15` (giữ nguyên)
+  - `speed: 0.15` (tăng từ 0.05)
+  - Hàm reward đổi từ "tất cả negative" → `+speed - timeLoss - waitingTime - density`
+
 **Checklist Phase 1:**
 - [x] GA chạy không lỗi, SUMO mô phỏng thành công
 - [x] `dulieu_matdo.xml` sinh ra sau mỗi lần chạy
 - [x] Fitness cải thiện qua các thế hệ (ghi lại số liệu)
 - [x] Module imports hoạt động đúng từ thư mục gốc
+- [x] Diversity mechanism ngăn convergence quá sớm
+- [x] Fitness function cân bằng (speed & timeLoss/waitingTime)"
 
 ---
 
-## PHASE 2A — Deep Reinforcement Learning (Tuần 2–3)
+## PHASE 2A (V3.0) — PPO Dynamic Control (TraCI) — [ĐANG LÀM]
 
-**Mục tiêu:** Xây dựng PPO agent sử dụng cùng môi trường SUMO, huấn luyện và lưu model.
+**Mục tiêu:** Xây dựng AI "Cảnh sát giao thông" có khả năng phản ứng với dòng xe thực tế mỗi 5 giây, thay vì chỉ dùng một cấu hình đèn cố định.
 
-### Bước 2.1 — Gymnasium Environment Wrapper
+### Bước 2.1 — Môi trường TraCI Gymnasium
 
-Tạo `simulation/sumo_gym_env.py`:
+Tạo/Cập nhật `simulation/sumo_gym_env.py`:
+- **Cơ chế:** Kết nối trực tiếp SUMO qua TraCI API.
+- **Vòng lặp:** 
+  1. AI nhận số xe đang chờ ở 4 hướng.
+  2. AI chọn hành động (0: Xanh tiếp, 1: Sang Vàng -> Xanh hướng khác).
+  3. Mô phỏng chạy 5 giây (`delta_time`).
+  4. Tính toán Reward dựa trên việc giảm thiểu hàng chờ.
+
+```python
+# simulation/sumo_gym_env.py
+import gymnasium as gym
+import numpy as np
+import os
+import sys
+import traci
+import sumolib
+
+class SumoGymEnv(gym.Env):
+    """
+    Môi trường Gymnasium điều khiển đèn giao thông theo thời gian thực sử dụng TraCI.
+    """
+    def __init__(self, sumocfg, tl_id="Center", delta_time=5, yellow_time=4, min_green=10):
+        super().__init__()
+        self.sumocfg = sumocfg
+        self.tl_id = tl_id
+        self.delta_time = delta_time
+        self.yellow_time = yellow_time
+        self.min_green = min_green
+        
+        if 'SUMO_HOME' in os.environ:
+            sys.path.append(os.path.join(os.environ['SUMO_HOME'], 'tools'))
+        
+        self.sumo_binary = sumolib.checkBinary('sumo') 
+
+        self.action_space = gym.spaces.Discrete(2)
+        self.observation_space = gym.spaces.Box(
+            low=0, high=100, shape=(8,), dtype=np.float32
+        )
+
+        self.is_closed = True
+        self.current_step = 0
+        self.max_steps = 360  
+
+    def _get_obs(self):
+        controlled_lanes = traci.trafficlight.getControlledLanes(self.tl_id)
+        unique_lanes = list(dict.fromkeys(controlled_lanes))
+        lanes = unique_lanes[:4] 
+        
+        queues = [traci.lane.getLastStepHaltingNumber(l) for l in lanes]
+        wait_times = [traci.lane.getWaitingTime(l) / 100.0 for l in lanes] 
+        
+        while len(queues) < 4: queues.append(0)
+        while len(wait_times) < 4: wait_times.append(0)
+            
+        return np.array(queues + wait_times, dtype=np.float32)
+
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+        if not self.is_closed:
+            traci.close()
+        traci.start([self.sumo_binary, "-c", self.sumocfg, "--no-warnings", "true"])
+        self.is_closed = False
+        self.current_step = 0
+        self.time_since_last_phase_change = 0
+        return self._get_obs(), {}
+
+    def step(self, action):
+        reward = 0
+        terminated = False
+        truncated = False
+        
+        current_phase = traci.trafficlight.getPhase(self.tl_id)
+        all_phases = traci.trafficlight.getAllProgramLogics(self.tl_id)[0].phases
+        num_phases = len(all_phases)
+        
+        is_green_phase = current_phase % 2 == 0 
+        
+        if action == 1 and is_green_phase and self.time_since_last_phase_change >= self.min_green:
+            yellow_phase = (current_phase + 1) % num_phases
+            traci.trafficlight.setPhase(self.tl_id, yellow_phase)
+            for _ in range(self.yellow_time):
+                traci.simulationStep()
+            next_green_phase = (yellow_phase + 1) % num_phases
+            traci.trafficlight.setPhase(self.tl_id, next_green_phase)
+            self.time_since_last_phase_change = 0
+        else:
+            self.time_since_last_phase_change += self.delta_time
+
+        for _ in range(self.delta_time):
+            traci.simulationStep()
+            
+        self.current_step += 1
+        obs = self._get_obs()
+        reward = -np.sum(obs[:4]) 
+        
+        if self.current_step >= self.max_steps:
+            terminated = True
+            
+        return obs, reward, terminated, truncated, {}
+
+    def close(self):
+        if not self.is_closed:
+            traci.close()
+            self.is_closed = True
+```
+
+
+### Bước 2.2 — Huấn luyện PPO Dynamic
+
+Cập nhật `rl/train_ppo.py`:
+- **Model:** `stable_baselines3.PPO` với `MlpPolicy`.
+- **Timesteps:** Nâng lên **100,000** (vì Traci chạy rất nhanh và AI cần nhiều mẫu hơn để học phản xạ).
+- **Device:** Khuyến khích dùng `device='cpu'` cho các mạng MLP nhỏ để tối ưu tốc độ copy data.
+
+```python
+# rl/train_ppo.py
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+
+from stable_baselines3 import PPO
+from stable_baselines3.common.monitor import Monitor
+from simulation.sumo_gym_env import SumoGymEnv
+
+def make_env():
+    env = SumoGymEnv(
+        sumocfg = os.path.join(DATA_DIR, 'run1.sumocfg'),
+        tl_id   = "Center",
+        delta_time = 5,
+        yellow_time = 4,
+        min_green = 10
+    )
+    return Monitor(env)
+
+def main():
+    env = make_env()
+    model = PPO(
+        policy          = 'MlpPolicy',
+        env             = env,
+        learning_rate   = 3e-4,
+        n_steps         = 2048,
+        batch_size      = 64,
+        n_epochs        = 10,
+        verbose         = 1,
+        tensorboard_log = LOG_DIR,
+        device          = 'cpu' 
+    )
+    model.learn(total_timesteps = 100000, progress_bar = True)
+    model.save("ppo_traffic_dynamic.zip")
+
+if __name__ == '__main__':
+    main()
+```
+
+
+### Bước 2.3 — Export sang Phần cứng (Raspberry Pi 5)
+
+Thay vì xuất file `.json` tĩnh, quy trình mới yêu cầu:
+1. Lưu model: `ppo_traffic_dynamic.zip`.
+2. Trên Pi 5: Chạy script inference (sử dụng `onnx` hoặc `sb3`) để load model và nhận diện xe từ Camera/TraCI rồi ra quyết định đèn.
+
+---
+
+## PHASE 2A (V2.x - Legacy) — PPO Configuration Optimization
 
 ```python
 # simulation/sumo_gym_env.py
@@ -402,6 +649,44 @@ def _export_best_chromosome(model, env):
     """
     Chạy model inference, tìm chromosome cho fitness cao nhất,
     lưu ra JSON để hardware/pi_controller.py đọc khi có Pi5.
+    
+    ⚠️  FIX BUG: SumoGymEnv trả về terminated=True sau mỗi step (1 step = 1 episode),
+    khi dùng Monitor wrapper cần reset sau mỗi terminated.
+    """
+    import json
+    obs, _ = env.reset()
+    best_fitness, best_chromosome = -float('inf'), None
+
+    for _ in range(20):
+        action, _ = model.predict(obs, deterministic=True)
+        obs, reward, terminated, truncated, info = env.step(int(action))
+        if reward > best_fitness:
+            best_fitness = reward
+            best_chromosome = info['chromosome']
+        
+        # Mỗi step là 1 episode hoàn chỉnh (terminated=True), cần reset
+        if terminated or truncated:
+            obs, _ = env.reset()
+
+    export = {
+        'chromosome':  best_chromosome,
+        'fitness':     best_fitness,
+        'method':      'PPO',
+        'description': '[GreenNS, YellowNS, GreenEW, YellowEW] in seconds'
+    }
+    out_path = os.path.join(os.path.dirname(__file__), '..', 'hardware',
+                            'config', 'best_chromosome_rl.json')
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    with open(out_path, 'w') as f:
+        json.dump(export, f, indent=2)
+    print(f"Best RL chromosome: {best_chromosome} (fitness={best_fitness:.4f})")
+    print(f"Da luu cho hardware: {out_path}")
+
+
+def _export_best_chromosome(model, env):
+    """
+    Chạy model inference, tìm chromosome cho fitness cao nhất,
+    lưu ra JSON để hardware/pi_controller.py đọc khi có Pi5.
     """
     import json
     obs, _ = env.reset()
@@ -459,10 +744,9 @@ python rl/train_ppo.py
 - [x] `rl/models/ppo_traffic/final_model.zip` tồn tại
 - [x] `hardware/config/best_chromosome_rl.json` được tạo ra tự động
 - [x] TensorBoard hiển thị `ep_rew_mean` tăng theo timesteps
+- [x] **FIX BUG:** `_export_best_chromosome` gọi `env.reset()` sau mỗi episode terminated
 
----
 
-## PHASE 2B — Benchmark GA vs RL (Tuần 4)
 
 **Mục tiêu:** So sánh khách quan 3 phương án (Fixed / GA / PPO) để lấy số liệu bài báo.
 
@@ -750,28 +1034,26 @@ ctrl = PiController()
 ctrl.apply_chromosome(best_chromosome)
 ```
 
-### Luồng dữ liệu tổng thể
+### Luồng dữ liệu tổng thể (Dynamic PPO)
 
 ```
-[PC -- Đang làm]                          [Pi5 -- Dùng sau]
-  SUMO simulation                           Đọc best_chromosome_rl.json
+[PC -- Huấn luyện]                        [Pi5 -- Triển khai]
+  SUMO simulation                           Camera Detections (YOLO)
+       |                                           | (Queue Length)
+  PPO train                                 Load ppo_traffic_dynamic.zip
        |                                           |
-  GA / PPO train                           PiController.apply_chromosome()
-       |                                           |
-  best_chromosome_rl.json  ---------->     Arduino SET:gns:yns:gew:yew
-  final_model.zip                                  |
-       |                                     LED ngã tư mô hình
-  benchmark → bài báo
+  ppo_traffic_dynamic.zip  ---------->      model.predict(obs)
+                                                   | (Stay or Switch)
+                                            Arduino SET/SWITCH
+                                                   |
+                                            LED ngã tư mô hình
 ```
 
 ### Abstract interface (tạo ngay bây giờ)
 
-Tạo `hardware/base_controller.py`:
-
 ```python
 # hardware/base_controller.py
 from abc import ABC, abstractmethod
-
 
 class BaseController(ABC):
     """Interface chung — mọi controller đều implement."""
@@ -780,14 +1062,18 @@ class BaseController(ABC):
     def send_timing(self, green_ns: int, yellow_ns: int,
                     green_ew: int, yellow_ew: int) -> bool:
         """Gửi bộ thời gian đèn. Trả về True nếu thành công."""
+        pass
 
     @abstractmethod
     def get_status(self) -> dict:
         """Lấy trạng thái hiện tại của hệ thống đèn."""
+        pass
 
     def apply_chromosome(self, chromosome: list) -> bool:
-        """Tiện ích: áp dụng trực tiếp từ chromosome [g_ns,y_ns,g_ew,y_ew]."""
-        g_ns, y_ns, g_ew, y_ew = chromosome
+        """Fallback cho GA: áp dụng tĩnh từ chromosome [g_ns,y_ns,g_ew,y_ew]."""
+        if len(chromosome) < 4:
+            return False
+        g_ns, y_ns, g_ew, y_ew = chromosome[:4]
         return self.send_timing(g_ns, y_ns, g_ew, y_ew)
 ```
 

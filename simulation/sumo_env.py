@@ -15,10 +15,10 @@ class SumoEnvironment:
         self.tl_id = "Center"
 
         # Fitness weights
-        self.w_timeLoss = 0.50
-        self.w_waitingTime = 0.30
+        self.w_timeLoss = 0.35
+        self.w_waitingTime = 0.35
         self.w_density = 0.15
-        self.w_speed = 0.05
+        self.w_speed = 0.15
 
     def _resolve_net_file_path(self):
         """
@@ -124,11 +124,11 @@ class SumoEnvironment:
         avg_den = total_density / count
         avg_spd = total_speed / count
 
-        fitness = -(
-            self.w_timeLoss * avg_tl
-            + self.w_waitingTime * avg_wt
-            + self.w_density * avg_den
-            - self.w_speed * avg_spd
+        fitness = (
+            self.w_speed * avg_spd
+            - self.w_timeLoss * avg_tl
+            - self.w_waitingTime * avg_wt
+            - self.w_density * avg_den
         )
 
         return fitness

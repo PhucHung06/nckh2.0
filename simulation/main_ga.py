@@ -11,7 +11,7 @@ TIME_LIGHT_XML = os.path.join(DATA_DIR, 'xml/time_light.xml')
 OUTPUT_XML     = os.path.join(DATA_DIR, 'xml/dulieu_matdo.xml')
 
 # Tham số cấu hình GA
-GENERATIONS = 5     # Để demo nên đặt 5-10 thế hệ cho nhanh. Chạy thật đặt 50-100.
+GENERATIONS = 5    # Để demo nên đặt 5-10 thế hệ cho nhanh. Chạy thật đặt 50-100.
 POP_SIZE = 6        # Số lượng cá thể trong quần thể
 MUTATION_RATE = 0.1 # Tỷ lệ đột biến 10%
 
@@ -50,11 +50,12 @@ def main():
         print(f"🔥 Best gen {gen + 1}: {pop_with_fitness[0][0]} (Fitness: {pop_with_fitness[0][1]:.4f})")
 
         # 4. Sinh thế hệ mới
-        new_population = []
-        
-        # Chủ nghĩa tinh anh (Elitism): Giữ lại cá thể tốt nhất thế hệ hiện tại
-        new_population.append(pop_with_fitness[0][0])
-        
+        new_population = [chrom for chrom, _ in pop_with_fitness[:ga.elitism_count]]
+
+        # Thêm một cá thể ngẫu nhiên để duy trì đa dạng quần thể
+        if len(new_population) < POP_SIZE:
+            new_population.append(ga.create_individual())
+
         # Lai ghép và đột biến để lấp đầy phần còn lại
         while len(new_population) < POP_SIZE:
             # Chọn bố mẹ
@@ -84,6 +85,20 @@ def main():
     # Ghi lại bộ tốt nhất vào file lần cuối để lưu giữ
     print("Dang luu cau hinh tot nhat vao time_light.xml va cap nhat ngatu.net.xml...")
     env.write_time_light_xml(best_overall_chromosome)
+
+    # Xuất cấu hình cho Hardware
+    out_path = os.path.join(os.path.dirname(__file__), '..', 'hardware', 'config', 'best_chromosome_ga.json')
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    import json
+    export_data = {
+        'chromosome': best_overall_chromosome,
+        'fitness': best_overall_fitness,
+        'method': 'GA',
+        'description': '[GreenNS, YellowNS, GreenEW, YellowEW] in seconds'
+    }
+    with open(out_path, 'w') as f:
+        json.dump(export_data, f, indent=2)
+    print(f"Cấu hình GA đã xuất cho hardware tại: {out_path}")
 
 if __name__ == "__main__":
     main()

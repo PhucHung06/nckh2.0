@@ -53,7 +53,8 @@ python simulation/main_ga.py
 ```
 
 ### 🧠 Cách 2: Huấn luyện bằng AI Học Tăng Cường (PPO Deep RL)
-Thuật toán AI sử dụng mạng Neural Network tiên tiến để giải bài toán trong không gian Gym.
+Thuật toán AI sử dụng mạng Neural Network tiên tiến để điều khiển đèn thời gian thực qua TraCI.
+* **Hiển thị đèn (GUI):** Để xem đèn nhảy trực tiếp trong lúc học, mở `rl/train_ppo.py` và sửa biến `USE_GUI = True`.
 * Mở **Terminal 1** để kích hoạt đồ thị theo dõi:
   ```powershell
   .\venv\Scripts\activate
@@ -67,31 +68,46 @@ Thuật toán AI sử dụng mạng Neural Network tiên tiến để giải bà
   python rl/train_ppo.py
   ```
 
-### 📊 Cách 3: Chạy Benchmark So Sánh Đối Chiếu (Phase 2B)
-Module Benchmark sẽ cho chạy thi đấu công bằng và độc lập giữa Đèn Cố định, Thuật toán di truyền (GA) và Trí tuệ AI (PPO) để đưa ra chỉ số tối ưu.
+### 📊 Cách 3: Chạy Benchmark So Sánh Đối Chiếu
+Module này cho chạy thi đấu công bằng giữa các phương pháp.
+```powershell
+python benchmark/run_comparison.py --trials 10
+python benchmark/visualize_results.py
+```
 
-* **Chạy kịch bản thi đấu (Benchmark):** 
-  *(Tham số `--trials` ấn định số vòng chạy lặp lại để lấy trung bình cộng)*
+### 📟 Cách 4: Triển khai Phần cứng Giao thông (Raspberry Pi 5 + Arduino)
+Hệ thống hỗ trợ chạy mô hình thật thông qua Raspberry Pi làm trung tâm điều khiển (Server) và mạch Arduino điều khiển hệ thống đèn LED vật lý.
+
+1. **Nạp Firmware cho Cổng đèn:** 
+   Mở Arduino IDE, nạp file `hardware/arduino/traffic_light.ino` vào mạch vi điều khiển của bạn.
+   
+2. **Kiểm thử logic trên PC:** 
+   Bạn có thể kiểm tra tín hiệu phần mềm xử lý ra sao trước khi lắp điện bằng lệnh:
+   ```powershell
+   python tests/test_hardware_mock.py
+   ```
+   
+3. **Chạy Server Điều Khiển Chính (Raspberry Pi):** 
+   Cắm cáp USB giữa Pi và Arduino, kích hoạt môi trường ảo `venv` và chọn 1 trong 3 chế độ hoạt động cực kỳ linh hoạt sau:
+   
+   * **Chế độ Điển hình AI Động (PPO - Dynamic):** AI nạp file `ppo_traffic_dynamic.zip`, đóng vai cảnh sát phân luồng liên tục đọc camera thật mỗi 5 giây để ép hướng đi.
+     ```bash
+     python hardware/pi_controller.py --mode ppo
+     ```
+   * **Chế độ Tính trước Dài hạn (GA - Static):** Máy tính sẽ đọc kịch bản phân luồng tốt nhất trong file tĩnh `best_chromosome_ga.json` và gán xuống cho đèn chạy suốt cả ngày.
+     ```bash
+     python hardware/pi_controller.py --mode ga
+     ```
+
+### 💎 Cách 5: Chế độ Digital Twin (Khuyên dùng cho Demo)
+Đây là tính năng cao cấp nhất, kết hợp sức mạnh của mô phỏng ảo và thiết bị thật. AI PPO sẽ nhìn vào màn hình SUMO GUI và **điều khiển song song** cả xe ảo lẫn bóng đèn thật trên Arduino.
+
+* **Chạy Demo Bản sao số:**
   ```powershell
-  python benchmark/run_comparison.py --trials 5
+  python demo_live_twin.py
   ```
-* **Xuất Biểu đồ Boxplot trực quan & Thống kê thông số:**
-  Bấm chạy script sau để sinh biểu đồ báo cáo khoa học.
-  ```powershell
-  python benchmark/visualize_results.py
-  ```
-  *(Biểu đồ so sánh sẽ được tự động kết xuất ra `.png` nằm trong thư mục `benchmark/results/comparison_plots/`)*
-  
-* **Sinh Biểu đồ nội bộ: Quá trình hội tụ (Learning Curves):**
-  Xuất biểu đồ đường tiến hóa của Thuật toán di truyền (GA):
-  ```powershell
-  python benchmark/plot_ga_curve.py
-  ```
-  Trích xuất từ TensorBoard quá trình học của Deep RL PPO:
-  ```powershell
-  python benchmark/plot_ppo_curve.py
-  ```
+  *Lưu ý: Chế độ này yêu cầu bạn đã nạp file `traffic_light.ino` vào Arduino và cắm cáp USB.*
 
 ---
 
-*Lưu ý: Mọi kết quả tinh tuý nhất sau khi luyện bằng RL sẽ được tự động xuất ra file cấu hình `hardware/config/best_chromosome_rl.json`. Đây chính là file để Cắm vào Mạch phần cứng Raspberry Pi ở Phase 4.*
+*Lưu ý quan trọng: Code controller phần cứng đã hoàn hiện. Tuy nhiên để chế độ PPO nhận được số lượt xe trên thực tế thay vì bộ đếm ảo, bạn cần bổ sung Camera phần cứng vào Hệ thống (sử dụng YOLO tích hợp) thuộc lộ trình ngoài của văn bản hướng dẫn này.*
