@@ -138,10 +138,10 @@
     </edge>
 
     <tlLogic id="Center" type="static" programID="0" offset="0">
-        <phase duration="20" state="GGGGggrrrrrrGGGGggrrrrrr" />
-        <phase duration="4" state="yyyyyyrrrrrryyyyyyrrrrrr" />
-        <phase duration="31" state="rrrrrrGGGGggrrrrrrGGGGgg" />
-        <phase duration="3" state="rrrrrryyyyyyrrrrrryyyyyy" />
+        <phase duration="16" state="GGGGggrrrrrrGGGGggrrrrrr" />
+        <phase duration="3" state="yyyyyyrrrrrryyyyyyrrrrrr" />
+        <phase duration="28" state="rrrrrrGGGGggrrrrrrGGGGgg" />
+        <phase duration="5" state="rrrrrryyyyyyrrrrrryyyyyy" />
     </tlLogic>
 
     <junction id="Center" type="traffic_light" x="100.00" y="100.00" incLanes="N2C_0 N2C_1 N2C_2 E2C_0 E2C_1 E2C_2 S2C_0 S2C_1 S2C_2 W2C_0 W2C_1 W2C_2" intLanes=":Center_0_0 :Center_1_0 :Center_1_1 :Center_1_2 :Center_24_0 :Center_25_0 :Center_6_0 :Center_7_0 :Center_7_1 :Center_7_2 :Center_26_0 :Center_27_0 :Center_12_0 :Center_13_0 :Center_13_1 :Center_13_2 :Center_28_0 :Center_29_0 :Center_18_0 :Center_19_0 :Center_19_1 :Center_19_2 :Center_30_0 :Center_31_0" shape="90.40,113.60 109.60,113.60 110.04,111.38 110.60,110.60 111.38,110.04 112.38,109.71 113.60,109.60 113.60,90.40 111.38,89.96 110.60,89.40 110.04,88.62 109.71,87.62 109.60,86.40 90.40,86.40 89.96,88.62 89.40,89.40 88.62,89.96 87.62,90.29 86.40,90.40 86.40,109.60 88.62,110.04 89.40,110.60 89.96,111.38 90.29,112.38">

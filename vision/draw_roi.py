@@ -1,15 +1,17 @@
+import argparse
 import os
-import string
 
 import cv2
 import numpy as np
 
+from config.config import MULTI_VIDEO_INPUTS, VIDEO_INPUT, resolve_video_path
+from config.roi_config import ROIS
+
 
 DATA_DIR = os.path.dirname(__file__)
-VIDEO_PATH = os.path.join(DATA_DIR, "..", "data", "video", "download.mp4")    #Thay đường dẫn video khác nếu cần
-VIDEO_PATH = os.path.abspath(VIDEO_PATH)
 ROI_CONFIG_PATH = os.path.join(DATA_DIR, "config", "roi_config.py")
 WINDOW_NAME = "Draw ROI"
+VALID_GROUPS = ("A", "B", "C", "D")
 
 LANE_SEQUENCE = [
     ("L", "Re trai"),
@@ -17,113 +19,60 @@ LANE_SEQUENCE = [
     ("R", "Re phai"),
 ]
 
-GROUP_COLORS = [
-    (0, 255, 255),
-    (0, 255, 0),
-    (255, 100, 0),
-    (0, 165, 255),
-    (255, 0, 255),
-    (255, 255, 0),
-    (128, 255, 0),
-    (255, 128, 0),
-]
+GROUP_COLORS = {
+    "A": (0, 255, 255),
+    "B": (0, 255, 0),
+    "C": (255, 100, 0),
+    "D": (0, 165, 255),
+}
 
 
-class RoiSession:
-    def __init__(self, frame):
-        self.frame = frame
-        self.current_points = []
-        self.mouse_point = None
-        self.group_index = 0
-        self.stage = "large"
-        self.large_rois = []
-        self.small_rois = []
-
-    def group_name(self):
-        if self.group_index < len(string.ascii_uppercase):
-            return string.ascii_uppercase[self.group_index]
-        return f"G{self.group_index + 1}"
-
-    def color(self):
-        return GROUP_COLORS[self.group_index % len(GROUP_COLORS)]
-
-    def lane_index(self):
-        current_group = self.group_name()
-        return len([roi for roi in self.small_rois if roi["group"] == current_group])
-
-    def prompt(self):
-        group = self.group_name()
-        if self.stage == "large":
-            return f"ROI lon cho huong {group}"
-        lane_code, lane_label = LANE_SEQUENCE[self.lane_index()]
-        return f"Zone_{group}{lane_code} - {lane_label}"
-
-    def add_point(self, x, y):
-        if len(self.current_points) >= 4:
-            return False, "Moi ROI chi duoc 4 diem."
-        self.current_points.append([int(x), int(y)])
-        return True, ""
-
-    def undo_point(self):
-        if not self.current_points:
-            return False, "Khong co diem de xoa."
-        self.current_points.pop()
-        return True, ""
-
-    def clear_points(self):
-        self.current_points = []
-
-    def save_roi(self):
-        if len(self.current_points) != 4:
-            return False, "Moi ROI can dung 4 diem."
-
-        group = self.group_name()
-        points = [point[:] for point in self.current_points]
-        color = self.color()
-
-        if self.stage == "large":
-            self.large_rois.append(
-                {
-                    "name": f"Road_{group}",
-                    "group": group,
-                    "points": points,
-                    "color": color,
-                }
-            )
-            saved_name = f"Road_{group}"
-            self.stage = "small"
-        else:
-            lane_code, _lane_label = LANE_SEQUENCE[self.lane_index()]
-            saved_name = f"Zone_{group}{lane_code}"
-            self.small_rois.append(
-                {
-                    "name": saved_name,
-                    "group": group,
-                    "points": points,
-                    "color": color,
-                }
-            )
-            if self.lane_index() == 3:
-                self.group_index += 1
-                self.stage = "large"
-
-        self.clear_points()
-        return True, saved_name
-
-    def can_finish(self):
-        return self.stage == "large" and not self.current_points
+def parse_args():
+    parser = argparse.ArgumentParser(description="Ve ROI cho tung video A/B/C/D")
+    parser.add_argument(
+        "group",
+        nargs="?",
+        default="A",
+        help="Nhom ROI can ve: A, B, C, hoac D",
+    )
+    return parser.parse_args()
 
 
-def load_first_frame():
-    cap = cv2.VideoCapture(VIDEO_PATH)
+def normalize_group(group_name):
+    group_name = (group_name or "").strip().upper()
+    if group_name not in VALID_GROUPS:
+        raise ValueError(f"Nhom ROI khong hop le: {group_name}. Hay chon mot trong {', '.join(VALID_GROUPS)}")
+    return group_name
+
+
+def extract_roi_group(roi_name):
+    suffix = roi_name.split("_")[-1]
+    return suffix[0]
+
+
+def roi_sort_key(roi):
+    lane_order = {"L": 0, "M": 1, "R": 2}
+    suffix = roi["name"].split("_")[-1]
+    return (extract_roi_group(roi["name"]), lane_order.get(suffix[-1], 99), roi["name"])
+
+
+def get_group_video_path(group_name):
+    group_video = resolve_video_path(MULTI_VIDEO_INPUTS.get(group_name))
+    if group_video:
+        return group_video
+    return VIDEO_INPUT
+
+
+def load_first_frame(video_path):
+    cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        raise RuntimeError(f"Khong mo duoc video: {VIDEO_PATH}")
+        raise RuntimeError(f"Khong mo duoc video: {video_path}")
 
     ok, frame = cap.read()
     cap.release()
 
     if not ok or frame is None:
-        raise RuntimeError(f"Khong doc duoc frame dau tien tu video: {VIDEO_PATH}")
+        raise RuntimeError(f"Khong doc duoc frame dau tien tu video: {video_path}")
 
     return frame
 
@@ -150,13 +99,82 @@ def draw_polygon(image, points, color, label, closed=True, thickness=2):
     )
 
 
+class RoiEditorSession:
+    def __init__(self, frame, group_name, existing_rois):
+        self.frame = frame
+        self.group_name = group_name
+        self.current_points = []
+        self.mouse_point = None
+        self.saved_rois = [dict(roi) for roi in sorted(existing_rois, key=roi_sort_key)]
+
+    def color(self):
+        return GROUP_COLORS[self.group_name]
+
+    def lane_index(self):
+        return len(self.saved_rois)
+
+    def lane_prompt(self):
+        lane_idx = self.lane_index()
+        if lane_idx >= len(LANE_SEQUENCE):
+            return None
+        return LANE_SEQUENCE[lane_idx]
+
+    def prompt(self):
+        lane_info = self.lane_prompt()
+        if lane_info is None:
+            return f"Da du 3 ROI cho nhom {self.group_name}"
+        lane_code, lane_label = lane_info
+        return f"Zone_{self.group_name}{lane_code} - {lane_label}"
+
+    def add_point(self, x, y):
+        if self.lane_prompt() is None:
+            return False, "Da du 3 ROI. Nhan R neu muon ve lai."
+        if len(self.current_points) >= 4:
+            return False, "Moi ROI chi duoc 4 diem."
+        self.current_points.append([int(x), int(y)])
+        return True, ""
+
+    def undo_point(self):
+        if not self.current_points:
+            return False, "Khong co diem de xoa."
+        self.current_points.pop()
+        return True, ""
+
+    def clear_points(self):
+        self.current_points = []
+
+    def reset_group(self):
+        self.saved_rois = []
+        self.clear_points()
+
+    def save_roi(self):
+        lane_info = self.lane_prompt()
+        if lane_info is None:
+            return False, "Da du 3 ROI. Nhan R de xoa va ve lai."
+
+        if len(self.current_points) != 4:
+            return False, "Moi ROI can dung 4 diem."
+
+        lane_code, _lane_label = lane_info
+        saved_name = f"Zone_{self.group_name}{lane_code}"
+        self.saved_rois.append(
+            {
+                "name": saved_name,
+                "points": [point[:] for point in self.current_points],
+                "color": self.color(),
+            }
+        )
+        self.clear_points()
+        return True, saved_name
+
+    def can_finish(self):
+        return len(self.saved_rois) == len(LANE_SEQUENCE) and not self.current_points
+
+
 def render(session):
     canvas = session.frame.copy()
 
-    for roi in session.large_rois:
-        draw_polygon(canvas, roi["points"], roi["color"], roi["name"], closed=True, thickness=2)
-
-    for roi in session.small_rois:
+    for roi in session.saved_rois:
         draw_polygon(canvas, roi["points"], roi["color"], roi["name"], closed=True, thickness=3)
 
     if session.current_points:
@@ -171,18 +189,20 @@ def render(session):
             )
 
     lines = [
+        f"Video nhom {session.group_name}",
         f"Dang ve: {session.prompt()}",
-        "Chuoi thao tac: ROI lon -> Re trai -> Di thang -> Re phai",
+        "Thu tu ROI: Re trai -> Di thang -> Re phai",
         "Chuot trai: them diem",
         "Enter hoac Space: luu ROI 4 diem",
         "Z hoac chuot phai: xoa diem cuoi",
         "C: xoa ROI dang ve",
-        "D: ket thuc sau khi xong mot cum",
+        "R: xoa 3 ROI cua nhom nay va ve lai",
+        "D: ghi vao roi_config.py khi da du 3 ROI",
         "ESC: thoat",
     ]
 
     height = 30 + 24 * len(lines)
-    cv2.rectangle(canvas, (10, 10), (560, height), (30, 30, 30), -1)
+    cv2.rectangle(canvas, (10, 10), (620, height), (30, 30, 30), -1)
 
     y = 34
     for line in lines:
@@ -203,20 +223,22 @@ def format_rois(rois):
     return "\n".join(lines) + "\n"
 
 
-def write_roi_config(rois):
+def merge_rois(all_rois, group_name, replacement_rois):
+    merged_rois = [dict(roi) for roi in all_rois if extract_roi_group(roi["name"]) != group_name]
+    merged_rois.extend(dict(roi) for roi in replacement_rois)
+    return sorted(merged_rois, key=roi_sort_key)
+
+
+def write_roi_config(all_rois, group_name, replacement_rois):
+    merged_rois = merge_rois(all_rois, group_name, replacement_rois)
     with open(ROI_CONFIG_PATH, "w", encoding="utf-8", newline="\n") as file_obj:
-        file_obj.write(format_rois(rois))
+        file_obj.write(format_rois(merged_rois))
 
 
-def print_rois(rois, large_rois):
+def print_group_rois(group_name, rois):
     print()
-    print("ROI lon:")
-    for roi in large_rois:
-        print(f'{roi["name"]}: {roi["points"]}')
-
-    print()
-    print("ROI lane:")
-    for roi in rois:
+    print(f"ROI nhom {group_name}:")
+    for roi in sorted(rois, key=roi_sort_key):
         print(f'{roi["name"]}: {roi["points"]}')
 
 
@@ -233,12 +255,22 @@ def on_mouse(event, x, y, _flags, session):
 
 
 def main():
-    frame = load_first_frame()
-    session = RoiSession(frame)
+    args = parse_args()
+    group_name = normalize_group(args.group)
+    video_path = get_group_video_path(group_name)
+    existing_group_rois = [roi for roi in ROIS if extract_roi_group(roi["name"]) == group_name]
+    frame = load_first_frame(video_path)
+    session = RoiEditorSession(frame, group_name, existing_group_rois)
 
-    print(f"Lay frame dau tien tu: {VIDEO_PATH}")
+    print(f"Nhom dang ve: {group_name}")
+    print(f"Video duoc dung: {video_path}")
+    if existing_group_rois:
+        print(f"Da tim thay {len(existing_group_rois)} ROI cu cho nhom {group_name}.")
+        print("Nhan R neu muon xoa 3 ROI cu va ve lai tu dau.")
+    else:
+        print(f"Chua co ROI nao cho nhom {group_name}.")
     print("Moi ROI duoc xac dinh bang dung 4 diem.")
-    print("Moi cum gom: 1 ROI lon, sau do 3 ROI nho theo thu tu Re trai, Di thang, Re phai.")
+    print("Thu tu luu ROI: Re trai, Di thang, Re phai.")
 
     cv2.namedWindow(WINDOW_NAME, cv2.WINDOW_NORMAL)
     cv2.setMouseCallback(WINDOW_NAME, on_mouse, session)
@@ -266,15 +298,19 @@ def main():
             session.clear_points()
             print("Da xoa ROI dang ve.")
 
+        if key in (ord("r"), ord("R")):
+            session.reset_group()
+            print(f"Da xoa ROI nhom {group_name}. Hay ve lai 3 ROI moi.")
+
         if key in (ord("d"), ord("D")):
             if not session.can_finish():
-                print("Hay ve xong cum hien tai roi moi nhan D.")
+                print("Can du 3 ROI va khong con ROI dang ve moi co the luu.")
                 continue
 
-            write_roi_config(session.small_rois)
-            print_rois(session.small_rois, session.large_rois)
+            write_roi_config(ROIS, group_name, session.saved_rois)
+            print_group_rois(group_name, session.saved_rois)
             print()
-            print(f"Da ghi de ROIS vao: {ROI_CONFIG_PATH}")
+            print(f"Da ghi de ROI nhom {group_name} vao: {ROI_CONFIG_PATH}")
             break
 
     cv2.destroyAllWindows()
