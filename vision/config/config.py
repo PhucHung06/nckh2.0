@@ -21,6 +21,7 @@ VIDEO_INPUT = resolve_path("data", "video", "download.mp4")  # Cach cu: 1 video 
 SUMO_CFG = resolve_path("data", "run1.sumocfg")
 
 CONF = 0.3
+DETECTION_INTERVAL = 1  # 1 = detect moi frame, 2 = detect moi 2 frame, 3 = detect moi 3 frame
 
 CLASS_NAMES = ["car"]
 

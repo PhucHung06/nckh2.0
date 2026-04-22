@@ -8,7 +8,7 @@ import supervision as sv
 import traci
 from ultralytics import YOLO
 
-from config.config import CONF, INCOMING_TO_OUTGOING, MODEL_PATH, ROI_TO_EDGE, SUMO_CFG, TURN_TO_LANE
+from config.config import CONF, DETECTION_INTERVAL, INCOMING_TO_OUTGOING, MODEL_PATH, ROI_TO_EDGE, SUMO_CFG, TURN_TO_LANE
 from config.config import VIDEO_SOURCES
 from config.roi_config import ROIS
 
@@ -170,6 +170,7 @@ def analyze_source(model, route_specs, source):
 
     fps = cap.get(cv2.CAP_PROP_FPS)
     fps = fps if fps and fps > 0 else 30.0
+    detection_interval = max(1, int(DETECTION_INTERVAL))
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0)
     duration = frame_count / fps if frame_count > 0 else 0.0
     zones = [sv.PolygonZone(polygon=np.array(roi["points"])) for roi in source["rois"]]
@@ -183,6 +184,10 @@ def analyze_source(model, route_specs, source):
             ret, frame = cap.read()
             if not ret:
                 break
+
+            if frame_index % detection_interval != 0:
+                frame_index += 1
+                continue
 
             results = model(frame, conf=CONF, verbose=False)[0]
             detections = sv.Detections.from_ultralytics(results)
@@ -233,6 +238,7 @@ def analyze_source(model, route_specs, source):
         "roi_groups": source["roi_groups"],
         "time_offset": source["time_offset"],
         "fps": fps,
+        "detection_interval": detection_interval,
         "frame_count": frame_count,
         "duration": duration,
         "rois": source["rois"],
