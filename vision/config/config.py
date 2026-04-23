@@ -21,7 +21,7 @@ VIDEO_INPUT = resolve_path("data", "video", "download.mp4")  # Cach cu: 1 video 
 SUMO_CFG = resolve_path("data", "run1.sumocfg")
 
 CONF = 0.3
-DETECTION_INTERVAL = 1  # 1 = detect moi frame, 2 = detect moi 2 frame, 3 = detect moi 3 frame
+DETECTION_INTERVAL = 5  # 1 = detect moi frame, 2 = detect moi 2 frame, 3 = detect moi 3 frame
 
 CLASS_NAMES = ["car"]
 
@@ -29,10 +29,10 @@ CLASS_NAMES = ["car"]
 # A/B/C/D se tu dong map vao nhom ROI Zone_A*, Zone_B*, Zone_C*, Zone_D*.
 # Co the dung duong dan tuyet doi hoac duong dan tuong doi tinh tu thu muc goc project.
 MULTI_VIDEO_INPUTS = {
-    "A": r"C:\Users\hatun\Downloads\nckh2.0\data\video\download.mp4",
+    "A": r"C:\Users\hatun\Downloads\KTV.mp4",
     "B": r"C:\Users\hatun\Downloads\nckh2.0\data\video\download.mp4",
-    "C": r"C:\Users\hatun\Downloads\nckh2.0\data\video\download.mp4",
-    "D": r"C:\Users\hatun\Downloads\nckh2.0\data\video\download.mp4",
+    "C": r"C:\Users\hatun\Downloads\test_video.mp4",
+    "D": r"C:\Users\hatun\Downloads\CourseHub-main\CourseHub-main\DigitalTwinsforSmartCities\Week3a.Material\InputVideo\InputVideo.mp4",
 }
 
 # Lech thoi gian bat dau cua tung video (giay). De 0.0 neu 4 video dong bo.
