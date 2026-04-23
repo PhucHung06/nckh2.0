@@ -5,7 +5,7 @@
     {
       "source_id": "cam_a",
       "label": "Road A",
-      "video_path": "C:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road A.mp4",
+      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road A.mp4",
       "roi_groups": [
         "A"
       ],
@@ -14,7 +14,7 @@
     {
       "source_id": "cam_b",
       "label": "Road B",
-      "video_path": "C:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road B.mp4",
+      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road B.mp4",
       "roi_groups": [
         "B"
       ],
@@ -23,7 +23,7 @@
     {
       "source_id": "cam_c",
       "label": "Road C",
-      "video_path": "C:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road C.mp4",
+      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road C.mp4",
       "roi_groups": [
         "C"
       ],
@@ -32,7 +32,7 @@
     {
       "source_id": "cam_d",
       "label": "Road D",
-      "video_path": "C:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road D.mp4",
+      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road D.mp4",
       "roi_groups": [
         "D"
       ],
