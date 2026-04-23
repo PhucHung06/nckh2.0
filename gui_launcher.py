@@ -65,12 +65,12 @@ def launch_plot_ppo():
 
 def launch_draw_roi(group_name):
     cmd = f'"{VENV_PYTHON}" vision/draw_roi.py {group_name}'
-    run_command_in_new_terminal(cmd, f"Ve ROI {group_name}")
+    run_command_in_new_terminal(cmd, f"Vẽ ROI {group_name}")
 
 
 def launch_vision_sumo():
     cmd = f'"{VENV_PYTHON}" vision/main.py'
-    run_command_in_new_terminal(cmd, "Mo phong SUMO")
+    run_command_in_new_terminal(cmd, "Mô phong SUMO")
 
 
 root = tk.Tk()
@@ -88,14 +88,14 @@ except Exception:
 
 header = tk.Label(
     root,
-    text="He thong Quan ly Den giao thong AI",
+    text="Hệ thống Quản lý Đèn giao thông AI",
     font=("Arial", 16, "bold"),
 )
 header.pack(pady=(0, 5))
 
 sub_header = tk.Label(
     root,
-    text="Nhan cac nut ben duoi de khoi chay nhanh cac module trong he thong",
+    text="Nhấn các nút bên dưới để khởi chạy tự động thay vì gõ lệnh",
     font=("Arial", 10),
     fg="gray",
 )
@@ -121,66 +121,66 @@ for index, group_name in enumerate(roi_groups):
     column_index = index % 2
     ttk.Button(
         frame_roi,
-        text=f"Ve ROI {group_name}",
+        text=f"Vẽ ROI {group_name}",
         command=partial(launch_draw_roi, group_name),
     ).grid(row=row_index, column=column_index, sticky="ew", padx=5, pady=5)
 
-btn_vision_main = ttk.Button(frame_vision, text="Mo phong SUMO", command=launch_vision_sumo)
+btn_vision_main = ttk.Button(frame_vision, text="Mô phỏng SUMO", command=launch_vision_sumo)
 btn_vision_main.pack(fill=tk.X, pady=(0, 5), padx=10)
 
 
-frame_train = ttk.LabelFrame(frame_main, text="1. Giai doan Huan luyen (Training)")
+frame_train = ttk.LabelFrame(frame_main, text="1. Giai đoạn Huấn luyện (Training)")
 frame_train.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_ga = ttk.Button(
     frame_train,
-    text="Huan luyen Thuat toan di truyen (GA)",
+    text="Huấn luyện Thuật toán di truyền (GA)",
     command=launch_ga_training,
 )
 btn_ga.pack(fill=tk.X, pady=3, padx=10)
 
 btn_ppo = ttk.Button(
     frame_train,
-    text="Huan luyen Deep RL (PPO)",
+    text="Huấn luyện Deep RL (PPO)",
     command=launch_ppo_training,
 )
 btn_ppo.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(10, 5))
 
-btn_tb = ttk.Button(frame_train, text="Mo TensorBoard", command=launch_tensorboard)
+btn_tb = ttk.Button(frame_train, text="Mở TensorBoard", command=launch_tensorboard)
 btn_tb.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(5, 10))
 
 
-frame_bench = ttk.LabelFrame(frame_main, text="2. Giai doan Benchmark & Thong ke")
+frame_bench = ttk.LabelFrame(frame_main, text="2. Giai đoạn Benchmark & Thống kê")
 frame_bench.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_run_bench = ttk.Button(
     frame_bench,
-    text="Chay Benchmark (Fixed vs GA vs PPO)",
+    text="Chạy Benchmark (Fixed vs GA vs PPO)",
     command=launch_benchmark,
 )
 btn_run_bench.pack(fill=tk.X, pady=3, padx=10)
 
 btn_plot_bench = ttk.Button(
     frame_bench,
-    text="Xuat Bieu do Boxplot so lieu tinh",
+    text="Xuất Biểu đồ Boxplot số liệu tĩnh",
     command=launch_plot_benchmark,
 )
 btn_plot_bench.pack(fill=tk.X, pady=3, padx=10)
 
 
-frame_curves = ttk.LabelFrame(frame_main, text="3. Xuat Bieu do Hoi tu (Ve anh PNG)")
+frame_curves = ttk.LabelFrame(frame_main, text="3. Xuất Biểu đồ Hội tụ (Vẽ ảnh PNG)")
 frame_curves.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_curve_ga = ttk.Button(
     frame_curves,
-    text="Trich xuat Fitness Curve (GA)",
+    text="Trích xuất Fitness Curve (GA)",
     command=launch_plot_ga,
 )
 btn_curve_ga.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(10, 5))
 
 btn_curve_ppo = ttk.Button(
     frame_curves,
-    text="Trich xuat Learning Curve (PPO)",
+    text="Trích xuất Learning Curve (PPO)",
     command=launch_plot_ppo,
 )
 btn_curve_ppo.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(5, 10))
