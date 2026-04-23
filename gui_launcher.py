@@ -106,7 +106,7 @@ frame_main = ttk.Frame(root)
 frame_main.pack(fill=tk.BOTH, expand=True)
 
 
-frame_vision = ttk.LabelFrame(frame_main, text="0. Vision + SUMO")
+frame_vision = ttk.LabelFrame(frame_main, text="1. Vision + SUMO")
 frame_vision.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 frame_roi = ttk.Frame(frame_vision)
@@ -129,7 +129,7 @@ btn_vision_main = ttk.Button(frame_vision, text="Mô phỏng SUMO", command=laun
 btn_vision_main.pack(fill=tk.X, pady=(0, 5), padx=10)
 
 
-frame_train = ttk.LabelFrame(frame_main, text="1. Giai đoạn Huấn luyện (Training)")
+frame_train = ttk.LabelFrame(frame_main, text="2. Giai đoạn Huấn luyện (Training)")
 frame_train.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_ga = ttk.Button(
@@ -150,7 +150,7 @@ btn_tb = ttk.Button(frame_train, text="Mở TensorBoard", command=launch_tensorb
 btn_tb.pack(side=tk.LEFT, fill=tk.X, expand=True, pady=3, padx=(5, 10))
 
 
-frame_bench = ttk.LabelFrame(frame_main, text="2. Giai đoạn Benchmark & Thống kê")
+frame_bench = ttk.LabelFrame(frame_main, text="3. Giai đoạn Benchmark & Thống kê")
 frame_bench.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_run_bench = ttk.Button(
@@ -168,7 +168,7 @@ btn_plot_bench = ttk.Button(
 btn_plot_bench.pack(fill=tk.X, pady=3, padx=10)
 
 
-frame_curves = ttk.LabelFrame(frame_main, text="3. Xuất Biểu đồ Hội tụ (Vẽ ảnh PNG)")
+frame_curves = ttk.LabelFrame(frame_main, text="4. Xuất Biểu đồ Hội tụ (Vẽ ảnh PNG)")
 frame_curves.pack(fill=tk.X, pady=10, ipadx=10, ipady=10)
 
 btn_curve_ga = ttk.Button(
