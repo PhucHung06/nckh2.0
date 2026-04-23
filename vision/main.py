@@ -17,6 +17,10 @@ TRACKED_JSON = os.path.join(DATA_DIR, "..", "data", "tracked_vehicles.json")
 ROUTES_XML = os.path.join(DATA_DIR, "..", "data", "xml", "yolo_routes.rou.xml")
 VIDEO_WINDOW_NAME = "Tracking Multi-View"
 DISPLAY_CELL_SIZE = (640, 360)
+COUNTED_CLASSES = ("bus", "car", "motor", "truck")
+TRACK_BOX_COLOR = (70, 120, 255)
+TRACK_TEXT_BG_COLOR = (70, 120, 255)
+PANEL_BG_COLOR = (35, 35, 35)
 
 
 def build_route_specs():
@@ -37,6 +41,226 @@ def build_route_specs():
 def extract_roi_group(roi_name):
     suffix = roi_name.split("_")[-1]
     return suffix[0]
+
+
+def build_track_spawn_key(source_id, roi_name, track_id):
+    return f"{source_id}_{roi_name}_{int(track_id)}"
+
+
+def get_model_class_name(model, class_id):
+    names = getattr(model, "names", {})
+    if class_id is None:
+        return "vehicle"
+    if isinstance(names, dict):
+        return str(names.get(int(class_id), class_id))
+    if isinstance(names, (list, tuple)) and 0 <= int(class_id) < len(names):
+        return str(names[int(class_id)])
+    return str(class_id)
+
+
+def normalize_vehicle_class(class_name):
+    normalized = str(class_name).strip().lower().replace("-", " ").replace("_", " ")
+    alias_map = {
+        "bicycle": "motor",
+        "bike": "motor",
+        "bus": "bus",
+        "car": "car",
+        "motorbike": "motor",
+        "motorcycle": "motor",
+        "motor": "motor",
+        "truck": "truck",
+        "van": "truck",
+    }
+    if normalized in alias_map:
+        return alias_map[normalized]
+    if "motor" in normalized or "bike" in normalized:
+        return "motor"
+    if "truck" in normalized or "van" in normalized:
+        return "truck"
+    if "bus" in normalized:
+        return "bus"
+    if "car" in normalized:
+        return "car"
+    return normalized
+
+
+def build_vehicle_mask(detections, model):
+    if len(detections) == 0:
+        return np.zeros(0, dtype=bool)
+
+    class_ids = detections.class_id
+    mask = []
+    for index in range(len(detections)):
+        class_id = None if class_ids is None else class_ids[index]
+        class_name = get_model_class_name(model, class_id)
+        mask.append(normalize_vehicle_class(class_name) in COUNTED_CLASSES)
+    return np.array(mask, dtype=bool)
+
+
+def build_display_label(entry):
+    class_name = entry["class_name"]
+    vehicle_ids = entry.get("vehicle_ids") or []
+    if vehicle_ids:
+        return f"{class_name} {vehicle_ids[0]}"
+
+    track_id = entry.get("track_id")
+    if track_id is None:
+        return class_name
+    return f"{class_name} #{int(track_id)}"
+
+
+def draw_tracked_detections(frame, entries):
+    for entry in entries:
+        x1, y1, x2, y2 = [int(value) for value in entry["bbox"]]
+        label = build_display_label(entry)
+
+        cv2.rectangle(frame, (x1, y1), (x2, y2), TRACK_BOX_COLOR, 2)
+
+        text_size, baseline = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2)
+        text_x = max(4, x1)
+        text_y = max(26, y1 - 8)
+        bg_top = max(0, text_y - text_size[1] - 8)
+        bg_bottom = min(frame.shape[0], text_y + baseline - 2)
+        bg_right = min(frame.shape[1], text_x + text_size[0] + 10)
+
+        cv2.rectangle(frame, (text_x - 4, bg_top), (bg_right, bg_bottom), TRACK_TEXT_BG_COLOR, -1)
+        cv2.putText(
+            frame,
+            label,
+            (text_x, text_y),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.6,
+            (255, 255, 255),
+            2,
+        )
+
+
+def compute_roi_stats(entries, rois):
+    stats_by_roi = {
+        roi["name"]: {
+            "roi": roi,
+            "counts": {class_name: 0 for class_name in COUNTED_CLASSES},
+            "total": 0,
+        }
+        for roi in rois
+    }
+
+    for entry in entries:
+        class_name = entry["class_name"]
+        for roi_name in entry.get("roi_names", []):
+            roi_stats = stats_by_roi.get(roi_name)
+            if roi_stats is None:
+                continue
+            if class_name in roi_stats["counts"]:
+                roi_stats["counts"][class_name] += 1
+                roi_stats["total"] += 1
+
+    return [stats_by_roi[roi["name"]] for roi in rois]
+
+
+def draw_roi_stats_panel(frame, roi_stats):
+    if not roi_stats:
+        return
+
+    line_height = 28
+    panel_width = 190
+    panel_height = 18 + len(roi_stats) * (line_height * (len(COUNTED_CLASSES) + 2) + 10)
+    overlay = frame.copy()
+    cv2.rectangle(overlay, (10, 10), (10 + panel_width, 10 + panel_height), PANEL_BG_COLOR, -1)
+    cv2.addWeighted(overlay, 0.55, frame, 0.45, 0, frame)
+
+    y = 35
+    for roi_stat in roi_stats:
+        roi = roi_stat["roi"]
+        roi_name = roi["name"]
+        roi_color = tuple(int(channel) for channel in roi["color"])
+
+        cv2.putText(frame, f"[ {roi_name} ]", (20, y), cv2.FONT_HERSHEY_SIMPLEX, 0.75, roi_color, 2)
+        y += line_height
+
+        for class_name in COUNTED_CLASSES:
+            count = roi_stat["counts"][class_name]
+            cv2.putText(
+                frame,
+                f"{class_name}: {count}",
+                (28, y),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.65,
+                (235, 235, 235),
+                2,
+            )
+            y += line_height
+
+        cv2.putText(
+            frame,
+            f"Total: {roi_stat['total']}",
+            (28, y),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.75,
+            roi_color,
+            2,
+        )
+        y += line_height + 8
+
+
+def infer_tracked_detections(model, tracker, frame):
+    results = model(frame, conf=CONF, verbose=False)[0]
+    detections = sv.Detections.from_ultralytics(results)
+    if len(detections) == 0:
+        return detections
+
+    vehicle_mask = build_vehicle_mask(detections, model)
+    detections = detections[vehicle_mask]
+    if len(detections) == 0:
+        return detections
+
+    return tracker.update_with_detections(detections)
+
+
+def build_frame_track_entries(source, detections, zones, model):
+    roi_names_by_track = {}
+
+    for roi, zone in zip(source["rois"], zones):
+        mask = zone.trigger(detections=detections)
+        zone_detections = detections[mask]
+        for index in range(len(zone_detections)):
+            tracker_ids = zone_detections.tracker_id
+            track_id = None if tracker_ids is None else tracker_ids[index]
+            if track_id is None:
+                continue
+            track_id = int(track_id)
+            roi_names_by_track.setdefault(track_id, set()).add(roi["name"])
+
+    entries = []
+    for index in range(len(detections)):
+        tracker_ids = detections.tracker_id
+        class_ids = detections.class_id
+        track_id = None if tracker_ids is None else tracker_ids[index]
+        if track_id is None:
+            continue
+
+        track_id = int(track_id)
+        roi_names = sorted(roi_names_by_track.get(track_id, set()))
+        if not roi_names:
+            continue
+
+        class_id = None if class_ids is None else class_ids[index]
+        class_name = normalize_vehicle_class(get_model_class_name(model, class_id))
+        entries.append(
+            {
+                "track_id": track_id,
+                "class_name": class_name,
+                "bbox": [int(value) for value in detections.xyxy[index].astype(int).tolist()],
+                "roi_names": roi_names,
+                "spawn_keys": [
+                    build_track_spawn_key(source["source_id"], roi_name, track_id)
+                    for roi_name in roi_names
+                ],
+                "vehicle_ids": [],
+            }
+        )
+
+    return entries
 
 
 def build_source_contexts():
@@ -178,6 +402,7 @@ def analyze_source(model, route_specs, source):
     records = []
     spawned_ids = set()
     frame_index = 0
+    frame_tracks = {}
 
     try:
         while True:
@@ -189,27 +414,19 @@ def analyze_source(model, route_specs, source):
                 frame_index += 1
                 continue
 
-            results = model(frame, conf=CONF, verbose=False)[0]
-            detections = sv.Detections.from_ultralytics(results)
-            detections = tracker.update_with_detections(detections)
+            detections = infer_tracked_detections(model, tracker, frame)
+            frame_entries = build_frame_track_entries(source, detections, zones, model)
+            frame_tracks[frame_index] = frame_entries
 
-            for roi, zone in zip(source["rois"], zones):
-                in_zone = zone.trigger(detections=detections)
-                det_zone = detections[in_zone]
-                roi_name = roi["name"]
-                spec = route_specs[roi_name]
-
-                for i in range(len(det_zone)):
-                    track_id = det_zone.tracker_id[i]
-                    if track_id is None:
-                        continue
-
-                    track_id = int(track_id)
-                    unique_id = f"{source['source_id']}_{roi_name}_{track_id}"
+            for entry in frame_entries:
+                track_id = entry["track_id"]
+                for roi_name in entry["roi_names"]:
+                    unique_id = build_track_spawn_key(source["source_id"], roi_name, track_id)
                     if unique_id in spawned_ids:
                         continue
 
                     spawned_ids.add(unique_id)
+                    spec = route_specs[roi_name]
                     depart = round(source["time_offset"] + (frame_index / fps), 2)
 
                     records.append(
@@ -217,6 +434,7 @@ def analyze_source(model, route_specs, source):
                             "source_id": source["source_id"],
                             "source_label": source["label"],
                             "track_id": track_id,
+                            "class_name": entry["class_name"],
                             "roi_name": roi_name,
                             "incoming_edge": spec["incoming_edge"],
                             "outgoing_edge": spec["outgoing_edge"],
@@ -242,6 +460,7 @@ def analyze_source(model, route_specs, source):
         "frame_count": frame_count,
         "duration": duration,
         "rois": source["rois"],
+        "frame_tracks": frame_tracks,
     }
     return records, source_summary
 
@@ -255,6 +474,23 @@ def merge_tracked_records(records):
         merged_record["vehicle_id"] = f"veh_{vehicle_index}"
         merged_records.append(merged_record)
     return merged_records
+
+
+def attach_vehicle_ids_to_source_summaries(source_summaries, tracked_records):
+    vehicle_id_by_spawn_key = {
+        build_track_spawn_key(record["source_id"], record["roi_name"], record["track_id"]): record["vehicle_id"]
+        for record in tracked_records
+    }
+
+    for summary in source_summaries:
+        for frame_entries in summary.get("frame_tracks", {}).values():
+            for entry in frame_entries:
+                vehicle_ids = []
+                for spawn_key in entry.get("spawn_keys", []):
+                    vehicle_id = vehicle_id_by_spawn_key.get(spawn_key)
+                    if vehicle_id and vehicle_id not in vehicle_ids:
+                        vehicle_ids.append(vehicle_id)
+                entry["vehicle_ids"] = vehicle_ids
 
 
 def draw_source_overlays(frame, source_summary):
@@ -277,6 +513,14 @@ def draw_source_overlays(frame, source_summary):
     cv2.rectangle(rendered, (10, 10), (420, 52), (30, 30, 30), -1)
     cv2.putText(rendered, header, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
     return rendered
+
+
+def annotate_tracking_frame(frame, stream, frame_entries):
+    annotated = draw_source_overlays(frame, stream["summary"])
+    roi_stats = compute_roi_stats(frame_entries, stream["summary"]["rois"])
+    draw_tracked_detections(annotated, frame_entries)
+    draw_roi_stats_panel(annotated, roi_stats)
+    return annotated
 
 
 def build_placeholder_frame(source_summary, status_text):
@@ -321,6 +565,9 @@ def open_playback_streams(source_summaries):
                 "cap": cap,
                 "fps": summary["fps"] if summary["fps"] > 0 else 30.0,
                 "next_frame_time": summary["time_offset"],
+                "frame_index": 0,
+                "frame_tracks": summary.get("frame_tracks", {}),
+                "active_entries": [],
                 "last_frame": None,
                 "finished": False,
             }
@@ -345,8 +592,12 @@ def update_stream_frame(stream, current_time):
             stream["finished"] = True
             break
 
-        stream["last_frame"] = draw_source_overlays(frame, stream["summary"])
+        if stream["frame_index"] in stream["frame_tracks"]:
+            stream["active_entries"] = stream["frame_tracks"][stream["frame_index"]]
+
+        stream["last_frame"] = annotate_tracking_frame(frame, stream, stream["active_entries"])
         stream["next_frame_time"] += 1.0 / stream["fps"]
+        stream["frame_index"] += 1
 
 
 def render_stream_frame(stream, current_time):
@@ -448,6 +699,7 @@ def main():
         source_summaries.append(source_summary)
 
     tracked_records = merge_tracked_records(all_records)
+    attach_vehicle_ids_to_source_summaries(source_summaries, tracked_records)
 
     try:
         run_sumo_playback(tracked_records, source_summaries, route_specs)
