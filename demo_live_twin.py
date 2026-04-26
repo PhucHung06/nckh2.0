@@ -18,6 +18,7 @@ from hardware.pi_controller import PiController
 PROJECT_ROOT = os.path.dirname(__file__)
 GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn xanh.jpg")
 RED_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn đỏ.jpg")
+YELLOW_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn vàng.jpg")
 
 
 def get_direction_images(phase_num):
@@ -32,9 +33,15 @@ def get_direction_images(phase_num):
     if phase_num == 0:
         states["north"] = "green"
         states["south"] = "green"
+    elif phase_num == 1:
+        states["north"] = "yellow"
+        states["south"] = "yellow"
     elif phase_num == 2:
         states["east"] = "green"
         states["west"] = "green"
+    elif phase_num == 3:
+        states["east"] = "yellow"
+        states["west"] = "yellow"
 
     return states
 
@@ -56,6 +63,7 @@ class LiveTwinLightPanel:
         self.images = {
             "green": self._load_square_image(GREEN_LIGHT_PATH),
             "red": self._load_square_image(RED_LIGHT_PATH),
+            "yellow": self._load_square_image(YELLOW_LIGHT_PATH),
         }
         self.light_items = {}
         self._draw_layout()
@@ -165,6 +173,17 @@ def main():
             
             # 4. Thực thi trong SUMO
             try:
+                current_phase_before = env.conn.trafficlight.getPhase(env.tl_id)
+                can_switch_now = (
+                    action_value == 1
+                    and current_phase_before % 2 == 0
+                    and env.time_since_last_phase_change >= env.min_green
+                )
+                if can_switch_now:
+                    yellow_phase = (current_phase_before + 1) % 4
+                    light_panel.update(step_count, action_value, yellow_phase)
+                    time.sleep(1)
+
                 obs, reward, terminated, truncated, _ = env.step(action_value)
                 current_phase = env.conn.trafficlight.getPhase(env.tl_id)
                 # Chuyển đổi phase số sang tên pha cho dễ hiểu
