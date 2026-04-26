@@ -16,7 +16,7 @@ from hardware.pi_controller import PiController
 
 
 PROJECT_ROOT = os.path.dirname(__file__)
-GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Green.jpg")
+GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Green.jpg") #Muốn thay mặt Huy Phương thì đổi đường dẫn Green/Red/Yellow thành 1/2/3
 RED_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Red.jpg")
 YELLOW_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Yellow.jpg")
 
