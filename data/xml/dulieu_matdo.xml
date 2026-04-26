@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-04-26 18:57:53 by Eclipse SUMO GUI Version 1.22.0
+<!-- generated on 2026-04-26 19:10:44 by Eclipse SUMO GUI Version 1.22.0
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -19,7 +19,7 @@
     </report>
 
     <traci_server>
-        <remote-port value="51901"/>
+        <remote-port value="56338"/>
     </traci_server>
 
 </sumoConfiguration>
@@ -56,10 +56,10 @@
         <edge id="S2C" sampledSeconds="1831.71" traveltime="160.37" overlapTraveltime="161.66" density="353.34" laneDensity="117.78" occupancy="58.41" waitingTime="1416.00" timeLoss="1748.17" speed="0.57" speedRelative="0.04" departed="12" arrived="0" entered="0" left="12" laneChangedFrom="0" laneChangedTo="0"/>
         <edge id="W2C" sampledSeconds="92.83" traveltime="504.66" overlapTraveltime="372.53" density="17.91" laneDensity="5.97" occupancy="2.44" waitingTime="78.00" timeLoss="90.91" speed="0.25" speedRelative="0.02" departed="0" arrived="0" entered="0" left="2" laneChangedFrom="0" laneChangedTo="0"/>
     </interval>
-    <interval begin="180.00" end="221.00" id="my_density_data">
-        <edge id="C2N" sampledSeconds="66.39" traveltime="7.72" overlapTraveltime="8.13" density="18.74" laneDensity="6.25" occupancy="2.94" waitingTime="0.00" timeLoss="8.96" speed="11.25" speedRelative="0.81" departed="0" arrived="10" entered="6" left="0" laneChangedFrom="0" laneChangedTo="0"/>
-        <edge id="E2C" sampledSeconds="47.64" traveltime="14.19" overlapTraveltime="15.07" density="13.45" laneDensity="4.48" occupancy="2.12" waitingTime="0.00" timeLoss="22.14" speed="6.06" speedRelative="0.44" departed="0" arrived="0" entered="0" left="6" laneChangedFrom="0" laneChangedTo="0"/>
-        <edge id="N2C" sampledSeconds="287.00" overlapTraveltime="100000.00" density="81.02" laneDensity="27.01" occupancy="13.50" waitingTime="287.00" timeLoss="287.00" speed="0.00" speedRelative="0.00" departed="0" arrived="0" entered="0" left="0" laneChangedFrom="0" laneChangedTo="0"/>
-        <edge id="S2C" sampledSeconds="1353.00" traveltime="100000.00" overlapTraveltime="100000.00" density="381.94" laneDensity="127.31" occupancy="63.66" waitingTime="1353.00" timeLoss="1353.00" speed="0.00" speedRelative="0.00" departed="0" arrived="0" entered="0" left="0" laneChangedFrom="0" laneChangedTo="0"/>
+    <interval begin="180.00" end="201.00" id="my_density_data">
+        <edge id="C2N" sampledSeconds="64.43" traveltime="7.74" overlapTraveltime="8.15" density="35.51" laneDensity="11.84" occupancy="5.58" waitingTime="0.00" timeLoss="8.85" speed="11.22" speedRelative="0.81" departed="0" arrived="9" entered="6" left="0" laneChangedFrom="0" laneChangedTo="0"/>
+        <edge id="E2C" sampledSeconds="47.64" traveltime="14.19" overlapTraveltime="15.07" density="26.25" laneDensity="8.75" occupancy="4.14" waitingTime="0.00" timeLoss="22.14" speed="6.06" speedRelative="0.44" departed="0" arrived="0" entered="0" left="6" laneChangedFrom="0" laneChangedTo="0"/>
+        <edge id="N2C" sampledSeconds="147.00" overlapTraveltime="100000.00" density="81.02" laneDensity="27.01" occupancy="13.50" waitingTime="147.00" timeLoss="147.00" speed="0.00" speedRelative="0.00" departed="0" arrived="0" entered="0" left="0" laneChangedFrom="0" laneChangedTo="0"/>
+        <edge id="S2C" sampledSeconds="693.00" traveltime="100000.00" overlapTraveltime="100000.00" density="381.94" laneDensity="127.31" occupancy="63.66" waitingTime="693.00" timeLoss="693.00" speed="0.00" speedRelative="0.00" departed="0" arrived="0" entered="0" left="0" laneChangedFrom="0" laneChangedTo="0"/>
     </interval>
 </meandata>

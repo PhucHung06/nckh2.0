@@ -16,9 +16,9 @@ from hardware.pi_controller import PiController
 
 
 PROJECT_ROOT = os.path.dirname(__file__)
-GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn xanh.jpg")
-RED_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn đỏ.jpg")
-YELLOW_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn vàng.jpg")
+GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Green.jpg")
+RED_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Red.jpg")
+YELLOW_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Yellow.jpg")
 
 
 def get_direction_images(phase_num):
