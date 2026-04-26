@@ -73,6 +73,11 @@ def launch_vision_sumo():
     run_command_in_new_terminal(cmd, "Mô phong SUMO")
 
 
+def launch_live_twin():
+    cmd = f'"{VENV_PYTHON}" demo_live_twin.py'
+    run_command_in_new_terminal(cmd, "Digital Twin Live Demo")
+
+
 root = tk.Tk()
 root.title("Traffic Light AI - Control Panel")
 root.geometry("640x650")
@@ -127,6 +132,13 @@ for index, group_name in enumerate(roi_groups):
 
 btn_vision_main = ttk.Button(frame_vision, text="Mô phỏng SUMO", command=launch_vision_sumo)
 btn_vision_main.pack(fill=tk.X, pady=(0, 5), padx=10)
+
+btn_live_twin = ttk.Button(
+    frame_vision,
+    text="Chay Digital Twin Live Demo",
+    command=launch_live_twin,
+)
+btn_live_twin.pack(fill=tk.X, pady=(0, 5), padx=10)
 
 
 frame_train = ttk.LabelFrame(frame_main, text="2. Giai đoạn Huấn luyện (Training)")

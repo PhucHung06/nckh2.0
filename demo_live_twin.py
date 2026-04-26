@@ -1,16 +1,118 @@
-# demo_live_twin.py
+﻿# demo_live_twin.py
 import os
 import sys
 import time
+import tkinter as tk
 import numpy as np
 
 # Thêm path
 sys.path.insert(0, os.path.dirname(__file__))
 
 import traci
+from PIL import Image, ImageTk
 from stable_baselines3 import PPO
 from simulation.sumo_gym_env import SumoGymEnv
 from hardware.pi_controller import PiController
+
+
+PROJECT_ROOT = os.path.dirname(__file__)
+GREEN_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn xanh.jpg")
+RED_LIGHT_PATH = os.path.join(PROJECT_ROOT, "data", "image", "Đèn đỏ.jpg")
+
+
+def get_direction_images(phase_num):
+    """Map SUMO phase to image states for North/East/South/West."""
+    states = {
+        "north": "red",
+        "east": "red",
+        "south": "red",
+        "west": "red",
+    }
+
+    if phase_num == 0:
+        states["north"] = "green"
+        states["south"] = "green"
+    elif phase_num == 2:
+        states["east"] = "green"
+        states["west"] = "green"
+
+    return states
+
+
+class LiveTwinLightPanel:
+    """A dark traffic-light panel that shows STAY/SWITCH in the center."""
+
+    def __init__(self):
+        self.closed = False
+        self.root = tk.Tk()
+        self.root.title("Live Twin - Traffic Light State")
+        self.root.geometry("620x620")
+        self.root.resizable(False, False)
+        self.root.protocol("WM_DELETE_WINDOW", self.close)
+
+        self.canvas = tk.Canvas(self.root, width=620, height=620, bg="#111111", highlightthickness=0)
+        self.canvas.pack(fill=tk.BOTH, expand=True)
+
+        self.images = {
+            "green": self._load_square_image(GREEN_LIGHT_PATH),
+            "red": self._load_square_image(RED_LIGHT_PATH),
+        }
+        self.light_items = {}
+        self._draw_layout()
+        self.root.update()
+
+    def _load_square_image(self, path):
+        image = Image.open(path).convert("RGBA")
+        image.thumbnail((120, 120), Image.LANCZOS)
+        return ImageTk.PhotoImage(image)
+
+    def _draw_layout(self):
+        positions = {
+            "north": (310, 115),
+            "west": (115, 310),
+            "east": (505, 310),
+            "south": (310, 505),
+        }
+
+        for direction, (x, y) in positions.items():
+            self.light_items[direction] = self.canvas.create_image(
+                x,
+                y,
+                image=self.images["red"],
+            )
+
+        self.decision_item = self.canvas.create_text(
+            310,
+            310,
+            text="WAIT",
+            fill="#10f5a8",
+            font=("Consolas", 48, "bold"),
+        )
+
+    def update(self, step_count, action, phase_num):
+        if self.closed:
+            return
+
+        decision = "SWITCH" if int(action) == 1 else "STAY"
+        self.canvas.itemconfig(self.decision_item, text=decision)
+
+        for direction, color in get_direction_images(phase_num).items():
+            self.canvas.itemconfig(self.light_items[direction], image=self.images[color])
+
+        try:
+            self.root.update_idletasks()
+            self.root.update()
+        except tk.TclError:
+            self.closed = True
+
+    def close(self):
+        if self.closed:
+            return
+        self.closed = True
+        try:
+            self.root.destroy()
+        except tk.TclError:
+            pass
 
 def set_arduino_phase(ctrl, phase_num):
     """Gửi lệnh ép phase xuống mạch thật"""
@@ -37,6 +139,7 @@ def main():
     # 3. Chạy Môi trường SUMO (Bật Cửa Sổ Màn hình - GUI)
     SUMO_CFG = os.path.join(os.path.dirname(__file__), 'data', 'run1.sumocfg')
     env = SumoGymEnv(SUMO_CFG, use_gui=True, delta_time=5)
+    light_panel = LiveTwinLightPanel()
     
     try:
         obs, _ = env.reset() # Khởi tạo trạng thái ban đầu
@@ -45,13 +148,14 @@ def main():
             step_count += 1
             # 1. AI quan sát trạng thái ngã tư ảo
             action, _ = model.predict(obs, deterministic=True)
+            action_value = int(np.asarray(action).item())
             
             # Lấy dữ liệu hàng chờ hiện tại để in ra (lấy từ obs đã chuẩn hóa)
             # Theo danh sách Edge thực tế từ SUMO: [Bắc (0), Đông (1), Nam (2), Tây (3)]
             q_n, q_e, q_s, q_w = obs[0:4].astype(int)
             
             # 3. Ra quyết định và in Dashboard
-            decision_text = "🔄 CHUYỂN PHA (Switch)" if action == 1 else "🟢 GIỮ NGUYÊN (Stay)"
+            decision_text = "🔄 CHUYỂN PHA (Switch)" if action_value == 1 else "🟢 GIỮ NGUYÊN (Stay)"
             
             print(f"\n{'='*50}")
             print(f"🚀 [Digital Twin Step {step_count}]")
@@ -61,10 +165,11 @@ def main():
             
             # 4. Thực thi trong SUMO
             try:
-                obs, reward, terminated, truncated, _ = env.step(action)
-                current_phase = traci.trafficlight.getPhase(env.tl_id)
+                obs, reward, terminated, truncated, _ = env.step(action_value)
+                current_phase = env.conn.trafficlight.getPhase(env.tl_id)
                 # Chuyển đổi phase số sang tên pha cho dễ hiểu
                 phase_name = ["NORTH-SOUTH GREEN", "YELLOW", "EAST-WEST GREEN", "YELLOW"][current_phase]
+                light_panel.update(step_count, action_value, current_phase)
                 print(f"🚥 Đèn SUMO hiện tại: {phase_name}")
                 
                 # 5. Đồng bộ Arduino thật
@@ -82,6 +187,7 @@ def main():
     except KeyboardInterrupt:
         print("\n[Demo] Đã dừng theo yêu cầu người dùng.")
     finally:
+        light_panel.close()
         try:
             env.close()
         except:

@@ -1,10 +1,12 @@
 import os, sys, json, shutil
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, PROJECT_ROOT)
 
 from stable_baselines3 import PPO
 from simulation.sumo_gym_env import SumoGymEnv
 
-MODEL_DIR = os.path.join("d:\\khongtrongluc", "rl", "models", "ppo_traffic")
+MODEL_DIR = os.path.join(PROJECT_ROOT, "rl", "models", "ppo_traffic")
 step_500_path = os.path.join(MODEL_DIR, "ppo_traffic_500_steps.zip")
 final_path = os.path.join(MODEL_DIR, "final_model.zip")
 
@@ -14,7 +16,7 @@ if os.path.exists(step_500_path):
 
 model = PPO.load(final_path)
 
-DATA_DIR = os.path.join("d:\\khongtrongluc", "data")
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 env = SumoGymEnv(
     sumocfg=os.path.join(DATA_DIR, 'run1.sumocfg'),
     time_light_xml=os.path.join(DATA_DIR, "xml/time_light.xml"),
@@ -37,7 +39,7 @@ export = {
     'method':      'PPO',
     'description': '[GreenNS, YellowNS, GreenEW, YellowEW] in seconds'
 }
-out_path = os.path.join("d:\\khongtrongluc", "hardware", "config", "best_chromosome_rl.json")
+out_path = os.path.join(PROJECT_ROOT, "hardware", "config", "best_chromosome_rl.json")
 os.makedirs(os.path.dirname(out_path), exist_ok=True)
 with open(out_path, 'w') as f:
     json.dump(export, f, indent=2)
