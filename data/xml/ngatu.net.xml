@@ -139,8 +139,8 @@
 
     <tlLogic id="Center" type="static" programID="0" offset="0">
         <phase duration="87" state="GGGGggrrrrrrGGGGggrrrrrr" />
-        <phase duration="3" state="yyyyyyrrrrrryyyyyyrrrrrr" />
-        <phase duration="82" state="rrrrrrGGGGggrrrrrrGGGGgg" />
+        <phase duration="4" state="yyyyyyrrrrrryyyyyyrrrrrr" />
+        <phase duration="84" state="rrrrrrGGGGggrrrrrrGGGGgg" />
         <phase duration="3" state="rrrrrryyyyyyrrrrrryyyyyy" />
     </tlLogic>
 
