@@ -1,6 +1,41 @@
 # 🚦 Hệ thống Quản lý Giao thông Thông minh (NCKH 2.0)
 Hệ thống tích hợp AI (PPO 2.0) và Thuật toán di truyền (GA) để tối ưu hóa đèn giao thông dựa trên dữ liệu Vision từ Digital Twin.
 
+---
+
+## 🛠️ Hướng dẫn Cài đặt (Setup)
+
+### 1. Clone Repository
+```powershell
+git clone https://github.com/PhucHung06/nckh2.0.git
+cd nckh2.0
+```
+
+### 2. Cài đặt Môi trường Python
+Khuyến khích sử dụng **Python 3.10** hoặc **3.11**.
+```powershell
+# Tạo môi trường ảo
+python -m venv venv
+
+# Kích hoạt môi trường (Windows)
+.\venv\Scripts\activate
+
+# Cài đặt các thư viện cần thiết
+pip install -r requirements.txt
+```
+
+### 3. Cài đặt SUMO (Simulation of Urban MObility)
+Đây là phần mềm mô phỏng cốt lõi, bắt buộc phải có để chạy chương trình.
+1. **Tải xuống:** Truy cập [SUMO Download](https://sumo.dlr.de/docs/Downloads.php) và tải bản installer cho Windows (ví dụ: `sumo-win64-1.21.0.msi`).
+2. **Cài đặt:** Chạy file installer và ghi nhớ đường dẫn cài đặt (mặc định thường là `C:\Program Files (x86)\Eclipse\Sumo`).
+3. **Cấu hình Biến môi trường (QUAN TRỌNG):**
+   - Mở **Environment Variables** trên Windows.
+   - Thêm biến mới `SUMO_HOME` với giá trị là đường dẫn thư mục cài đặt SUMO (ví dụ: `C:\Program Files (x86)\Eclipse\Sumo`).
+   - Thêm `%SUMO_HOME%\bin` vào biến `Path`.
+4. **Kiểm tra:** Mở terminal mới và gõ `sumo`, nếu hiện thông tin phiên bản là thành công.
+
+---
+
 ## 🚀 Cách vận hành nhanh (Khuyên dùng)
 Để thuận tiện nhất, bạn hãy sử dụng bảng điều khiển trung tâm:
 ```powershell
