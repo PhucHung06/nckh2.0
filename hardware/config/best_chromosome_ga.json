@@ -1,11 +1,11 @@
 {
   "chromosome": [
-    87,
-    4,
-    84,
+    15,
+    3,
+    17,
     3
   ],
-  "fitness": -145.4141923076923,
+  "fitness": -200.6639375,
   "method": "GA",
   "description": "[GreenNS, YellowNS, GreenEW, YellowEW] in seconds"
 }

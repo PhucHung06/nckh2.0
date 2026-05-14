@@ -78,6 +78,7 @@ class SumoEnvironment:
             "-c", self.sumocfg_path,
             "--no-step-log", "true",
             "--no-warnings", "true",
+            "--end", "300"
         ]
 
         data_dir = os.path.dirname(self.sumocfg_path)

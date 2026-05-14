@@ -1,11 +1,11 @@
 {
-  "sumo_cfg": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\run1.sumocfg",
-  "vehicle_count": 253,
+  "sumo_cfg": "d:\\final\\nckh2.0\\data\\run1.sumocfg",
+  "vehicle_count": 252,
   "sources": [
     {
       "source_id": "cam_a",
       "label": "Road A",
-      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road A.mp4",
+      "video_path": "d:\\final\\nckh2.0\\data\\video\\Road A.mp4",
       "roi_groups": [
         "A"
       ],
@@ -14,7 +14,7 @@
     {
       "source_id": "cam_b",
       "label": "Road B",
-      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road B.mp4",
+      "video_path": "d:\\final\\nckh2.0\\data\\video\\Road B.mp4",
       "roi_groups": [
         "B"
       ],
@@ -23,7 +23,7 @@
     {
       "source_id": "cam_c",
       "label": "Road C",
-      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road C.mp4",
+      "video_path": "d:\\final\\nckh2.0\\data\\video\\Road C.mp4",
       "roi_groups": [
         "C"
       ],
@@ -32,7 +32,7 @@
     {
       "source_id": "cam_d",
       "label": "Road D",
-      "video_path": "c:\\Users\\hatun\\Downloads\\nckh2.0\\data\\video\\Road D.mp4",
+      "video_path": "d:\\final\\nckh2.0\\data\\video\\Road D.mp4",
       "roi_groups": [
         "D"
       ],
@@ -85,7 +85,7 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 1,
+      "track_id": 2,
       "class_name": "car",
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
@@ -99,21 +99,21 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 2,
+      "track_id": 4,
       "class_name": "car",
-      "roi_name": "Zone_CM",
+      "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
       "depart": 0.0,
       "vehicle_id": "veh_4"
     },
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 4,
+      "track_id": 8,
       "class_name": "car",
       "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
@@ -127,7 +127,7 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 5,
+      "track_id": 9,
       "class_name": "car",
       "roi_name": "Zone_CR",
       "incoming_edge": "E2C",
@@ -141,34 +141,6 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 8,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 0.0,
-      "vehicle_id": "veh_7"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 9,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 0.0,
-      "vehicle_id": "veh_8"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
       "track_id": 10,
       "class_name": "car",
       "roi_name": "Zone_CM",
@@ -178,7 +150,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 0.0,
-      "vehicle_id": "veh_9"
+      "vehicle_id": "veh_7"
     },
     {
       "source_id": "cam_d",
@@ -192,7 +164,7 @@
       "route_id": "route_Zone_DL",
       "depart_lane": "2",
       "depart": 0.0,
-      "vehicle_id": "veh_10"
+      "vehicle_id": "veh_8"
     },
     {
       "source_id": "cam_d",
@@ -206,7 +178,7 @@
       "route_id": "route_Zone_DL",
       "depart_lane": "2",
       "depart": 0.0,
-      "vehicle_id": "veh_11"
+      "vehicle_id": "veh_9"
     },
     {
       "source_id": "cam_d",
@@ -220,7 +192,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 0.0,
-      "vehicle_id": "veh_12"
+      "vehicle_id": "veh_10"
     },
     {
       "source_id": "cam_d",
@@ -234,7 +206,7 @@
       "route_id": "route_Zone_DL",
       "depart_lane": "2",
       "depart": 0.0,
-      "vehicle_id": "veh_13"
+      "vehicle_id": "veh_11"
     },
     {
       "source_id": "cam_d",
@@ -248,7 +220,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 0.0,
-      "vehicle_id": "veh_14"
+      "vehicle_id": "veh_12"
     },
     {
       "source_id": "cam_d",
@@ -262,7 +234,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 0.0,
-      "vehicle_id": "veh_15"
+      "vehicle_id": "veh_13"
     },
     {
       "source_id": "cam_d",
@@ -276,7 +248,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 0.0,
-      "vehicle_id": "veh_16"
+      "vehicle_id": "veh_14"
     },
     {
       "source_id": "cam_a",
@@ -290,7 +262,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 0.17,
-      "vehicle_id": "veh_17"
+      "vehicle_id": "veh_15"
     },
     {
       "source_id": "cam_a",
@@ -304,7 +276,21 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 0.5,
-      "vehicle_id": "veh_18"
+      "vehicle_id": "veh_16"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 15,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 0.5,
+      "vehicle_id": "veh_17"
     },
     {
       "source_id": "cam_b",
@@ -317,6 +303,20 @@
       "turn": "R",
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
+      "depart": 0.67,
+      "vehicle_id": "veh_18"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 20,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
       "depart": 0.67,
       "vehicle_id": "veh_19"
     },
@@ -337,6 +337,20 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
+      "track_id": 12,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 0.83,
+      "vehicle_id": "veh_21"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
       "track_id": 26,
       "class_name": "car",
       "roi_name": "Zone_CR",
@@ -346,7 +360,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 0.83,
-      "vehicle_id": "veh_21"
+      "vehicle_id": "veh_22"
     },
     {
       "source_id": "cam_a",
@@ -360,7 +374,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 1.0,
-      "vehicle_id": "veh_22"
+      "vehicle_id": "veh_23"
     },
     {
       "source_id": "cam_b",
@@ -374,20 +388,6 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 1.17,
-      "vehicle_id": "veh_23"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 15,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 1.33,
       "vehicle_id": "veh_24"
     },
     {
@@ -405,20 +405,6 @@
       "vehicle_id": "veh_25"
     },
     {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 12,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 1.5,
-      "vehicle_id": "veh_26"
-    },
-    {
       "source_id": "cam_a",
       "source_label": "Road A",
       "track_id": 6,
@@ -430,35 +416,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 1.67,
-      "vehicle_id": "veh_27"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 11,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 2.0,
-      "vehicle_id": "veh_28"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 30,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 2.0,
-      "vehicle_id": "veh_29"
+      "vehicle_id": "veh_26"
     },
     {
       "source_id": "cam_b",
@@ -472,7 +430,35 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 2.67,
-      "vehicle_id": "veh_30"
+      "vehicle_id": "veh_27"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 11,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 3.0,
+      "vehicle_id": "veh_28"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 16,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 3.0,
+      "vehicle_id": "veh_29"
     },
     {
       "source_id": "cam_a",
@@ -485,6 +471,20 @@
       "turn": "L",
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
+      "depart": 3.33,
+      "vehicle_id": "veh_30"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 30,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
       "depart": 3.33,
       "vehicle_id": "veh_31"
     },
@@ -545,34 +545,6 @@
       "vehicle_id": "veh_35"
     },
     {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 7,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 4.5,
-      "vehicle_id": "veh_36"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 72,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 4.5,
-      "vehicle_id": "veh_37"
-    },
-    {
       "source_id": "cam_a",
       "source_label": "Road A",
       "track_id": 4,
@@ -584,7 +556,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 4.67,
-      "vehicle_id": "veh_38"
+      "vehicle_id": "veh_36"
     },
     {
       "source_id": "cam_b",
@@ -598,7 +570,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 4.67,
-      "vehicle_id": "veh_39"
+      "vehicle_id": "veh_37"
     },
     {
       "source_id": "cam_a",
@@ -612,7 +584,21 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 5.0,
-      "vehicle_id": "veh_40"
+      "vehicle_id": "veh_38"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 7,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 5.17,
+      "vehicle_id": "veh_39"
     },
     {
       "source_id": "cam_c",
@@ -626,7 +612,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 5.33,
-      "vehicle_id": "veh_41"
+      "vehicle_id": "veh_40"
     },
     {
       "source_id": "cam_d",
@@ -640,7 +626,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 5.33,
-      "vehicle_id": "veh_42"
+      "vehicle_id": "veh_41"
     },
     {
       "source_id": "cam_b",
@@ -654,6 +640,20 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 5.5,
+      "vehicle_id": "veh_42"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 72,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 5.67,
       "vehicle_id": "veh_43"
     },
     {
@@ -701,20 +701,6 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 16,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 6.33,
-      "vehicle_id": "veh_47"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
       "track_id": 86,
       "class_name": "car",
       "roi_name": "Zone_CR",
@@ -724,7 +710,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 6.33,
-      "vehicle_id": "veh_48"
+      "vehicle_id": "veh_47"
     },
     {
       "source_id": "cam_a",
@@ -738,6 +724,20 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 6.83,
+      "vehicle_id": "veh_48"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 48,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 7.33,
       "vehicle_id": "veh_49"
     },
     {
@@ -799,6 +799,20 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
+      "track_id": 93,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 8.33,
+      "vehicle_id": "veh_54"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
       "track_id": 96,
       "class_name": "car",
       "roi_name": "Zone_CR",
@@ -808,7 +822,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 8.5,
-      "vehicle_id": "veh_54"
+      "vehicle_id": "veh_55"
     },
     {
       "source_id": "cam_b",
@@ -822,7 +836,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 8.67,
-      "vehicle_id": "veh_55"
+      "vehicle_id": "veh_56"
     },
     {
       "source_id": "cam_a",
@@ -836,7 +850,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 8.83,
-      "vehicle_id": "veh_56"
+      "vehicle_id": "veh_57"
     },
     {
       "source_id": "cam_a",
@@ -850,7 +864,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 8.83,
-      "vehicle_id": "veh_57"
+      "vehicle_id": "veh_58"
     },
     {
       "source_id": "cam_a",
@@ -864,7 +878,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 8.83,
-      "vehicle_id": "veh_58"
+      "vehicle_id": "veh_59"
     },
     {
       "source_id": "cam_b",
@@ -878,35 +892,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 9.33,
-      "vehicle_id": "veh_59"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 99,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 9.33,
       "vehicle_id": "veh_60"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 48,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 9.67,
-      "vehicle_id": "veh_61"
     },
     {
       "source_id": "cam_c",
@@ -920,7 +906,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 9.67,
-      "vehicle_id": "veh_62"
+      "vehicle_id": "veh_61"
     },
     {
       "source_id": "cam_d",
@@ -934,7 +920,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 10.17,
-      "vehicle_id": "veh_63"
+      "vehicle_id": "veh_62"
     },
     {
       "source_id": "cam_b",
@@ -948,7 +934,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 10.33,
-      "vehicle_id": "veh_64"
+      "vehicle_id": "veh_63"
     },
     {
       "source_id": "cam_a",
@@ -962,7 +948,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 10.5,
-      "vehicle_id": "veh_65"
+      "vehicle_id": "veh_64"
     },
     {
       "source_id": "cam_a",
@@ -976,7 +962,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 10.67,
-      "vehicle_id": "veh_66"
+      "vehicle_id": "veh_65"
     },
     {
       "source_id": "cam_a",
@@ -990,7 +976,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 10.83,
-      "vehicle_id": "veh_67"
+      "vehicle_id": "veh_66"
     },
     {
       "source_id": "cam_b",
@@ -1004,7 +990,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 11.0,
-      "vehicle_id": "veh_68"
+      "vehicle_id": "veh_67"
     },
     {
       "source_id": "cam_b",
@@ -1018,7 +1004,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 11.17,
-      "vehicle_id": "veh_69"
+      "vehicle_id": "veh_68"
     },
     {
       "source_id": "cam_b",
@@ -1032,7 +1018,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 11.5,
-      "vehicle_id": "veh_70"
+      "vehicle_id": "veh_69"
     },
     {
       "source_id": "cam_a",
@@ -1046,7 +1032,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 12.0,
-      "vehicle_id": "veh_71"
+      "vehicle_id": "veh_70"
     },
     {
       "source_id": "cam_b",
@@ -1058,6 +1044,20 @@
       "outgoing_edge": "C2E",
       "turn": "M",
       "route_id": "route_Zone_BM",
+      "depart_lane": "1",
+      "depart": 12.17,
+      "vehicle_id": "veh_71"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 103,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 12.17,
       "vehicle_id": "veh_72"
@@ -1093,34 +1093,6 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 14,
-      "class_name": "car",
-      "roi_name": "Zone_CL",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2S",
-      "turn": "L",
-      "route_id": "route_Zone_CL",
-      "depart_lane": "2",
-      "depart": 12.5,
-      "vehicle_id": "veh_75"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 88,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 12.67,
-      "vehicle_id": "veh_76"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
       "track_id": 125,
       "class_name": "car",
       "roi_name": "Zone_CM",
@@ -1130,7 +1102,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 12.67,
-      "vehicle_id": "veh_77"
+      "vehicle_id": "veh_75"
     },
     {
       "source_id": "cam_c",
@@ -1143,22 +1115,8 @@
       "turn": "R",
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
-      "depart": 12.83,
-      "vehicle_id": "veh_78"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 85,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
       "depart": 13.0,
-      "vehicle_id": "veh_79"
+      "vehicle_id": "veh_76"
     },
     {
       "source_id": "cam_a",
@@ -1172,7 +1130,21 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 13.17,
-      "vehicle_id": "veh_80"
+      "vehicle_id": "veh_77"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 14,
+      "class_name": "car",
+      "roi_name": "Zone_CL",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2S",
+      "turn": "L",
+      "route_id": "route_Zone_CL",
+      "depart_lane": "2",
+      "depart": 13.17,
+      "vehicle_id": "veh_78"
     },
     {
       "source_id": "cam_b",
@@ -1186,7 +1158,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 13.33,
-      "vehicle_id": "veh_81"
+      "vehicle_id": "veh_79"
     },
     {
       "source_id": "cam_b",
@@ -1200,6 +1172,34 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 13.5,
+      "vehicle_id": "veh_80"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 85,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 13.5,
+      "vehicle_id": "veh_81"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 88,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 13.67,
       "vehicle_id": "veh_82"
     },
     {
@@ -1233,20 +1233,6 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 103,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 14.67,
-      "vehicle_id": "veh_85"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
       "track_id": 141,
       "class_name": "car",
       "roi_name": "Zone_CR",
@@ -1256,21 +1242,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 14.67,
-      "vehicle_id": "veh_86"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 144,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 14.83,
-      "vehicle_id": "veh_87"
+      "vehicle_id": "veh_85"
     },
     {
       "source_id": "cam_a",
@@ -1284,7 +1256,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 15.0,
-      "vehicle_id": "veh_88"
+      "vehicle_id": "veh_86"
     },
     {
       "source_id": "cam_b",
@@ -1298,7 +1270,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 15.17,
-      "vehicle_id": "veh_89"
+      "vehicle_id": "veh_87"
     },
     {
       "source_id": "cam_c",
@@ -1312,7 +1284,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 15.17,
-      "vehicle_id": "veh_90"
+      "vehicle_id": "veh_88"
     },
     {
       "source_id": "cam_b",
@@ -1326,7 +1298,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 15.5,
-      "vehicle_id": "veh_91"
+      "vehicle_id": "veh_89"
     },
     {
       "source_id": "cam_c",
@@ -1340,7 +1312,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 16.17,
-      "vehicle_id": "veh_92"
+      "vehicle_id": "veh_90"
     },
     {
       "source_id": "cam_c",
@@ -1354,7 +1326,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 16.17,
-      "vehicle_id": "veh_93"
+      "vehicle_id": "veh_91"
     },
     {
       "source_id": "cam_b",
@@ -1368,7 +1340,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 16.33,
-      "vehicle_id": "veh_94"
+      "vehicle_id": "veh_92"
     },
     {
       "source_id": "cam_d",
@@ -1382,7 +1354,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 16.5,
-      "vehicle_id": "veh_95"
+      "vehicle_id": "veh_93"
     },
     {
       "source_id": "cam_a",
@@ -1396,7 +1368,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 17.17,
-      "vehicle_id": "veh_96"
+      "vehicle_id": "veh_94"
     },
     {
       "source_id": "cam_b",
@@ -1410,21 +1382,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 17.17,
-      "vehicle_id": "veh_97"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 13,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 17.5,
-      "vehicle_id": "veh_98"
+      "vehicle_id": "veh_95"
     },
     {
       "source_id": "cam_c",
@@ -1437,8 +1395,8 @@
       "turn": "M",
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
-      "depart": 17.67,
-      "vehicle_id": "veh_99"
+      "depart": 17.17,
+      "vehicle_id": "veh_96"
     },
     {
       "source_id": "cam_a",
@@ -1452,7 +1410,21 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 19.17,
-      "vehicle_id": "veh_100"
+      "vehicle_id": "veh_97"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 13,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 19.33,
+      "vehicle_id": "veh_98"
     },
     {
       "source_id": "cam_a",
@@ -1466,7 +1438,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 19.5,
-      "vehicle_id": "veh_101"
+      "vehicle_id": "veh_99"
     },
     {
       "source_id": "cam_b",
@@ -1480,7 +1452,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 19.83,
-      "vehicle_id": "veh_102"
+      "vehicle_id": "veh_100"
     },
     {
       "source_id": "cam_b",
@@ -1494,7 +1466,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 20.17,
-      "vehicle_id": "veh_103"
+      "vehicle_id": "veh_101"
     },
     {
       "source_id": "cam_b",
@@ -1508,7 +1480,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 20.33,
-      "vehicle_id": "veh_104"
+      "vehicle_id": "veh_102"
     },
     {
       "source_id": "cam_b",
@@ -1522,21 +1494,21 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 20.33,
-      "vehicle_id": "veh_105"
+      "vehicle_id": "veh_103"
     },
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 183,
+      "track_id": 22,
       "class_name": "car",
-      "roi_name": "Zone_CR",
+      "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 20.33,
-      "vehicle_id": "veh_106"
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 20.5,
+      "vehicle_id": "veh_104"
     },
     {
       "source_id": "cam_c",
@@ -1550,7 +1522,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 20.67,
-      "vehicle_id": "veh_107"
+      "vehicle_id": "veh_105"
     },
     {
       "source_id": "cam_b",
@@ -1564,7 +1536,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 20.83,
-      "vehicle_id": "veh_108"
+      "vehicle_id": "veh_106"
     },
     {
       "source_id": "cam_a",
@@ -1578,12 +1550,12 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 21.0,
-      "vehicle_id": "veh_109"
+      "vehicle_id": "veh_107"
     },
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 22,
+      "track_id": 190,
       "class_name": "truck",
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
@@ -1591,8 +1563,8 @@
       "turn": "M",
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
-      "depart": 21.5,
-      "vehicle_id": "veh_110"
+      "depart": 21.17,
+      "vehicle_id": "veh_108"
     },
     {
       "source_id": "cam_c",
@@ -1606,7 +1578,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 21.5,
-      "vehicle_id": "veh_111"
+      "vehicle_id": "veh_109"
     },
     {
       "source_id": "cam_a",
@@ -1620,7 +1592,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 22.0,
-      "vehicle_id": "veh_112"
+      "vehicle_id": "veh_110"
     },
     {
       "source_id": "cam_b",
@@ -1634,7 +1606,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 22.17,
-      "vehicle_id": "veh_113"
+      "vehicle_id": "veh_111"
     },
     {
       "source_id": "cam_b",
@@ -1648,7 +1620,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 23.0,
-      "vehicle_id": "veh_114"
+      "vehicle_id": "veh_112"
     },
     {
       "source_id": "cam_b",
@@ -1662,7 +1634,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 23.0,
-      "vehicle_id": "veh_115"
+      "vehicle_id": "veh_113"
     },
     {
       "source_id": "cam_b",
@@ -1676,21 +1648,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 23.33,
-      "vehicle_id": "veh_116"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 210,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 23.83,
-      "vehicle_id": "veh_117"
+      "vehicle_id": "veh_114"
     },
     {
       "source_id": "cam_a",
@@ -1704,7 +1662,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 24.17,
-      "vehicle_id": "veh_118"
+      "vehicle_id": "veh_115"
     },
     {
       "source_id": "cam_a",
@@ -1718,7 +1676,21 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 24.17,
-      "vehicle_id": "veh_119"
+      "vehicle_id": "veh_116"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 210,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 24.5,
+      "vehicle_id": "veh_117"
     },
     {
       "source_id": "cam_b",
@@ -1732,7 +1704,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 24.67,
-      "vehicle_id": "veh_120"
+      "vehicle_id": "veh_118"
     },
     {
       "source_id": "cam_b",
@@ -1746,7 +1718,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 24.83,
-      "vehicle_id": "veh_121"
+      "vehicle_id": "veh_119"
     },
     {
       "source_id": "cam_a",
@@ -1760,7 +1732,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 25.33,
-      "vehicle_id": "veh_122"
+      "vehicle_id": "veh_120"
     },
     {
       "source_id": "cam_c",
@@ -1774,7 +1746,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 25.67,
-      "vehicle_id": "veh_123"
+      "vehicle_id": "veh_121"
     },
     {
       "source_id": "cam_b",
@@ -1788,7 +1760,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 25.83,
-      "vehicle_id": "veh_124"
+      "vehicle_id": "veh_122"
     },
     {
       "source_id": "cam_a",
@@ -1802,7 +1774,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 26.33,
-      "vehicle_id": "veh_125"
+      "vehicle_id": "veh_123"
     },
     {
       "source_id": "cam_a",
@@ -1816,21 +1788,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 26.67,
-      "vehicle_id": "veh_126"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 211,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 27.0,
-      "vehicle_id": "veh_127"
+      "vehicle_id": "veh_124"
     },
     {
       "source_id": "cam_c",
@@ -1844,7 +1802,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 27.5,
-      "vehicle_id": "veh_128"
+      "vehicle_id": "veh_125"
     },
     {
       "source_id": "cam_c",
@@ -1858,7 +1816,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 27.83,
-      "vehicle_id": "veh_129"
+      "vehicle_id": "veh_126"
     },
     {
       "source_id": "cam_a",
@@ -1872,7 +1830,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 28.0,
-      "vehicle_id": "veh_130"
+      "vehicle_id": "veh_127"
     },
     {
       "source_id": "cam_b",
@@ -1886,7 +1844,21 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 28.0,
-      "vehicle_id": "veh_131"
+      "vehicle_id": "veh_128"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 230,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 28.0,
+      "vehicle_id": "veh_129"
     },
     {
       "source_id": "cam_b",
@@ -1900,7 +1872,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 28.33,
-      "vehicle_id": "veh_132"
+      "vehicle_id": "veh_130"
     },
     {
       "source_id": "cam_d",
@@ -1914,7 +1886,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 28.33,
-      "vehicle_id": "veh_133"
+      "vehicle_id": "veh_131"
     },
     {
       "source_id": "cam_a",
@@ -1928,6 +1900,34 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 28.5,
+      "vehicle_id": "veh_132"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 211,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 28.67,
+      "vehicle_id": "veh_133"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 235,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 28.83,
       "vehicle_id": "veh_134"
     },
     {
@@ -1989,20 +1989,6 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 230,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 29.5,
-      "vehicle_id": "veh_139"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
       "track_id": 256,
       "class_name": "car",
       "roi_name": "Zone_CM",
@@ -2012,7 +1998,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 29.5,
-      "vehicle_id": "veh_140"
+      "vehicle_id": "veh_139"
     },
     {
       "source_id": "cam_a",
@@ -2026,7 +2012,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 30.0,
-      "vehicle_id": "veh_141"
+      "vehicle_id": "veh_140"
     },
     {
       "source_id": "cam_c",
@@ -2040,7 +2026,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 30.0,
-      "vehicle_id": "veh_142"
+      "vehicle_id": "veh_141"
     },
     {
       "source_id": "cam_c",
@@ -2054,7 +2040,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 30.17,
-      "vehicle_id": "veh_143"
+      "vehicle_id": "veh_142"
     },
     {
       "source_id": "cam_d",
@@ -2068,7 +2054,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 31.0,
-      "vehicle_id": "veh_144"
+      "vehicle_id": "veh_143"
     },
     {
       "source_id": "cam_c",
@@ -2082,7 +2068,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 31.33,
-      "vehicle_id": "veh_145"
+      "vehicle_id": "veh_144"
     },
     {
       "source_id": "cam_c",
@@ -2096,7 +2082,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 31.5,
-      "vehicle_id": "veh_146"
+      "vehicle_id": "veh_145"
     },
     {
       "source_id": "cam_d",
@@ -2110,7 +2096,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 31.83,
-      "vehicle_id": "veh_147"
+      "vehicle_id": "veh_146"
     },
     {
       "source_id": "cam_c",
@@ -2124,7 +2110,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 32.0,
-      "vehicle_id": "veh_148"
+      "vehicle_id": "veh_147"
     },
     {
       "source_id": "cam_d",
@@ -2138,7 +2124,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 33.17,
-      "vehicle_id": "veh_149"
+      "vehicle_id": "veh_148"
     },
     {
       "source_id": "cam_c",
@@ -2152,6 +2138,20 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 33.33,
+      "vehicle_id": "veh_149"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 248,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 33.67,
       "vehicle_id": "veh_150"
     },
     {
@@ -2199,7 +2199,7 @@
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 248,
+      "track_id": 234,
       "class_name": "car",
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
@@ -2209,20 +2209,6 @@
       "depart_lane": "1",
       "depart": 34.33,
       "vehicle_id": "veh_154"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 316,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 34.33,
-      "vehicle_id": "veh_155"
     },
     {
       "source_id": "cam_d",
@@ -2236,21 +2222,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 34.33,
-      "vehicle_id": "veh_156"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 234,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 34.5,
-      "vehicle_id": "veh_157"
+      "vehicle_id": "veh_155"
     },
     {
       "source_id": "cam_a",
@@ -2264,7 +2236,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 34.83,
-      "vehicle_id": "veh_158"
+      "vehicle_id": "veh_156"
     },
     {
       "source_id": "cam_b",
@@ -2278,7 +2250,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 35.17,
-      "vehicle_id": "veh_159"
+      "vehicle_id": "veh_157"
     },
     {
       "source_id": "cam_b",
@@ -2292,7 +2264,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 35.33,
-      "vehicle_id": "veh_160"
+      "vehicle_id": "veh_158"
     },
     {
       "source_id": "cam_b",
@@ -2306,7 +2278,7 @@
       "route_id": "route_Zone_BL",
       "depart_lane": "2",
       "depart": 35.33,
-      "vehicle_id": "veh_161"
+      "vehicle_id": "veh_159"
     },
     {
       "source_id": "cam_d",
@@ -2320,7 +2292,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 35.33,
-      "vehicle_id": "veh_162"
+      "vehicle_id": "veh_160"
     },
     {
       "source_id": "cam_c",
@@ -2334,7 +2306,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 35.5,
-      "vehicle_id": "veh_163"
+      "vehicle_id": "veh_161"
     },
     {
       "source_id": "cam_c",
@@ -2348,7 +2320,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 35.5,
-      "vehicle_id": "veh_164"
+      "vehicle_id": "veh_162"
     },
     {
       "source_id": "cam_c",
@@ -2362,7 +2334,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 35.67,
-      "vehicle_id": "veh_165"
+      "vehicle_id": "veh_163"
     },
     {
       "source_id": "cam_c",
@@ -2376,7 +2348,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 35.67,
-      "vehicle_id": "veh_166"
+      "vehicle_id": "veh_164"
     },
     {
       "source_id": "cam_a",
@@ -2390,7 +2362,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 36.17,
-      "vehicle_id": "veh_167"
+      "vehicle_id": "veh_165"
     },
     {
       "source_id": "cam_b",
@@ -2404,7 +2376,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 36.17,
-      "vehicle_id": "veh_168"
+      "vehicle_id": "veh_166"
     },
     {
       "source_id": "cam_c",
@@ -2418,7 +2390,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 36.33,
-      "vehicle_id": "veh_169"
+      "vehicle_id": "veh_167"
     },
     {
       "source_id": "cam_a",
@@ -2432,21 +2404,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 36.67,
-      "vehicle_id": "veh_170"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 361,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 36.67,
-      "vehicle_id": "veh_171"
+      "vehicle_id": "veh_168"
     },
     {
       "source_id": "cam_c",
@@ -2460,7 +2418,21 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 36.83,
-      "vehicle_id": "veh_172"
+      "vehicle_id": "veh_169"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 363,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 36.83,
+      "vehicle_id": "veh_170"
     },
     {
       "source_id": "cam_a",
@@ -2474,21 +2446,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 37.0,
-      "vehicle_id": "veh_173"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 372,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 37.67,
-      "vehicle_id": "veh_174"
+      "vehicle_id": "veh_171"
     },
     {
       "source_id": "cam_c",
@@ -2502,7 +2460,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 37.67,
-      "vehicle_id": "veh_175"
+      "vehicle_id": "veh_172"
     },
     {
       "source_id": "cam_d",
@@ -2516,7 +2474,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 37.67,
-      "vehicle_id": "veh_176"
+      "vehicle_id": "veh_173"
     },
     {
       "source_id": "cam_b",
@@ -2530,21 +2488,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 37.83,
-      "vehicle_id": "veh_177"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 363,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 37.83,
-      "vehicle_id": "veh_178"
+      "vehicle_id": "veh_174"
     },
     {
       "source_id": "cam_a",
@@ -2558,7 +2502,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 38.17,
-      "vehicle_id": "veh_179"
+      "vehicle_id": "veh_175"
     },
     {
       "source_id": "cam_d",
@@ -2572,7 +2516,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 38.17,
-      "vehicle_id": "veh_180"
+      "vehicle_id": "veh_176"
     },
     {
       "source_id": "cam_a",
@@ -2586,7 +2530,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 39.0,
-      "vehicle_id": "veh_181"
+      "vehicle_id": "veh_177"
     },
     {
       "source_id": "cam_d",
@@ -2600,7 +2544,7 @@
       "route_id": "route_Zone_DM",
       "depart_lane": "1",
       "depart": 39.0,
-      "vehicle_id": "veh_182"
+      "vehicle_id": "veh_178"
     },
     {
       "source_id": "cam_d",
@@ -2614,7 +2558,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 39.33,
-      "vehicle_id": "veh_183"
+      "vehicle_id": "veh_179"
     },
     {
       "source_id": "cam_b",
@@ -2628,7 +2572,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 39.67,
-      "vehicle_id": "veh_184"
+      "vehicle_id": "veh_180"
     },
     {
       "source_id": "cam_c",
@@ -2642,7 +2586,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 39.83,
-      "vehicle_id": "veh_185"
+      "vehicle_id": "veh_181"
     },
     {
       "source_id": "cam_b",
@@ -2656,7 +2600,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 40.17,
-      "vehicle_id": "veh_186"
+      "vehicle_id": "veh_182"
     },
     {
       "source_id": "cam_a",
@@ -2670,7 +2614,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 41.33,
-      "vehicle_id": "veh_187"
+      "vehicle_id": "veh_183"
     },
     {
       "source_id": "cam_a",
@@ -2684,7 +2628,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 41.33,
-      "vehicle_id": "veh_188"
+      "vehicle_id": "veh_184"
     },
     {
       "source_id": "cam_b",
@@ -2698,7 +2642,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 41.33,
-      "vehicle_id": "veh_189"
+      "vehicle_id": "veh_185"
     },
     {
       "source_id": "cam_c",
@@ -2712,7 +2656,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 41.5,
-      "vehicle_id": "veh_190"
+      "vehicle_id": "veh_186"
     },
     {
       "source_id": "cam_c",
@@ -2726,21 +2670,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 42.0,
-      "vehicle_id": "veh_191"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 328,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 42.17,
-      "vehicle_id": "veh_192"
+      "vehicle_id": "veh_187"
     },
     {
       "source_id": "cam_b",
@@ -2754,7 +2684,21 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 42.33,
-      "vehicle_id": "veh_193"
+      "vehicle_id": "veh_188"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 328,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 42.5,
+      "vehicle_id": "veh_189"
     },
     {
       "source_id": "cam_b",
@@ -2768,7 +2712,7 @@
       "route_id": "route_Zone_BR",
       "depart_lane": "0",
       "depart": 42.83,
-      "vehicle_id": "veh_194"
+      "vehicle_id": "veh_190"
     },
     {
       "source_id": "cam_a",
@@ -2782,7 +2726,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 43.33,
-      "vehicle_id": "veh_195"
+      "vehicle_id": "veh_191"
     },
     {
       "source_id": "cam_b",
@@ -2796,7 +2740,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 44.0,
-      "vehicle_id": "veh_196"
+      "vehicle_id": "veh_192"
     },
     {
       "source_id": "cam_b",
@@ -2810,7 +2754,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 44.33,
-      "vehicle_id": "veh_197"
+      "vehicle_id": "veh_193"
     },
     {
       "source_id": "cam_a",
@@ -2824,7 +2768,35 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 44.5,
-      "vehicle_id": "veh_198"
+      "vehicle_id": "veh_194"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 420,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 44.5,
+      "vehicle_id": "veh_195"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 397,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 44.83,
+      "vehicle_id": "veh_196"
     },
     {
       "source_id": "cam_b",
@@ -2838,35 +2810,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 45.0,
-      "vehicle_id": "veh_199"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 299,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 45.0,
-      "vehicle_id": "veh_200"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 420,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 45.0,
-      "vehicle_id": "veh_201"
+      "vehicle_id": "veh_197"
     },
     {
       "source_id": "cam_a",
@@ -2880,7 +2824,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 45.17,
-      "vehicle_id": "veh_202"
+      "vehicle_id": "veh_198"
     },
     {
       "source_id": "cam_c",
@@ -2894,7 +2838,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 45.5,
-      "vehicle_id": "veh_203"
+      "vehicle_id": "veh_199"
     },
     {
       "source_id": "cam_b",
@@ -2908,35 +2852,7 @@
       "route_id": "route_Zone_BL",
       "depart_lane": "2",
       "depart": 45.67,
-      "vehicle_id": "veh_204"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 397,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 45.83,
-      "vehicle_id": "veh_205"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 451,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 45.83,
-      "vehicle_id": "veh_206"
+      "vehicle_id": "veh_200"
     },
     {
       "source_id": "cam_a",
@@ -2950,7 +2866,21 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 46.17,
-      "vehicle_id": "veh_207"
+      "vehicle_id": "veh_201"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 299,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 46.33,
+      "vehicle_id": "veh_202"
     },
     {
       "source_id": "cam_c",
@@ -2964,7 +2894,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 46.33,
-      "vehicle_id": "veh_208"
+      "vehicle_id": "veh_203"
     },
     {
       "source_id": "cam_c",
@@ -2978,7 +2908,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 46.5,
-      "vehicle_id": "veh_209"
+      "vehicle_id": "veh_204"
     },
     {
       "source_id": "cam_d",
@@ -2992,7 +2922,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 47.0,
-      "vehicle_id": "veh_210"
+      "vehicle_id": "veh_205"
     },
     {
       "source_id": "cam_a",
@@ -3006,7 +2936,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 47.5,
-      "vehicle_id": "veh_211"
+      "vehicle_id": "veh_206"
     },
     {
       "source_id": "cam_d",
@@ -3020,7 +2950,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 47.67,
-      "vehicle_id": "veh_212"
+      "vehicle_id": "veh_207"
     },
     {
       "source_id": "cam_a",
@@ -3034,7 +2964,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 47.83,
-      "vehicle_id": "veh_213"
+      "vehicle_id": "veh_208"
     },
     {
       "source_id": "cam_a",
@@ -3048,7 +2978,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 48.0,
-      "vehicle_id": "veh_214"
+      "vehicle_id": "veh_209"
     },
     {
       "source_id": "cam_c",
@@ -3062,7 +2992,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 48.17,
-      "vehicle_id": "veh_215"
+      "vehicle_id": "veh_210"
     },
     {
       "source_id": "cam_c",
@@ -3076,7 +3006,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 48.33,
-      "vehicle_id": "veh_216"
+      "vehicle_id": "veh_211"
     },
     {
       "source_id": "cam_b",
@@ -3090,7 +3020,21 @@
       "route_id": "route_Zone_BL",
       "depart_lane": "2",
       "depart": 48.67,
-      "vehicle_id": "veh_217"
+      "vehicle_id": "veh_212"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 476,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 48.83,
+      "vehicle_id": "veh_213"
     },
     {
       "source_id": "cam_b",
@@ -3104,7 +3048,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 49.17,
-      "vehicle_id": "veh_218"
+      "vehicle_id": "veh_214"
     },
     {
       "source_id": "cam_b",
@@ -3118,7 +3062,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 49.83,
-      "vehicle_id": "veh_219"
+      "vehicle_id": "veh_215"
     },
     {
       "source_id": "cam_a",
@@ -3132,7 +3076,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 50.17,
-      "vehicle_id": "veh_220"
+      "vehicle_id": "veh_216"
     },
     {
       "source_id": "cam_a",
@@ -3146,7 +3090,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 50.17,
-      "vehicle_id": "veh_221"
+      "vehicle_id": "veh_217"
     },
     {
       "source_id": "cam_b",
@@ -3160,7 +3104,7 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 50.17,
-      "vehicle_id": "veh_222"
+      "vehicle_id": "veh_218"
     },
     {
       "source_id": "cam_c",
@@ -3174,21 +3118,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 50.17,
-      "vehicle_id": "veh_223"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 476,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 50.33,
-      "vehicle_id": "veh_224"
+      "vehicle_id": "veh_219"
     },
     {
       "source_id": "cam_d",
@@ -3202,7 +3132,7 @@
       "route_id": "route_Zone_DR",
       "depart_lane": "0",
       "depart": 50.33,
-      "vehicle_id": "veh_225"
+      "vehicle_id": "veh_220"
     },
     {
       "source_id": "cam_b",
@@ -3216,7 +3146,21 @@
       "route_id": "route_Zone_BM",
       "depart_lane": "1",
       "depart": 50.5,
-      "vehicle_id": "veh_226"
+      "vehicle_id": "veh_221"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 460,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 50.5,
+      "vehicle_id": "veh_222"
     },
     {
       "source_id": "cam_c",
@@ -3230,7 +3174,7 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 50.5,
-      "vehicle_id": "veh_227"
+      "vehicle_id": "veh_223"
     },
     {
       "source_id": "cam_c",
@@ -3244,21 +3188,21 @@
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
       "depart": 51.17,
-      "vehicle_id": "veh_228"
+      "vehicle_id": "veh_224"
     },
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 512,
+      "track_id": 481,
       "class_name": "car",
-      "roi_name": "Zone_CR",
+      "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 51.5,
-      "vehicle_id": "veh_229"
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 52.17,
+      "vehicle_id": "veh_225"
     },
     {
       "source_id": "cam_a",
@@ -3272,7 +3216,35 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 52.33,
-      "vehicle_id": "veh_230"
+      "vehicle_id": "veh_226"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 437,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 52.33,
+      "vehicle_id": "veh_227"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 512,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 52.33,
+      "vehicle_id": "veh_228"
     },
     {
       "source_id": "cam_a",
@@ -3286,7 +3258,21 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 52.5,
-      "vehicle_id": "veh_231"
+      "vehicle_id": "veh_229"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 406,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 52.67,
+      "vehicle_id": "veh_230"
     },
     {
       "source_id": "cam_c",
@@ -3299,27 +3285,13 @@
       "turn": "R",
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
-      "depart": 52.67,
-      "vehicle_id": "veh_232"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 481,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
       "depart": 53.17,
-      "vehicle_id": "veh_233"
+      "vehicle_id": "veh_231"
     },
     {
       "source_id": "cam_c",
       "source_label": "Road C",
-      "track_id": 437,
+      "track_id": 525,
       "class_name": "car",
       "roi_name": "Zone_CM",
       "incoming_edge": "E2C",
@@ -3327,8 +3299,8 @@
       "turn": "M",
       "route_id": "route_Zone_CM",
       "depart_lane": "1",
-      "depart": 54.0,
-      "vehicle_id": "veh_234"
+      "depart": 53.5,
+      "vehicle_id": "veh_232"
     },
     {
       "source_id": "cam_c",
@@ -3342,21 +3314,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 54.0,
-      "vehicle_id": "veh_235"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 406,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 54.5,
-      "vehicle_id": "veh_236"
+      "vehicle_id": "veh_233"
     },
     {
       "source_id": "cam_a",
@@ -3370,7 +3328,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 54.67,
-      "vehicle_id": "veh_237"
+      "vehicle_id": "veh_234"
     },
     {
       "source_id": "cam_a",
@@ -3384,35 +3342,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 54.83,
-      "vehicle_id": "veh_238"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 467,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 56.0,
-      "vehicle_id": "veh_239"
-    },
-    {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 491,
-      "class_name": "car",
-      "roi_name": "Zone_CR",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2N",
-      "turn": "R",
-      "route_id": "route_Zone_CR",
-      "depart_lane": "0",
-      "depart": 56.0,
-      "vehicle_id": "veh_240"
+      "vehicle_id": "veh_235"
     },
     {
       "source_id": "cam_a",
@@ -3426,7 +3356,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 56.33,
-      "vehicle_id": "veh_241"
+      "vehicle_id": "veh_236"
     },
     {
       "source_id": "cam_a",
@@ -3440,7 +3370,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 56.33,
-      "vehicle_id": "veh_242"
+      "vehicle_id": "veh_237"
     },
     {
       "source_id": "cam_c",
@@ -3454,7 +3384,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 56.67,
-      "vehicle_id": "veh_243"
+      "vehicle_id": "veh_238"
     },
     {
       "source_id": "cam_a",
@@ -3468,7 +3398,21 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 57.67,
-      "vehicle_id": "veh_244"
+      "vehicle_id": "veh_239"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 467,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 57.83,
+      "vehicle_id": "veh_240"
     },
     {
       "source_id": "cam_c",
@@ -3482,7 +3426,7 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 57.83,
-      "vehicle_id": "veh_245"
+      "vehicle_id": "veh_241"
     },
     {
       "source_id": "cam_a",
@@ -3496,7 +3440,35 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 58.0,
-      "vehicle_id": "veh_246"
+      "vehicle_id": "veh_242"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 491,
+      "class_name": "car",
+      "roi_name": "Zone_CR",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2N",
+      "turn": "R",
+      "route_id": "route_Zone_CR",
+      "depart_lane": "0",
+      "depart": 58.0,
+      "vehicle_id": "veh_243"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 549,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 58.33,
+      "vehicle_id": "veh_244"
     },
     {
       "source_id": "cam_c",
@@ -3510,6 +3482,34 @@
       "route_id": "route_Zone_CR",
       "depart_lane": "0",
       "depart": 58.33,
+      "vehicle_id": "veh_245"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 529,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 58.5,
+      "vehicle_id": "veh_246"
+    },
+    {
+      "source_id": "cam_c",
+      "source_label": "Road C",
+      "track_id": 474,
+      "class_name": "car",
+      "roi_name": "Zone_CM",
+      "incoming_edge": "E2C",
+      "outgoing_edge": "C2W",
+      "turn": "M",
+      "route_id": "route_Zone_CM",
+      "depart_lane": "1",
+      "depart": 59.0,
       "vehicle_id": "veh_247"
     },
     {
@@ -3527,20 +3527,6 @@
       "vehicle_id": "veh_248"
     },
     {
-      "source_id": "cam_c",
-      "source_label": "Road C",
-      "track_id": 529,
-      "class_name": "car",
-      "roi_name": "Zone_CM",
-      "incoming_edge": "E2C",
-      "outgoing_edge": "C2W",
-      "turn": "M",
-      "route_id": "route_Zone_CM",
-      "depart_lane": "1",
-      "depart": 59.33,
-      "vehicle_id": "veh_249"
-    },
-    {
       "source_id": "cam_a",
       "source_label": "Road A",
       "track_id": 312,
@@ -3552,7 +3538,7 @@
       "route_id": "route_Zone_AM",
       "depart_lane": "1",
       "depart": 59.83,
-      "vehicle_id": "veh_250"
+      "vehicle_id": "veh_249"
     },
     {
       "source_id": "cam_a",
@@ -3566,7 +3552,7 @@
       "route_id": "route_Zone_AL",
       "depart_lane": "2",
       "depart": 60.83,
-      "vehicle_id": "veh_251"
+      "vehicle_id": "veh_250"
     },
     {
       "source_id": "cam_a",
@@ -3580,7 +3566,7 @@
       "route_id": "route_Zone_AR",
       "depart_lane": "0",
       "depart": 60.83,
-      "vehicle_id": "veh_252"
+      "vehicle_id": "veh_251"
     }
   ]
 }

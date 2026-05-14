@@ -9,7 +9,7 @@ class SumoGymEnv(gym.Env):
     """
     Môi trường Gymnasium điều khiển đèn giao thông theo thời gian thực sử dụng TraCI.
     """
-    def __init__(self, sumocfg, tl_id="Center", delta_time=5, yellow_time=4, min_green=10, use_gui=False, label="default"):
+    def __init__(self, sumocfg, tl_id="Center", delta_time=5, yellow_time=4, min_green=10, max_steps=360, use_gui=False, label="default"):
         super().__init__()
         self.sumocfg = sumocfg
         self.tl_id = tl_id
@@ -40,7 +40,16 @@ class SumoGymEnv(gym.Env):
 
         self.is_closed = True
         self.current_step = 0
-        self.max_steps = 360  # Mô phỏng khoảng 30 phút (360 * 5s)
+        self.max_steps = max_steps
+
+        # Khởi tạo các biến lưu trữ metrics để tính trung bình tích lũy (CMA)
+        self.cumulative_metrics = {
+            "timeLoss": 0.0,
+            "waitingTime": 0.0,
+            "density": 0.0,
+            "speed": 0.0,
+            "step_count": 0
+        }
 
     def _get_obs(self):
         # Lấy danh sách các làn được điều khiển bởi cột đèn này
@@ -75,6 +84,78 @@ class SumoGymEnv(gym.Env):
             
         return np.array(queues + wait_times + [is_ns_green], dtype=np.float32)
 
+    def get_live_metrics(self):
+        """
+        Trích xuất các chỉ số hiệu suất thời gian thực từ TraCI.
+        """
+        if self.conn is None:
+            return None
+
+        # Danh sách các cạnh cần theo dõi (tương ứng với Benchmark)
+        edges = ['N2C', 'E2C', 'S2C', 'W2C']
+        
+        step_timeLoss = 0.0
+        step_waitingTime = 0.0
+        step_density = 0.0
+        step_speed = 0.0
+        edge_count = len(edges)
+
+        for edge in edges:
+            # Lấy thông số từ TraCI (giống cách SUMO tính trong XML)
+            # timeLoss: s, waitingTime: s, density: xe/km, speed: m/s
+            step_timeLoss += self.conn.edge.getWaitingTime(edge) # TraCI trả về tổng waiting time của các xe trên cạnh
+            # Lưu ý: TraCI edge.getWaitingTime trả về tổng waiting time tích lũy của xe hiện tại. 
+            # Để khớp với benchmark XML (thường là trung bình), ta cần xử lý cẩn thận.
+            
+            # Sử dụng cách tính tương đương Benchmark:
+            v_ids = self.conn.edge.getLastStepVehicleIDs(edge)
+            num_vehicles = len(v_ids)
+            
+            if num_vehicles > 0:
+                s_speed = sum([self.conn.vehicle.getSpeed(v) for v in v_ids]) / num_vehicles
+                s_wait = sum([self.conn.vehicle.getWaitingTime(v) for v in v_ids]) / num_vehicles
+                s_loss = sum([self.conn.vehicle.getTimeLoss(v) for v in v_ids]) / num_vehicles
+            else:
+                s_speed = self.conn.edge.getLastStepMeanSpeed(edge)
+                s_wait = 0.0
+                s_loss = 0.0
+            
+            # Density (xe/km) = n / (L / 1000)
+            edge_length = sum([self.conn.lane.getLength(l) for l in self.conn.trafficlight.getControlledLanes(self.tl_id) if self.conn.lane.getEdgeID(l) == edge])
+            if edge_length == 0: edge_length = 100 # fallback
+            s_density = num_vehicles / (edge_length / 1000.0)
+
+            step_timeLoss += s_loss
+            step_waitingTime += s_wait
+            step_density += s_density
+            step_speed += s_speed
+
+        # Trung bình của các cạnh trong bước này
+        metrics = {
+            "timeLoss": step_timeLoss / edge_count,
+            "waitingTime": step_waitingTime / edge_count,
+            "density": step_density / edge_count,
+            "speed": step_speed / edge_count
+        }
+
+        # Cập nhật tích lũy
+        self.cumulative_metrics["timeLoss"] += metrics["timeLoss"]
+        self.cumulative_metrics["waitingTime"] += metrics["waitingTime"]
+        self.cumulative_metrics["density"] += metrics["density"]
+        self.cumulative_metrics["speed"] += metrics["speed"]
+        self.cumulative_metrics["step_count"] += 1
+
+        # Tính CMA
+        count = self.cumulative_metrics["step_count"]
+        cma = {
+            "avg_timeLoss": self.cumulative_metrics["timeLoss"] / count,
+            "avg_waitingTime": self.cumulative_metrics["waitingTime"] / count,
+            "avg_density": self.cumulative_metrics["density"] / count,
+            "avg_speed": self.cumulative_metrics["speed"] / count
+        }
+        
+        return metrics, cma
+
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         
@@ -94,6 +175,10 @@ class SumoGymEnv(gym.Env):
         self.is_closed = False
         self.current_step = 0
         self.time_since_last_phase_change = 0
+        
+        # Reset metrics tích lũy khi bắt đầu simulation mới
+        for key in self.cumulative_metrics:
+            self.cumulative_metrics[key] = 0.0
         
         return self._get_obs(), {}
 
@@ -146,12 +231,15 @@ class SumoGymEnv(gym.Env):
             self.time_since_last_phase_change += self.delta_time
             for _ in range(self.delta_time):
                 self.conn.simulationStep()
-            
+        
+        # Cập nhật metrics sau mỗi bước delta_time
+        self.get_live_metrics()
+
         self.current_step += 1
         obs = self._get_obs()
         
-        # --- LOGIC REWARD "NGOAN VỪA PHẢI" ---
-        # 1. Hình phạt cho ùn tắc (Cân bằng giữa Số xe và Thời gian chờ)
+        # --- LOGIC REWARD "CẢI TIẾN" ---
+        # 1. Hình phạt cho ùn tắc (Tăng trọng số cho WaitingTime để AI không để xe chờ quá lâu)
         # obs[:4]: Halting count, obs[4:8]: WaitingTime/100
         reward = -(np.sum(obs[:4]) * 1.0 + np.sum(obs[4:8]) * 0.5)
         

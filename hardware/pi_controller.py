@@ -15,14 +15,27 @@ SERIAL_PORT = '/dev/ttyUSB0'  # Kiểm tra: ls /dev/tty* | grep -E 'USB|ACM'
 BAUD_RATE = 9600
 
 class PiController(BaseController):
-    def __init__(self, port=SERIAL_PORT, baud=BAUD_RATE):
-        try:
-            self.ser = serial.Serial(port, baud, timeout=2)
-            time.sleep(2)  # Đợi Arduino khởi động lại
-            print(f"[PiController] Ket noi Arduino tai {port} -- OK")
-        except Exception as e:
-            print(f"[PiController] LOI KET NOI: {e}")
-            self.ser = None
+    def __init__(self, port=None, baud=BAUD_RATE):
+        self.ser = None
+        ports_to_try = [port] if port else []
+        
+        # Thêm các cổng dự phòng tùy theo OS
+        if os.name == 'nt': # Windows
+            ports_to_try += [f'COM{i}' for i in range(1, 21)]
+        else: # Linux/Mac
+            ports_to_try += ['/dev/ttyUSB0', '/dev/ttyACM0', '/dev/ttyAMA0']
+            
+        print(f"[PiController] Dang tim kiem cong ket noi Arduino...")
+        for p in ports_to_try:
+            try:
+                self.ser = serial.Serial(p, baud, timeout=1)
+                time.sleep(2)
+                print(f"[PiController] Da ket noi thanh cong tai cong: {p}")
+                return
+            except:
+                continue
+        
+        print("[PiController] CANH BAO: Khong tim thay Arduino. He thong se chay o che do offline (No Hardware).")
 
     def send_timing(self, green_ns, yellow_ns, green_ew, yellow_ew) -> bool:
         if not self.ser:

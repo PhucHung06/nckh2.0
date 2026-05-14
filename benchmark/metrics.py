@@ -108,18 +108,18 @@ def print_summary(results: List[TrialResult]):
     active_methods = [m for m in methods if m in stats]
     
     print("\n" + "="*70)
-    print(f"{'Metric':<25} | {'Fixed (30/30)':>12} | {'GA':>12} | {'PPO':>12}")
+    print(f"{'Metric (Average)':<25} | {'Fixed':>12} | {'GA':>12} | {'PPO':>12}")
     print("-" * 70)
     
-    metrics_map = {
-        'Avg timeLoss (s)': 'tl',
-        'Avg waitingTime (s)': 'wt',
-        'Avg density (xe/km)': 'den',
-        'Avg speed (m/s)': 'spd',
-        'Computing Time (s)': 'time'
-    }
+    metrics_display = [
+        ('TimeLoss (s)', 'tl'),
+        ('WaitTime (s)', 'wt'),
+        ('Density (xe/km)', 'den'),
+        ('Speed (m/s)', 'spd'),
+        ('Computing Time (s)', 'time')
+    ]
 
-    for label, key in metrics_map.items():
+    for label, key in metrics_display:
         row = f"{label:<25} | "
         for m in active_methods:
             val = stats[m][key]
@@ -127,8 +127,8 @@ def print_summary(results: List[TrialResult]):
         print(row)
     
     print("-" * 70)
-    # Dòng cải thiện (Dựa trên timeLoss - càng thấp càng tốt)
-    imp_row = f"{'Improvement vs Fixed':<25} | "
+    # Dòng cải thiện (Dựa trên TimeLoss - Càng thấp càng tốt)
+    imp_row = f"{'Improvement (vs Fixed)':<25} | "
     fixed_tl = stats['Fixed']['tl']
     for m in active_methods:
         if m == 'Fixed':

@@ -24,6 +24,7 @@ def make_env(label="default"):
         delta_time = 5,
         yellow_time = 4,
         min_green = 10,
+        max_steps = 120,  # 1 phút = 60s / 5s = 12 steps
         label = label
     )
     return Monitor(env)
@@ -66,7 +67,7 @@ def main():
     
     try:
         model.learn(
-            total_timesteps = 40000, 
+            total_timesteps = 10000, 
             progress_bar    = True,
             callback        = eval_callback
         )

@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from tensorboard.backend.event_processing.event_accumulator import EventAccumulator
 
+
 # Cau hinh duong dan
-LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'rl', 'logs')
+LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'rl', 'logs2.0')
 RESULT_DIR = os.path.join(os.path.dirname(__file__), 'results')
 PLOT_DIR = os.path.join(RESULT_DIR, 'comparison_plots')
 os.makedirs(PLOT_DIR, exist_ok=True)
@@ -56,21 +57,22 @@ def plot_ppo_curve(df):
         print("Khong co du lieu de ve bieu do!")
         return
         
-    plt.figure(figsize=(8, 5))
+    plt.figure(figsize=(9, 6))
+    sns.set_style("whitegrid")
     
-    sns.lineplot(data=df, x='Timestep', y='Mean Reward', color='#FF9800', label='Mean Episode Reward')
+    sns.lineplot(data=df, x='Timestep', y='Mean Reward', color='#3498db', label='Mean Episode Reward', linewidth=2)
     
     # Ve dải std
     plt.fill_between(df['Timestep'], 
                      df['Mean Reward'] - df['Reward Std'], 
                      df['Mean Reward'] + df['Reward Std'], 
-                     color='#FF9800', alpha=0.2, label='\u00b1 1 Std Dev')
+                     color='#3498db', alpha=0.15, label='± 1 Std Dev')
                      
-    plt.title('PPO - Qua trinh hoi tu (Learning Curve)')
-    plt.xlabel('Timesteps')
-    plt.ylabel('Mean Episode Reward')
-    plt.grid(True, alpha=0.3)
-    plt.legend()
+    plt.title('PPO Deep RL - Learning Convergence Curve', fontsize=14, fontweight='bold', pad=15)
+    plt.xlabel('Timesteps', fontsize=12)
+    plt.ylabel('Mean Episode Reward', fontsize=12)
+    plt.grid(True, linestyle='--', alpha=0.5)
+    plt.legend(frameon=True, shadow=True, loc='lower right')
     
     out_path = os.path.join(PLOT_DIR, 'ppo_learning_curve.png')
     plt.savefig(out_path, dpi=150, bbox_inches='tight')

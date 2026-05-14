@@ -19,7 +19,7 @@ from benchmark.metrics import TrialResult, save_results, print_summary
 DATA_DIR   = os.path.join(os.path.dirname(__file__), '..', 'data')
 RESULT_DIR = os.path.join(os.path.dirname(__file__), 'results')
 MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'rl',
-                          'models', 'ppo_dynamic', 'ppo_traffic_dynamic')
+                          'models', 'ppo_random', 'ppo_traffic_random_v2.zip')
 
 
 def run_fixed_trial(env: SumoEnvironment, trial_id: int) -> TrialResult:
@@ -104,6 +104,8 @@ def main():
     )
     gym_env = SumoGymEnv(
         sumocfg = os.path.join(DATA_DIR, 'run1.sumocfg'),
+        max_steps = 60, # 60 steps * 5s = 300s (5 phut)
+        delta_time = 5,
         label = "benchmark"
     )
     model = PPO.load(MODEL_PATH)
