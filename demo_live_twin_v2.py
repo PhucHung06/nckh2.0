@@ -41,7 +41,7 @@ class AdvancedDigitalTwinDashboard:
         self.closed = False
         self.root = tk.Tk()
         self.root.title("Advanced Digital Twin Dashboard - NCKH 2.0")
-        self.root.geometry("1100x700")
+        self.root.geometry("1100x800")
         self.root.configure(bg="#1a1a1a")
         self.root.protocol("WM_DELETE_WINDOW", self.close)
 
@@ -52,14 +52,15 @@ class AdvancedDigitalTwinDashboard:
         self.right_frame = tk.Frame(self.root, bg="#2d2d2d", width=400)
         self.right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, padx=10, pady=10)
 
+        self.simulation_state = "IDLE"
         self.current_mode = "PPO"
         self.all_cmas = {
             "Fixed": {"avg_timeLoss": 0, "avg_waitingTime": 0, "avg_density": 0, "avg_speed": 0},
             "GA": {"avg_timeLoss": 0, "avg_waitingTime": 0, "avg_density": 0, "avg_speed": 0},
-            "PPO": {"avg_timeLoss": 0, "avg_waitingTime": 0, "avg_density": 0, "avg_speed": 0},
-            "STOP": {"avg_timeLoss": 0, "avg_waitingTime": 0, "avg_density": 0, "avg_speed": 0}
+            "PPO": {"avg_timeLoss": 0, "avg_waitingTime": 0, "avg_density": 0, "avg_speed": 0}
         }
         self.flow_mode = "AI Vision" # Mặc định
+        self.sim_delay = 0.5 # Default speed 1x
 
         # Left: Visualizer
         self.canvas = tk.Canvas(self.left_frame, width=620, height=620, bg="#111111", highlightthickness=0)
@@ -117,11 +118,9 @@ class AdvancedDigitalTwinDashboard:
         mode_btn_frame.pack(fill=tk.X, padx=15, pady=5)
         
         self.mode_btns = {}
-        for mode in ["Fixed", "GA", "PPO", "STOP"]:
-            color = "#444444"
-            if mode == "STOP": color = "#cc0000"
+        for mode in ["Fixed", "GA", "PPO"]:
             btn = tk.Button(mode_btn_frame, text=mode, command=lambda m=mode: self.set_mode(m), 
-                            bg=color, fg="white", font=("Arial", 9, "bold"), width=7)
+                            bg="#444444", fg="white", font=("Arial", 9, "bold"), width=7)
             btn.pack(side=tk.LEFT, padx=3, expand=True)
             self.mode_btns[mode] = btn
 
@@ -142,7 +141,28 @@ class AdvancedDigitalTwinDashboard:
             self.flow_btns[fmode] = btn
         self.set_flow_mode("AI Vision")
 
-        self.set_flow_mode("AI Vision")
+        # Simulation Speed Selection
+        speed_container = tk.LabelFrame(self.right_frame, text=" TỐC ĐỘ MÔ PHỎNG ", fg="white", bg="#2d2d2d", font=("Arial", 10, "bold"), padx=10, pady=10)
+        speed_container.pack(fill=tk.X, padx=15, pady=5)
+        
+        self.speed_btns = {}
+        speeds = [("1x", 0.5), ("2x", 0.25), ("5x", 0.1), ("MAX", 0.0)]
+        for label, val in speeds:
+            btn = tk.Button(speed_container, text=label, command=lambda v=val, l=label: self.set_speed(l, v),
+                            bg="#444444", fg="white", font=("Arial", 9, "bold"))
+            btn.pack(side=tk.LEFT, padx=3, expand=True)
+            self.speed_btns[label] = btn
+        self.set_speed("1x", 0.5)
+
+        # Control Buttons (START / STOP)
+        ctrl_frame = tk.Frame(self.right_frame, bg="#2d2d2d")
+        ctrl_frame.pack(fill=tk.X, padx=15, pady=10)
+        
+        self.start_btn = tk.Button(ctrl_frame, text="START", command=self.start_sim, bg="#00cc66", fg="white", font=("Arial", 12, "bold"), height=2)
+        self.start_btn.pack(side=tk.LEFT, expand=True, fill=tk.X, padx=5)
+        
+        self.stop_btn = tk.Button(ctrl_frame, text="STOP", command=self.stop_sim, bg="#cc0000", fg="white", font=("Arial", 12, "bold"), height=2, state=tk.DISABLED)
+        self.stop_btn.pack(side=tk.RIGHT, expand=True, fill=tk.X, padx=5)
 
         # Step Counter
         self.step_label = tk.Label(self.right_frame, text="Step: 0", fg="#cccccc", bg="#2d2d2d", font=("Arial", 11))
@@ -196,12 +216,9 @@ class AdvancedDigitalTwinDashboard:
             if m == mode:
                 btn.config(bg="#10f5a8", fg="black")
             else:
-                color = "#444444"
-                if m == "STOP": color = "#cc0000"
-                btn.config(bg=color, fg="white")
+                btn.config(bg="#444444", fg="white")
         
         color = "#10f5a8" if mode == "PPO" else "#f5a810" if mode == "GA" else "#a810f5"
-        if mode == "STOP": color = "#ff4444"
         self.mode_label.config(text=f"MODE: {mode}", bg=color)
 
     def set_flow_mode(self, fmode):
@@ -212,6 +229,48 @@ class AdvancedDigitalTwinDashboard:
             else:
                 btn.config(bg="#444444", fg="white")
         print(f"🌊 Đổi luồng giao thông sang: {fmode}")
+
+    def set_speed(self, label, value):
+        self.sim_delay = value
+        for l, btn in self.speed_btns.items():
+            if l == label:
+                btn.config(bg="#f39c12", fg="black") # Highlight active speed
+            else:
+                btn.config(bg="#444444", fg="white")
+        print(f"⚡ Đổi tốc độ mô phỏng sang: {label}")
+
+    def start_sim(self):
+        self.simulation_state = "STARTING"
+        self.start_btn.config(state=tk.DISABLED)
+        self.stop_btn.config(state=tk.NORMAL)
+        
+    def stop_sim(self):
+        self.simulation_state = "STOPPING"
+        self.start_btn.config(state=tk.NORMAL)
+        self.stop_btn.config(state=tk.DISABLED)
+
+    def reset_ui(self):
+        self.step_label.config(text="Step: 0")
+        self.canvas.itemconfig(self.decision_item, text="WAIT", fill="#10f5a8", font=("Consolas", 32, "bold"))
+        for direction in ["north", "east", "south", "west"]:
+            self.canvas.itemconfig(self.light_items[direction], image=self.images["red"])
+        self.canvas.itemconfig(self.lane_count_items["N"], text="N: 0 xe")
+        self.canvas.itemconfig(self.lane_count_items["E"], text="E: 0 xe")
+        self.canvas.itemconfig(self.lane_count_items["S"], text="S: 0 xe")
+        self.canvas.itemconfig(self.lane_count_items["W"], text="W: 0 xe")
+        self.live_vars["TimeLoss"].set("0.00 s")
+        self.live_vars["WaitTime"].set("0.00 s")
+        self.live_vars["Density"].set("0.00 xe/km")
+        self.live_vars["Speed"].set("0.00 m/s")
+        self.update_idle()
+
+    def update_idle(self):
+        if self.closed: return
+        try:
+            self.root.update_idletasks()
+            self.root.update()
+        except tk.TclError:
+            self.closed = True
 
     def flash_decision(self, action):
         """Tạo hiệu ứng nhấp nháy khi AI ra quyết định Switch."""
@@ -288,110 +347,130 @@ def main():
     print(f"🧠 Đang nạp Model PPO: {MODEL_PATH}")
     model = PPO.load(MODEL_PATH, device='cpu')
     
-    # Môi trường
     SUMO_CFG = os.path.join(PROJECT_ROOT, 'data', 'run1.sumocfg')
-    env = SumoGymEnv(SUMO_CFG, use_gui=True, delta_time=5)
     dashboard = AdvancedDigitalTwinDashboard()
     
+    env = None
+    
     try:
-        obs, _ = env.reset()
         step_count = 0
-        
-        # GA Best Chromosome from Benchmark: [24, 3, 19, 3]
         GA_CHROMOSOME = [15, 3, 17, 3]
         FIXED_CHROMOSOME = [30, 4, 30, 4]
         
         last_mode = dashboard.current_mode
         
         while not dashboard.closed:
-            mode = dashboard.current_mode
-
-            # Nếu người dùng đổi Mode trên UI -> Reset lại toàn bộ simulation để so sánh công bằng
-            if mode != last_mode:
-                if mode == "STOP":
-                    print("⏸️ Simulation PAUSED.")
-                    last_mode = mode
-                    continue
-                
-                print(f"🔄 Đổi chế độ sang {mode}. Đang reset dòng xe...")
-                obs, _ = env.reset()
-                step_count = 0
-                last_mode = mode
-                
-            if mode == "STOP":
-                dashboard.update_ui(step_count, 0, current_phase, queues, metrics, cma, mode="STOP")
-                time.sleep(0.5)
+            if dashboard.simulation_state == "IDLE":
+                dashboard.update_idle()
+                time.sleep(0.1)
                 continue
 
-            step_count += 1
+            if dashboard.simulation_state == "STARTING":
+                print(f"▶️ Bắt đầu mô phỏng với chế độ: {dashboard.current_mode}, luồng: {dashboard.flow_mode}")
+                if env is not None:
+                    try: env.close()
+                    except: pass
+                env = SumoGymEnv(SUMO_CFG, use_gui=True, delta_time=1)
+                obs, _ = env.reset()
+                step_count = 0
+                last_mode = dashboard.current_mode
+                dashboard.simulation_state = "RUNNING"
             
-            # Ra quyết định dựa trên Mode
-            action_value = 0
-            if mode == "PPO":
-                action, _ = model.predict(obs, deterministic=True)
-                action_value = int(np.asarray(action).item())
-            elif mode == "GA":
-                # GA logic: Đợi hết green_time thì switch
-                current_phase = env.conn.trafficlight.getPhase(env.tl_id)
-                g_ns, y_ns, g_ew, y_ew = GA_CHROMOSOME
-                
-                # Tính toán xem có nên switch không (đơn giản hóa cho demo)
-                time_in_phase = env.time_since_last_phase_change
-                if current_phase == 0 and time_in_phase >= g_ns: action_value = 1
-                elif current_phase == 2 and time_in_phase >= g_ew: action_value = 1
-            else: # Fixed
-                current_phase = env.conn.trafficlight.getPhase(env.tl_id)
-                g_ns, y_ns, g_ew, y_ew = FIXED_CHROMOSOME
-                time_in_phase = env.time_since_last_phase_change
-                if current_phase == 0 and time_in_phase >= g_ns: action_value = 1
-                elif current_phase == 2 and time_in_phase >= g_ew: action_value = 1
+            if dashboard.simulation_state == "STOPPING":
+                print("⏹️ Đang dừng mô phỏng và thoát SUMO...")
+                if env is not None:
+                    try: env.close()
+                    except: pass
+                    env = None
+                dashboard.simulation_state = "IDLE"
+                dashboard.reset_ui()
+                continue
 
-            # Sinh xe ngẫu nhiên nếu ở chế độ Random
-            if dashboard.flow_mode == "Random":
-                import random
-                routes = [
-                    "route_Zone_AL", "route_Zone_AR", "route_Zone_AM",
-                    "route_Zone_BL", "route_Zone_BR", "route_Zone_BM",
-                    "route_Zone_CL", "route_Zone_CR", "route_Zone_CM",
-                    "route_Zone_DL", "route_Zone_DR", "route_Zone_DM"
-                ]
-                # Sinh 1-3 xe ngẫu nhiên mỗi bước 5s
-                for _ in range(random.randint(1, 3)):
-                    r = random.choice(routes)
-                    v_id = f"rand_{step_count}_{_}_{random.randint(0,100)}"
-                    try:
-                        env.conn.vehicle.add(v_id, r, typeID="yolo_car")
-                    except:
-                        pass
+            if dashboard.simulation_state == "RUNNING":
+                mode = dashboard.current_mode
 
-            # Step SUMO
-            try:
-                obs, reward, terminated, truncated, _ = env.step(action_value)
-                metrics, cma = env.get_live_metrics()
-                current_phase = env.conn.trafficlight.getPhase(env.tl_id)
-                queues = obs[0:4].astype(int)
-                
-                dashboard.update_ui(step_count, action_value, current_phase, queues, metrics, cma, mode=mode)
-                
-                if ctrl and ctrl.ser:
-                    cmd = f"FORCE:{current_phase}\n"
-                    ctrl.ser.write(cmd.encode())
-                
-                if terminated or truncated:
-                    print(f"🔄 Reset mô phỏng {mode}...")
+                # Nếu người dùng đổi Mode trên UI -> Reset lại toàn bộ simulation để so sánh công bằng
+                if mode != last_mode:
+                    print(f"🔄 Đổi chế độ sang {mode}. Đang reset dòng xe...")
                     obs, _ = env.reset()
                     step_count = 0
+                    last_mode = mode
+
+                step_count += 1
                 
-                time.sleep(0.5)
-                
-            except traci.exceptions.FatalTraCIError:
-                break
+                # Ra quyết định dựa trên Mode
+                action_value = 0
+                if mode == "PPO":
+                    action, _ = model.predict(obs, deterministic=True)
+                    action_value = int(np.asarray(action).item())
+                elif mode == "GA":
+                    # GA logic: Đợi hết green_time thì switch
+                    current_phase = env.conn.trafficlight.getPhase(env.tl_id)
+                    g_ns, y_ns, g_ew, y_ew = GA_CHROMOSOME
+                    time_in_phase = env.time_since_last_phase_change
+                    if current_phase == 0 and time_in_phase >= g_ns: action_value = 1
+                    elif current_phase == 2 and time_in_phase >= g_ew: action_value = 1
+                else: # Fixed
+                    current_phase = env.conn.trafficlight.getPhase(env.tl_id)
+                    g_ns, y_ns, g_ew, y_ew = FIXED_CHROMOSOME
+                    time_in_phase = env.time_since_last_phase_change
+                    if current_phase == 0 and time_in_phase >= g_ns: action_value = 1
+                    elif current_phase == 2 and time_in_phase >= g_ew: action_value = 1
+
+                # Sinh xe ngẫu nhiên nếu ở chế độ Random
+                if dashboard.flow_mode == "Random":
+                    import random
+                    routes = [
+                        "route_Zone_AL", "route_Zone_AR", "route_Zone_AM",
+                        "route_Zone_BL", "route_Zone_BR", "route_Zone_BM",
+                        "route_Zone_CL", "route_Zone_CR", "route_Zone_CM",
+                        "route_Zone_DL", "route_Zone_DR", "route_Zone_DM"
+                    ]
+                    # Sinh 1-3 xe ngẫu nhiên mỗi bước 1s
+                    for _ in range(random.randint(1, 3)):
+                        r = random.choice(routes)
+                        v_id = f"rand_{step_count}_{_}_{random.randint(0,100)}"
+                        try:
+                            env.conn.vehicle.add(v_id, r, typeID="yolo_car")
+                        except:
+                            pass
+
+                # Step SUMO
+                try:
+                    obs, reward, terminated, truncated, _ = env.step(action_value)
+                    metrics, cma = env.get_live_metrics()
+                    current_phase = env.conn.trafficlight.getPhase(env.tl_id)
+                    queues = obs[0:4].astype(int)
+                    
+                    dashboard.update_ui(step_count, action_value, current_phase, queues, metrics, cma, mode=mode)
+                    
+                    if ctrl and ctrl.ser:
+                        cmd = f"FORCE:{current_phase}\n"
+                        ctrl.ser.write(cmd.encode())
+                    
+                    if terminated or truncated:
+                        print(f"🔄 Reset mô phỏng {mode}...")
+                        obs, _ = env.reset()
+                        step_count = 0
+                    
+                    if dashboard.sim_delay > 0:
+                        time.sleep(dashboard.sim_delay)
+                    
+                except traci.exceptions.FatalTraCIError:
+                    if env is not None:
+                        try: env.close()
+                        except: pass
+                        env = None
+                    dashboard.stop_sim()
+                    break
                 
     except KeyboardInterrupt:
         pass
     finally:
         dashboard.close()
-        env.close()
+        if env is not None:
+            try: env.close()
+            except: pass
 
 if __name__ == "__main__":
     main()
